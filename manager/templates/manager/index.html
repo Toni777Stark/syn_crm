@@ -1,3 +1,6 @@
+{% load static %}
+{% load i18n static %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,15 +9,580 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Заказы</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'manager/css/style.css' %}">
 </head>
 <body>
-    <h1>Заказы</h1>
-    {% for el in orders %}
-            {% for prod in el.product.all %}
-                <div>{{ prod.exchange }}</div>
-            {% endfor %}
-        <div>{{ el.manager }}</div>
-        <div>{{ el.client }}</div>
-    {% endfor %}
+<div class="body">
+
+
+    <div id="header">
+        <i id="openSide_bar" class="fa fa-bars side-bar-open-btn" onclick="openSide_bar()"></i>
+        <div class="menu-side-bar"></div>
+<!--
+        <button onclick="myFunction()" class="dropbtn btn btn-primary">{% firstof user.get_short_name user.get_username %} ˅</button>
+        <div class="dropdown-content" id="myDropdown">
+        
+        </div>
+-->
+
+    </div>
+
+
+
+    <div class="body-content">
+        <div id="side-bar" class="side-bar d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img src="{% static 'manager/img/synergy_uneversity.svg' %}" alt="">
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item active">
+                <a href="#" class="nav-link" aria-current="page">
+                    <i class="fa fa-calendar"></i><h5>Заказы</h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link link-body-emphasis">
+                    <i class="fa fa-calendar"></i><h5>Отказы</h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link link-body-emphasis">
+                    <i class="fa fa-calendar"></i><h5>Возвраты</h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link link-body-emphasis">
+                    <i class="fa fa-user-circle"></i><h5>Клиенты</h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link link-body-emphasis">
+                    <i class="fa fa-gauge-high"></i><h5>Дашбоард</h5>
+                </a>
+            </li class="nav-item">
+            </ul>
+
+            <i class="fa fa-angle-left side-bar-close-btn" onclick="closeSide_bar()"></i>
+        </div>
+
+
+
+    <div id="content-block" class="content-block">
+        <form action="#" class="form-body">
+
+
+            <div class="form-body-add-zakaz">
+                <h2 class="name-block-input">Новый заказ</h2>
+                <div class="form-body-row">
+
+                    <div class="form-body-block-input pidel-input">
+                        <input type="text" placeholder="Клиент" list="client-name">
+                            <datalist id="client-name">
+                                <option value="Клиент-1"></option>
+                                <option value="Клиент-2"></option>
+                                <option value="Клиент-3"></option>
+                                <option value="Клиент-4"></option>
+                                <option value="Клиент-5"></option>
+                            </datalist>
+                        <span class="left-bar-open-btn fa fa-plus" onclick="openleft_bar()"></span>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Язык общения" list="client-lang">
+                            <datalist id="client-lang">
+                                <option value="Русский"></option>
+                                <option value="Английский"></option>
+                                <option value="Украинский"></option>
+                                <option value="Казахстанский"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="date" placeholder="Дата" class="date-input">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Коментарий" maxlength="50">
+                    </div>
+                </div>
+
+
+                <div class="form-body-row">
+
+                    <div class="form-body-block-input ">
+                        <input type="text" placeholder="Тип оплаты" list="client-oplata">
+                            <datalist id="client-oplata">
+                                <option value="Master-card / Visa / Мир"></option>
+                                <option value="Qiwi кошелек"></option>
+                                <option value="btc / tether"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input form-body-upload-file">
+                        <input type="file" class="form-body-upload-input" multiple accept="image/jpeg,image/jpg,image/png,image/svg,image/webp">
+                    </div>
+
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Приоритет" list="zakaz-prioritet">
+                            <datalist id="zakaz-prioritet">
+                                <option value="Высокий"></option>
+                                <option value="Средний"></option>
+                                <option value="Низкий"></option>
+                            </datalist>
+                    </div>
+
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип заказа" list="zakaz-type">
+                            <datalist id="zakaz-type">
+                                <option value="Binance COIN"></option>
+                                <option value="Binance COIN"></option>
+                                <option value="Binance COIN"></option>
+                                <option value="Binance COIN"></option>
+                                <option value="Binance COIN"></option>
+                            </datalist>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-body-add-tovar">
+                <h2 class="name-block-input" style="margin-top: 1em;">Товар</h2>
+                <div class="form-body-row">
+
+                    <div class="form-body-block-input pidel-input">
+                        <input type="text" placeholder="Биржа" list="birzha-name">
+                            <datalist id="birzha-name">
+                                <option value="Биржа-1"></option>
+                                <option value="Биржа-2"></option>
+                                <option value="Биржат-3"></option>
+                                <option value="Биржа-4"></option>
+                                <option value="Биржа-5"></option>
+                            </datalist>
+                        <span class="left-bar-open-btn fa fa-plus" onclick="openleft_bar()"></span>
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Цена" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Кол-во" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Коментарий" maxlength="50">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <datalist id="tovar-geo">
+                                <option value="Россия"></option>
+                                <option value="Украина"></option>
+                                <option value="Казахстан"></option>
+                            </datalist>
+                    </div>
+                    
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <datalist id="tovar-rezident">
+                                <option value="Резидент-1"></option>
+                                <option value="Резидент-2"></option>
+                                <option value="Резидент-3"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <datalist id="tovar-type-email">
+                                <option value="@gmail.com"></option>
+                                <option value="@mail.com"></option>
+                                <option value="@yandex.ru"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <datalist id="tovar-type-number">
+                                <option value="+7"></option>
+                                <option value="+380"></option>
+                                <option value="+111"></option>
+                                <option value="+123"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <datalist id="tovar-emulator">
+                                <option value="BlueStacks"></option>
+                                <option value="NoxPlayer"></option>
+                                <option value="MedaiaPlayer"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                </div>
+                <div class="form-body-row">
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Биржа" list="birzha-name">
+                            <datalist id="birzha-name">
+                                <option value="Биржа-1"></option>
+                                <option value="Биржа-2"></option>
+                                <option value="Биржат-3"></option>
+                                <option value="Биржа-4"></option>
+                                <option value="Биржа-5"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Цена" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Кол-во" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Коментарий" maxlength="50">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <datalist id="tovar-geo">
+                                <option value="Россия"></option>
+                                <option value="Украина"></option>
+                                <option value="Казахстан"></option>
+                            </datalist>
+                    </div>
+                    
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <datalist id="tovar-rezident">
+                                <option value="Резидент-1"></option>
+                                <option value="Резидент-2"></option>
+                                <option value="Резидент-3"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <datalist id="tovar-type-email">
+                                <option value="@gmail.com"></option>
+                                <option value="@mail.com"></option>
+                                <option value="@yandex.ru"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <datalist id="tovar-type-number">
+                                <option value="+7"></option>
+                                <option value="+380"></option>
+                                <option value="+111"></option>
+                                <option value="+123"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <datalist id="tovar-emulator">
+                                <option value="BlueStacks"></option>
+                                <option value="NoxPlayer"></option>
+                                <option value="MedaiaPlayer"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                </div>
+                <div class="form-body-row">
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Биржа" list="birzha-name">
+                            <datalist id="birzha-name">
+                                <option value="Биржа-1"></option>
+                                <option value="Биржа-2"></option>
+                                <option value="Биржат-3"></option>
+                                <option value="Биржа-4"></option>
+                                <option value="Биржа-5"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Цена" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Кол-во" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Коментарий" maxlength="50">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <datalist id="tovar-geo">
+                                <option value="Россия"></option>
+                                <option value="Украина"></option>
+                                <option value="Казахстан"></option>
+                            </datalist>
+                    </div>
+                    
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <datalist id="tovar-rezident">
+                                <option value="Резидент-1"></option>
+                                <option value="Резидент-2"></option>
+                                <option value="Резидент-3"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <datalist id="tovar-type-email">
+                                <option value="@gmail.com"></option>
+                                <option value="@mail.com"></option>
+                                <option value="@yandex.ru"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <datalist id="tovar-type-number">
+                                <option value="+7"></option>
+                                <option value="+380"></option>
+                                <option value="+111"></option>
+                                <option value="+123"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <datalist id="tovar-emulator">
+                                <option value="BlueStacks"></option>
+                                <option value="NoxPlayer"></option>
+                                <option value="MedaiaPlayer"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                </div>
+                <div class="form-body-row">
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Биржа" list="birzha-name">
+                            <datalist id="birzha-name">
+                                <option value="Биржа-1"></option>
+                                <option value="Биржа-2"></option>
+                                <option value="Биржат-3"></option>
+                                <option value="Биржа-4"></option>
+                                <option value="Биржа-5"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Цена" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Кол-во" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Коментарий" maxlength="50">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <datalist id="tovar-geo">
+                                <option value="Россия"></option>
+                                <option value="Украина"></option>
+                                <option value="Казахстан"></option>
+                            </datalist>
+                    </div>
+                    
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <datalist id="tovar-rezident">
+                                <option value="Резидент-1"></option>
+                                <option value="Резидент-2"></option>
+                                <option value="Резидент-3"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <datalist id="tovar-type-email">
+                                <option value="@gmail.com"></option>
+                                <option value="@mail.com"></option>
+                                <option value="@yandex.ru"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <datalist id="tovar-type-number">
+                                <option value="+7"></option>
+                                <option value="+380"></option>
+                                <option value="+111"></option>
+                                <option value="+123"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <datalist id="tovar-emulator">
+                                <option value="BlueStacks"></option>
+                                <option value="NoxPlayer"></option>
+                                <option value="MedaiaPlayer"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                </div>
+                <div class="form-body-row">
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Биржа" list="birzha-name">
+                            <datalist id="birzha-name">
+                                <option value="Биржа-1"></option>
+                                <option value="Биржа-2"></option>
+                                <option value="Биржат-3"></option>
+                                <option value="Биржа-4"></option>
+                                <option value="Биржа-5"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Цена" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input" style="width: 100px;">
+                        <input type="number" placeholder="Кол-во" maxlength="8">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Коментарий" maxlength="50">
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <datalist id="tovar-geo">
+                                <option value="Россия"></option>
+                                <option value="Украина"></option>
+                                <option value="Казахстан"></option>
+                            </datalist>
+                    </div>
+                    
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <datalist id="tovar-rezident">
+                                <option value="Резидент-1"></option>
+                                <option value="Резидент-2"></option>
+                                <option value="Резидент-3"></option>
+                            </datalist>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <datalist id="tovar-type-email">
+                                <option value="@gmail.com"></option>
+                                <option value="@mail.com"></option>
+                                <option value="@yandex.ru"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <datalist id="tovar-type-number">
+                                <option value="+7"></option>
+                                <option value="+380"></option>
+                                <option value="+111"></option>
+                                <option value="+123"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                    <div class="form-body-block-input">
+                        <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <datalist id="tovar-emulator">
+                                <option value="BlueStacks"></option>
+                                <option value="NoxPlayer"></option>
+                                <option value="MedaiaPlayer"></option>
+                            </datalist>
+                        </input>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="body-form-block-btn">
+                <button class="btn btn-primary btn-add-zakaz">Добавить заказ</button>
+                <button type="button" class="btn btn-light btn-spravka-zakaz">Справка</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+
+
+    <div id="left-bar" class="left-bar">
+        <i href="javascript:void(0)" class="fa fa-times left-bar-close-btn" onclick="closeleft_bar()"></i>
+
+        <div class="block-new-client">
+            <h3>Новый клиент</h2>
+            <form action="#" class="form-new-client">
+                <input type="text" placeholder="Ник клиента">
+                <input type="text" placeholder="Телеграм клиента">
+                <button class="btn btn-primary">Добавить клиента</button>
+            </form>
+        </div>
+
+        <div class="block-new-client">
+            <h3>Новая биржа</h2>
+            <form action="#" class="form-new-client">
+                <input type="text" placeholder="Название биржы">
+                <button class="btn btn-primary">Добавить биржу</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://kit.fontawesome.com/419032dc53.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'manager/js/main.js' %}" type="text/javascript"></script>
 </body>
 </html>

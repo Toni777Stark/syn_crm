@@ -316,9 +316,12 @@ body {
 
 
 @media (max-width: 425px) {
-    
-
-/*    .content-block.active-content-block {
-        right: -100vw;
-    } */
+    .side-bar {
+        width: 100vw;
+        position: absolute;
+        z-index: 1;
+    }
+    .side-bar.active {
+        left: -100vw;
+    }
 }

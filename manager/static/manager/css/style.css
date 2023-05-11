@@ -318,6 +318,7 @@ body {
 @media (max-width: 425px) {
     .side-bar {
         position: absolute;
+        z-index: 1;
         width: 100vw;
         left: 0;
     }
@@ -327,10 +328,8 @@ body {
     }
 
     .content-block {
-        display: none;
     }
     .content-block.active-content-block {
         margin: 0;
-        display: flex;
     }
 }

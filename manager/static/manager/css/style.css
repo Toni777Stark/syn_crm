@@ -3,11 +3,19 @@
     --whitegray-color: rgb(200, 200, 200);
 
 
-    
-    --input-big-width: 250px;
-    --input-small-width: 106.5px;
+    --input-left-bar-input-width: 150px;
+    --input-big-width: 23.5%;
+    --input-small-width: 11.5%;
 }
 
+
+.form-body-row-block hr {
+    margin: 2em 0em;
+    color: #383838;
+}
+.form-body-row-block hr:first-child {
+    margin-top: 0;
+}
 
 
 .btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
@@ -29,7 +37,7 @@ input:focus, input:hover {
 
 body {
     display: flex;
-    height: 100vh;
+    height: 100%;
 }
 .body {
     display: flex;
@@ -44,9 +52,6 @@ body {
 }
 .side-bar {
     background-color: rgb(56, 68, 64);
-    max-height: 900%;
-    min-height: 450px;
-    width: 275px;
 }
 .left-bar {
     display: flex;
@@ -55,7 +60,6 @@ body {
 #header {
     background-color: rgb(33, 38, 41);
     display: flex;
-    justify-content: space-between;
     align-items: center;
     min-height: 30px;
     padding: 0.5em;
@@ -95,7 +99,7 @@ body {
 
 .form-new-client input {
     padding-left: .7em;
-    width: var(--input-big-width);
+    width: var(--input-left-bar-input-width);
 }
 
 /* left bar animation */
@@ -124,33 +128,42 @@ body {
 
 
 .side-bar {
-    height: 100%;
-    width: 250px;
-    position: relative;
-    left: 0px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 225px;
+    min-height: 100vh;
+    max-width: 225px;
     overflow-x: hidden;
     transition: 0.5s;
 }
 .side-bar.active {
-    left: -250px;
+    margin-left: -225px;
 }
-.side-bar-open-btn {
-    color: rgba(255, 255, 255, 0);
+#openSide_bar {
+    display: none;
     font-size: 20px;
     cursor: pointer;
     padding-right: 1em;
     transition: .2s;
 }
-.side-bar-open-btn.active {
+#openSide_bar.active {
+    display: inline-block;
     color: white;
 }
-.side-bar-close-btn {
-    text-align: right;
+#closeSide_bar {
     color: white;
-    font-size: 20px;
-    padding: 0.5em;
-    margin-right: 0.3em;
+    font-size: 20px;;
     cursor: pointer;
+}
+#closeSide_bar.active {
+    display: none;
+}
+.side-bar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 90vh;
 }
 
 
@@ -158,11 +171,11 @@ body {
     margin-top: 1em;
 }
 .side-bar ul {
-    grid-gap: 10px;
+    grid-gap: 5px;
 }
 .nav-link {
     display: flex;
-    grid-gap: 5px;
+    grid-gap: 10px;
     color: white;
     font-weight: 900;
     font-size: 15px;
@@ -231,13 +244,12 @@ body {
 /* body-content */
 .content-block {
     padding: 1.5em .3em 1.5em 1.5em;
-    position: relative;
     transition: .5s;
     grid-gap: 50px;
+    flex: 1;
 }
 .content-block.active-content-block {
     transition: .5s;
-    margin-left: -250px;
 }
 
 
@@ -246,26 +258,33 @@ body {
     flex-direction: column;
     grid-gap: 15px;
     margin-left: .5em;
-    margin-top: 2em;
     flex-wrap: wrap;
 }
+.form-body-row-block {
+    overflow-y: scroll;
+    height: 250px;
+}
+
 
 .form-body-row {
     display: flex;
     grid-gap: 10px;
     flex-wrap: wrap;
+    justify-content: center;
     margin-left: 1em;
+    margin-right: 1em;
+    align-items: center;
 }
 
 .form-body-block-input  {
     display: flex;
     width: var(--input-big-width);
+    min-width: 180px;
     grid-gap: 2.5px;
 }
 .form-body-block-input input {
     width: 100%;
 }
-
 
 .form-body-upload-input {
     color: rgb(117, 117, 117);
@@ -309,10 +328,28 @@ body {
 
 
 
-.form-body-add-tovar .form-body-block-input {
+.form-body-add-tovar .form-body-row .form-body-block-input {
     width: var(--input-small-width);
 }
 
+.body-form-block-btn {
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
+    padding-top: 1em;
+}
+.form-body-label-btn {
+    color: var(--main-color);
+    border-radius: 2.5px;
+    outline: 1px solid var(--main-color);
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: .2s;
+}
+.form-body-label-btn.active {
+    background-color: rgba(0, 76, 255, 0.148);
+    transition: .2s;
+}
 
 
 @media (max-width: 425px) {
@@ -320,16 +357,15 @@ body {
         position: absolute;
         z-index: 1;
         width: 100vw;
+        height: 100vh;
         left: 0;
     }
 
     .side-bar.active {
         left: -100vw;
     }
-
-    .content-block {
-    }
     .content-block.active-content-block {
         margin: 0;
     }
+
 }

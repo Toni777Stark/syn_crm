@@ -4,8 +4,8 @@
 
 
     --input-left-bar-input-width: 150px;
-    --input-big-width: 23.5%;
     --input-small-width: 11.5%;
+    --input-big-width: 23.5%
 }
 
 
@@ -49,6 +49,7 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
+    margin-top: 30px;
 }
 .side-bar {
     background-color: rgb(56, 68, 64);
@@ -60,8 +61,10 @@ body {
 #header {
     background-color: rgb(33, 38, 41);
     display: flex;
+    position: fixed;
+    width: 100vw;
     align-items: center;
-    min-height: 30px;
+    height: 30px;
     padding: 0.5em;
 }
 
@@ -130,6 +133,7 @@ body {
 .side-bar {
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex: 1 1 225px;
     min-height: 100vh;
     max-width: 225px;
@@ -158,6 +162,9 @@ body {
 #closeSide_bar.active {
     display: none;
 }
+.side-bar-block-link {
+    width: 100%;
+}
 .side-bar-container {
     display: flex;
     flex-direction: column;
@@ -167,8 +174,8 @@ body {
 }
 
 
-.side-bar a:first-child img {
-    margin-top: 1em;
+.side-bar-block-link a:first-child img {
+    width: 150px;
 }
 .side-bar ul {
     grid-gap: 5px;
@@ -260,11 +267,6 @@ body {
     margin-left: .5em;
     flex-wrap: wrap;
 }
-.form-body-row-block {
-    overflow-y: scroll;
-    height: 250px;
-}
-
 
 .form-body-row {
     display: flex;
@@ -295,16 +297,29 @@ body {
     display: none;
 }
 
-.pidel-input input {
-    width: 80%;
+
+.form-body-add-tovar .form-body-row .form-body-block-input {
+    width: 160px;
+    min-width: unset;
 }
+.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(2),
+.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(3) {
+    width: 85px;
+}
+.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(4) {
+    width: 250px;
+}
+
+
+
 .date-input {
     width: 100%;
 }
 
 
 .left-bar-open-btn {
-    width: 20%;
+    height: 40px;
+    width: 40px;
 }
 .left-bar-open-btn::before {
     display: flex;
@@ -325,12 +340,6 @@ body {
     display: none;
 }
 
-
-
-
-.form-body-add-tovar .form-body-row .form-body-block-input {
-    width: var(--input-small-width);
-}
 
 .body-form-block-btn {
     display: flex;

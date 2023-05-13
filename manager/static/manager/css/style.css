@@ -185,8 +185,10 @@ body {
     min-height: 100%;
     width: 100%;
 
-    align-items: flex-end;
-    justify-content: flex-start;
+    background: rgba(0, 0, 0, 0.405);
+
+    align-items: center;
+    justify-content: center;
 }
 
 .left-bar-close-btn {
@@ -392,7 +394,6 @@ body {
 .left-bar-open-btn {
     height: 40px;
     width: 40px;
-    z-index: 2;
 }
 .left-bar-open-btn::before {
     display: flex;

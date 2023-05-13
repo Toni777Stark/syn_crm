@@ -63,3 +63,15 @@ function closeSide_bar() {
 }
 
 
+
+var parent = document.querySelector(".form-block-input-block");
+parent.insertBefore(document.createElement('br'));
+parent.insertBefore(document.createTextNode(++count + '. - '));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));

@@ -3,7 +3,7 @@
     --whitegray-color: rgb(200, 200, 200);
 
 
-    --input-left-bar-input-width: 150px;
+    --input-left-bar-input-width: 200px;
     --input-small-width: 11.5%;
     --input-big-width: 23.5%
 }
@@ -64,19 +64,73 @@ body {
     position: fixed;
     width: 100vw;
     align-items: center;
+    justify-content: space-between;
     height: 30px;
     padding: 0.5em;
+    z-index: 2;
 }
 
 
 
-
-
-/* LEFT BAR */
-.left-bar {
-    border-left: 1px solid #000;
-    grid-gap: 3em;
+/* Лого юзера */
+.header-user-icon {
+    width: 16px;
+    height: 16px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
+/* Кнопка выпадающего списка */
+.dropbtn {
+    background-color: #ffffff00;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    margin-right: 1em;
+    width: 120px;
+  }
+  
+  /* Кнопка выпадающего меню при наведении и фокусировке */
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #ffffff37;
+    transition: .3s;
+  }
+  
+  /* Контейнер <div> - необходим для размещения выпадающего содержимого */
+  .user-tools {
+    position: relative;
+    display: inline-block;
+    float: left;
+  }
+  
+  /* Выпадающее содержимое (скрыто по умолчанию) */
+  .dropdown-content {
+    display: none;
+    background-color: #8a8a8a;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    position: absolute;
+    z-index: 5;
+  }
+  
+  /* Ссылки внутри выпадающего списка */
+  .dropdown-content a, .dropdown-content #logout-form button {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    border: 0;
+    outline: 0;
+    background-color: #ffffff37;
+    width: 120px;
+    padding: 10px 0;
+    right: 0px;
+  }
+  /* Показать выпадающее меню (используйте JS, чтобы добавить этот класс .dropdown-content содержимого, когда пользователь нажимает на кнопку выпадающего списка) */
+  .show {display:block;}
+
+
 .block-new-client:first-child {
     margin-top: 1.5em;
 }
@@ -106,28 +160,48 @@ body {
 }
 
 /* left bar animation */
-.left-bar {
-    height: 100%;
-    width: 300px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: -400px;
-    overflow-x: hidden;
-    transition: 0.5s;
-    background: white;
-    padding: 1em;
+.pop-container {
+    background: rgb(218, 218, 218);
+    letter-spacing: 1px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 2.3em;
 }
+.left-bar {
+    transform: scale(0);
+    transition: .3s;
+
+
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    min-height: 100%;
+    width: 100%;
+
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
 .left-bar-close-btn {
     font-size:25px;
     cursor:pointer;
     color: black;
     border: 0;
     text-decoration: none;
+    margin: 0.5em;
 }
 .left-bar.active {
-    right: 0;
+    transform: scale(1);
+    transition: .3s;
 }
+.left-bar div form input {
+    width: var(--input-left-bar-input-width);
+}
+.block-new-client {
+    padding: 1em 4em 3em 3em;
+}
+
+
 
 
 .side-bar {
@@ -215,39 +289,6 @@ body {
 
 
 
-/*
-.block-content-zakazi {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    padding: 2em 2em 0 2em;
-}
-.block-zakazi {
-    max-height: 500px;
-    overflow-y: scroll;
-}
-.block-content-zakazi::-webkit-scrollbar { width: 0 !important }
-.block-zakazi div {
-    grid-gap: 10px;
-}
-.block-zakazi div:nth-child(3n) {
-    margin-bottom: 1em;
-}
-.product {
-    background: red;
-}
-.manager {
-    background: green;
-}
-.client {
-    background: yellow;
-}
-*/
-
-
-
-
 /* body-content */
 .content-block {
     padding: 1.5em .3em 1.5em 1.5em;
@@ -298,7 +339,7 @@ body {
 }
 
 
-.form-body-add-tovar .form-body-row .form-body-block-input {
+.form-body-add-tovar .form-body-block-input {
     width: 160px;
     min-width: unset;
 }
@@ -320,6 +361,7 @@ body {
 .left-bar-open-btn {
     height: 40px;
     width: 40px;
+    z-index: 2;
 }
 .left-bar-open-btn::before {
     display: flex;
@@ -362,19 +404,45 @@ body {
 
 
 @media (max-width: 425px) {
+    .dropbtn {
+        margin-right: 0;
+    }
+
+
     .side-bar {
-        position: absolute;
-        z-index: 1;
+        position: fixed;
+        z-index: -1;
         width: 100vw;
-        height: 100vh;
+        max-width: unset;
         left: 0;
     }
 
     .side-bar.active {
         left: -100vw;
     }
+
+    .content-block {
+        position: absolute;
+        right: -100vw;
+        width: 100vw;
+    }
     .content-block.active-content-block {
-        margin: 0;
+        right: 0;
     }
 
+
+    .form-body-add-tovar .form-body-row .form-body-block-input:nth-child(2),
+    .form-body-add-tovar .form-body-row .form-body-block-input:nth-child(3) 
+    {
+        width: 100%;
+        max-width: 120px;
+    }
+
+
+    .form-body-add-tovar .form-body-row .form-body-block-input,
+    .form-body-add-zakaz .form-body-block-input 
+    {
+        width: 100%;
+        max-width: 250px;
+    }
 }

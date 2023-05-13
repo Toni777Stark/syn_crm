@@ -182,8 +182,9 @@ body {
     position: absolute;
     top: 0px;
     z-index: 1;
-    min-height: 100%;
-    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    min-width: 100%;
 
     background: rgba(0, 0, 0, 0.405);
 
@@ -391,9 +392,20 @@ body {
 }
 
 
-.left-bar-open-btn {
+.form-body-add-zakaz .left-bar-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 40px;
-    width: 40px;
+    width: 50px;
+}
+
+.form-body-add-tovar .left-bar-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 40px;
 }
 .left-bar-open-btn::before {
     display: flex;

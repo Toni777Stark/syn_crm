@@ -351,11 +351,14 @@ body {
 }
 
 
-
+.form-body-row-block .form-body-row {
+    width: fit-content;
+}
 .form-body-row-block {
     display: flex;
     flex-direction: column;
     grid-gap: 15px;
+    justify-content: flex-end;
 }
 
 .form-body-add-tovar .form-body-block-input {

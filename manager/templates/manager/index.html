@@ -186,7 +186,7 @@
 
 
 
-            <datalist id="birzha-name">
+            <datalist name="birzha-name">
                 {% for exchange in exchanges %}
                     <option value= {{ exchange.name }}></option>
                 {% endfor %}
@@ -236,11 +236,15 @@
             <div class="form-body-add-tovar">
                 <h2 class="name-block-input" style="margin-top: 1em;">Товар</h2>
                 <div class="form-body-row-block">
-                    <hr>
-                    #1
                     <div class="form-body-row">
+
                         <div class="form-body-block-input pidel-input">
-                            <input type="text" placeholder="Биржа" list="birzha-name">
+                            <h5>#1</h5>
+                            <select name="birzha-name">
+                                {% for exchange in exchanges %}
+                                    <option value="birzha-name">{{ exchange.name }}</option>
+                                {% endfor %}
+                            </select>
                             <span class="left-bar-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
                         </div>
 
@@ -257,32 +261,55 @@
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <select name="tovar-geo">
+                                {% for geo in geos %}
+                                <option value="tovar-geo">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
                         
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <select name="tovar-rezident">
+                                {% for geo in geos %}
+                                <option value="tovar-rezident">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input  type="text" placeholder="Тип почты" list="tovar-type-email">
-                            </input>
+                            <select name="tovar-type-email">
+                                <option value="gmail">@gmail.com</option>
+                                <option value="yandex">@yandex.ru</option>
+                                <option value="mail">@mail.ru</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <select name="tovar-type-number">
+                                <option value="+7">+7</option>
+                                <option value="+380">+380</option>
+                                <option value="+111">+111</option>
+                                <option value="+123">+123</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Эмулятор" list="tovar-emulator">
-                            </input>
+                            <select name="tovar-emulator">
+                                <option value="BlueStacks">BlueStacks</option>
+                                <option value="NoxPlayer">NoxPlayer</option>
+                                <option value="MedaiaPlayer">MedaiaPlayer</option>
+                            </select>
                         </div>
                     </div>
-                    <hr>
-                    #2
                     <div class="form-body-row">
+
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Биржа" list="birzha-name">
+                            <h5>#2</h5>
+                            <select name="birzha-name">
+                                {% for exchange in exchanges %}
+                                    <option value="birzha-name">{{ exchange.name }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
@@ -298,32 +325,56 @@
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <select name="tovar-geo">
+                                {% for geo in geos %}
+                                <option value="tovar-geo">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
                         
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <select name="tovar-rezident">
+                                {% for geo in geos %}
+                                <option value="tovar-rezident">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <select name="tovar-type-email">
+                                <option value="gmail">@gmail.com</option>
+                                <option value="yandex">@yandex.ru</option>
+                                <option value="mail">@mail.ru</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <select name="tovar-type-number">
+                                <option value="+7">+7</option>
+                                <option value="+380">+380</option>
+                                <option value="+111">+111</option>
+                                <option value="+123">+123</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <select name="tovar-emulator">
+                                <option value="BlueStacks">BlueStacks</option>
+                                <option value="NoxPlayer">NoxPlayer</option>
+                                <option value="MedaiaPlayer">MedaiaPlayer</option>
+                            </select>
                         </div>
 
                     </div>
-                    <hr>
-                    #3
                     <div class="form-body-row">
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Биржа" list="birzha-name">
+                            <h5>#3</h5>
+                            <select name="birzha-name">
+                                {% for exchange in exchanges %}
+                                    <option value="birzha-name">{{ exchange.name }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
@@ -339,31 +390,56 @@
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <select name="tovar-geo">
+                                {% for geo in geos %}
+                                <option value="tovar-geo">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
                         
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <select name="tovar-rezident">
+                                {% for geo in geos %}
+                                <option value="tovar-rezident">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <select name="tovar-type-email">
+                                <option value="gmail">@gmail.com</option>
+                                <option value="yandex">@yandex.ru</option>
+                                <option value="mail">@mail.ru</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <select name="tovar-type-number">
+                                <option value="+7">+7</option>
+                                <option value="+380">+380</option>
+                                <option value="+111">+111</option>
+                                <option value="+123">+123</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <select name="tovar-emulator">
+                                <option value="BlueStacks">BlueStacks</option>
+                                <option value="NoxPlayer">NoxPlayer</option>
+                                <option value="MedaiaPlayer">MedaiaPlayer</option>
+                            </select>
                         </div>
+
                     </div>
-                    <hr>
-                    #4
                     <div class="form-body-row">
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Биржа" list="birzha-name">
+                            <h5>#4</h5>
+                            <select name="birzha-name">
+                                {% for exchange in exchanges %}
+                                    <option value="birzha-name">{{ exchange.name }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
@@ -379,31 +455,56 @@
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <select name="tovar-geo">
+                                {% for geo in geos %}
+                                <option value="tovar-geo">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
                         
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <select name="tovar-rezident">
+                                {% for geo in geos %}
+                                <option value="tovar-rezident">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <select name="tovar-type-email">
+                                <option value="gmail">@gmail.com</option>
+                                <option value="yandex">@yandex.ru</option>
+                                <option value="mail">@mail.ru</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <select name="tovar-type-number">
+                                <option value="+7">+7</option>
+                                <option value="+380">+380</option>
+                                <option value="+111">+111</option>
+                                <option value="+123">+123</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <select name="tovar-emulator">
+                                <option value="BlueStacks">BlueStacks</option>
+                                <option value="NoxPlayer">NoxPlayer</option>
+                                <option value="MedaiaPlayer">MedaiaPlayer</option>
+                            </select>
                         </div>
+
                     </div>
-                    <hr>
-                    #5
                     <div class="form-body-row">
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Биржа" list="birzha-name">
+                            <h5>#5</h5>
+                            <select name="birzha-name">
+                                {% for exchange in exchanges %}
+                                    <option value="birzha-name">{{ exchange.name }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
@@ -419,30 +520,51 @@
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="ГЕО" list="tovar-geo">
+                            <select name="tovar-geo">
+                                {% for geo in geos %}
+                                <option value="tovar-geo">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
                         
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Резидент" list="tovar-rezident">
+                            <select name="tovar-rezident">
+                                {% for geo in geos %}
+                                <option value="tovar-rezident">{{ geo.name }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип почты" list="tovar-type-email">
+                            <select name="tovar-type-email">
+                                <option value="gmail">@gmail.com</option>
+                                <option value="yandex">@yandex.ru</option>
+                                <option value="mail">@mail.ru</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input   type="text" placeholder="Тип номера" list="tovar-type-number">
+                            <select name="tovar-type-number">
+                                <option value="+7">+7</option>
+                                <option value="+380">+380</option>
+                                <option value="+111">+111</option>
+                                <option value="+123">+123</option>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="text" placeholder="Эмулятор" list="tovar-emulator">
+                            <select name="tovar-emulator">
+                                <option value="BlueStacks">BlueStacks</option>
+                                <option value="NoxPlayer">NoxPlayer</option>
+                                <option value="MedaiaPlayer">MedaiaPlayer</option>
+                            </select>
                         </div>
+
                     </div>
-                    <hr>
                 </div>
             </div>
 
-            <div class="body-form-block-btn">
+            <div class="body-form-block-btn mt-3">
                 <button class="btn btn-primary btn-add-zakaz">Добавить заказ</button>
                 <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
                 <label class="form-body-label-btn" for="btn-check-2" id="form-body-label-btn">Связка</label>

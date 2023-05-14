@@ -21,16 +21,23 @@
 .btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
     box-shadow: none;
 }
-input, input:active,
-input:focus, input:hover  {
+select,
+select:active,
+select:focus,
+select:hover,
+input,
+input:active,
+input:focus, 
+input:hover  {
     height: 40px;
     outline: 0;
     border: 0.3px solid rgb(200, 200, 200);
     border-radius: 5px;
     padding: 0.3em;
+    color: rgb(107, 107, 107);
 }
-input:active,
-input:focus, input:hover {
+select:hover,
+input:hover {
     border: 0.7px solid rgb(168, 168, 168);
 }
 
@@ -67,7 +74,7 @@ body {
     justify-content: space-between;
     height: 30px;
     padding: 0.5em;
-    z-index: 2;
+    z-index: 4;
 }
 
 
@@ -175,11 +182,14 @@ body {
     position: absolute;
     top: 0px;
     z-index: 1;
-    min-height: 100%;
-    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    min-width: 100%;
 
-    align-items: flex-end;
-    justify-content: flex-start;
+    background: rgba(0, 0, 0, 0.405);
+
+    align-items: center;
+    justify-content: center;
 }
 
 .left-bar-close-btn {
@@ -309,9 +319,10 @@ body {
     flex-wrap: wrap;
 }
 
+
 .form-body-row {
     display: flex;
-    grid-gap: 10px;
+    grid-gap: 5px;
     flex-wrap: wrap;
     justify-content: center;
     margin-left: 1em;
@@ -325,7 +336,8 @@ body {
     min-width: 180px;
     grid-gap: 2.5px;
 }
-.form-body-block-input input {
+.form-body-block-input input,
+.form-body-block-input select {
     width: 100%;
 }
 
@@ -339,15 +351,40 @@ body {
 }
 
 
+.form-body-row-block .form-body-row {
+    width: fit-content;
+}
+.form-body-row-block {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 15px;
+    justify-content: flex-end;
+}
+
 .form-body-add-tovar .form-body-block-input {
     width: 160px;
     min-width: unset;
 }
+
+.form-body-add-tovar .form-body-row h5:first-child {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 300;
+    margin-right: 10px;
+}
+.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(1)
+{
+    display: flex;
+    align-items: center;
+}
 .form-body-add-tovar .form-body-row .form-body-block-input:nth-child(2),
-.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(3) {
+.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(3) 
+{
     width: 85px;
 }
-.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(4) {
+
+.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(4) 
+{
     width: 250px;
 }
 
@@ -358,10 +395,20 @@ body {
 }
 
 
-.left-bar-open-btn {
+.form-body-add-zakaz .left-bar-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 40px;
-    width: 40px;
-    z-index: 2;
+    width: 50px;
+}
+
+.form-body-add-tovar .left-bar-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 40px;
 }
 .left-bar-open-btn::before {
     display: flex;
@@ -405,7 +452,7 @@ body {
 
 @media (max-width: 425px) {
     .dropbtn {
-        margin-right: 0;
+        margin-right: 0.5em;
     }
 
 
@@ -422,6 +469,8 @@ body {
     }
 
     .content-block {
+        z-index: -2;
+
         position: absolute;
         right: -100vw;
         width: 100vw;

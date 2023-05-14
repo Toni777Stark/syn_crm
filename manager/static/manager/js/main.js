@@ -1,5 +1,22 @@
 /* Когда пользователь нажимает на кнопку,
 переключение между скрытием и отображением раскрывающегося содержимого */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Закройте выпадающее меню, если пользователь щелкает за его пределами
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
 const addclient = document.getElementById("pop-add-client")
 
@@ -46,22 +63,15 @@ function closeSide_bar() {
 }
 
 
-/* Когда пользователь нажимает на кнопку,
-переключение между скрытием и отображением раскрывающегося содержимого */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
 
-// Закройте выпадающее меню, если пользователь щелкает за его пределами
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+var parent = document.querySelector(".form-block-input-block");
+parent.insertBefore(document.createElement('br'));
+parent.insertBefore(document.createTextNode(++count + '. - '));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));
+parent.insertBefore(document.createElement('input'));

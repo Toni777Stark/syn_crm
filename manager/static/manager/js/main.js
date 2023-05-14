@@ -63,15 +63,51 @@ function closeSide_bar() {
 }
 
 
+function add_geo_clone_1_row() {
+    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+      .css({"display":"flex"})
+          .appendTo( ".form-body-row-block>.form-body-row:nth-child(1)" ); // вставляем клонированный элемент
+};
+function add_geo_clone_2_row() {
+    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+      .css({"display":"flex"})
+          .appendTo( ".form-body-row-block>.form-body-row:nth-child(2)" ); // вставляем клонированный элемент
+};
 
-var parent = document.querySelector(".form-block-input-block");
-parent.insertBefore(document.createElement('br'));
-parent.insertBefore(document.createTextNode(++count + '. - '));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
+function add_geo_clone_3_row() {
+  $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+    .css({"display":"flex"})
+        .appendTo( ".form-body-row-block>.form-body-row:nth-child(3)" ); // вставляем клонированный элемент
+};
+function add_geo_clone_4_row() {
+    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+      .css({"display":"flex"})
+          .appendTo( ".form-body-row-block>.form-body-row:nth-child(4)" ); // вставляем клонированный элемент
+};
+
+function add_geo_clone_5_row() {
+  $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+    .css({"display":"flex"})
+        .appendTo( ".form-body-row-block>.form-body-row:nth-child(5)" ); // вставляем клонированный элемент
+};
+
+
+
+
+
+function remove_geo_clone() {
+    $( ".clone-geo" ).css({"display":"none"})};
+
+
+
+
+
+/* Расчет суммы */
+function calc_soue1() {
+  var count_soue1_1 = document.getElementById("count_soue1_1");
+  var result_soue1_1 = document.getElementById("result_soue1_1");
+  var price_soue1_1 = 0;
+
+  price_soue1_1 =  ;
+  result_soue1_1.innerHTML = price_soue1_1;
+}

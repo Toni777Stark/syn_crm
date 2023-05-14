@@ -63,15 +63,72 @@ function closeSide_bar() {
 }
 
 
+function add_geo_clone_1_row() {
+    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+      .css({"display":"flex"})
+          .appendTo( ".form-body-row-block>.form-body-row:nth-child(1)" ); // вставляем клонированный элемент
+};
+function add_geo_clone_2_row() {
+    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+      .css({"display":"flex"})
+          .appendTo( ".form-body-row-block>.form-body-row:nth-child(2)" ); // вставляем клонированный элемент
+};
 
-var parent = document.querySelector(".form-block-input-block");
-parent.insertBefore(document.createElement('br'));
-parent.insertBefore(document.createTextNode(++count + '. - '));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
-parent.insertBefore(document.createElement('input'));
+function add_geo_clone_3_row() {
+  $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+    .css({"display":"flex"})
+        .appendTo( ".form-body-row-block>.form-body-row:nth-child(3)" ); // вставляем клонированный элемент
+};
+function add_geo_clone_4_row() {
+    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+      .css({"display":"flex"})
+          .appendTo( ".form-body-row-block>.form-body-row:nth-child(4)" ); // вставляем клонированный элемент
+};
+
+function add_geo_clone_5_row() {
+  $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
+    .css({"display":"flex"})
+        .appendTo( ".form-body-row-block>.form-body-row:nth-child(5)" ); // вставляем клонированный элемент
+};
+function remove_geo_clone() {
+    $( ".clone-geo" ).css({"display":"none"})
+};
+
+
+
+
+
+
+
+
+
+
+function submit__form() {
+  const form_summa_vivod = document.querySelector('#form_summa_vivod')
+
+
+  const kolvo_1_row = document.getElementById('input-kolvo-1-row');
+  const summa_1_row = document.getElementById('input-summa-1-row');
+
+  const kolvo_2_row = document.getElementById('input-kolvo-2-row');
+  const summa_2_row = document.getElementById('input-summa-2-row');
+
+  const kolvo_3_row = document.getElementById('input-kolvo-3-row');
+  const summa_3_row = document.getElementById('input-summa-3-row');
+
+  const kolvo_4_row = document.getElementById('input-kolvo-4-row');
+  const summa_4_row = document.getElementById('input-summa-4-row');
+
+  const kolvo_5_row = document.getElementById('input-kolvo-5-row');
+  const summa_5_row = document.getElementById('input-summa-5-row');
+  
+  const kolvo_summa_1_row = kolvo_1_row.value * summa_1_row.value
+  const kolvo_summa_2_row = kolvo_2_row.value * summa_2_row.value
+  const kolvo_summa_3_row = kolvo_3_row.value * summa_3_row.value
+  const kolvo_summa_4_row = kolvo_4_row.value * summa_4_row.value
+  const kolvo_summa_5_row = kolvo_5_row.value * summa_5_row.value
+
+  const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row  
+
+  form_summa_vivod.innerHTML= form__summa;
+}

@@ -44,18 +44,14 @@ input:hover {
 
 body {
     display: flex;
-    height: 100%;
 }
 .body {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
 }
 .body-content {
     display: flex;
     width: 100%;
-    height: 100%;
     margin-top: 30px;
 }
 .side-bar {
@@ -178,20 +174,18 @@ body {
     transform: scale(0);
     transition: .3s;
 
+    width: 100%;
+    height: 100%;
 
     position: absolute;
-    top: 0px;
+    top: 30px;
     z-index: 1;
-    min-height: 100vh;
-    max-height: 100%;
-    min-width: 100%;
 
     background: rgba(0, 0, 0, 0.405);
 
     align-items: center;
     justify-content: center;
 }
-
 .left-bar-close-btn {
     font-size:25px;
     cursor:pointer;
@@ -215,12 +209,13 @@ body {
 
 
 .side-bar {
+    position: fixed;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     flex: 1 1 225px;
-    min-height: 100vh;
-    max-width: 225px;
+    width: 225px;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -301,13 +296,15 @@ body {
 
 /* body-content */
 .content-block {
-    padding: 1.5em .3em 1.5em 1.5em;
+    padding: 1.5em .3em 0em 1.5em;
     transition: .5s;
     grid-gap: 50px;
     flex: 1;
+    margin-left: 225px;
 }
 .content-block.active-content-block {
     transition: .5s;
+    margin-left: 0px;
 }
 
 
@@ -419,7 +416,7 @@ body {
     border-radius: 5px;
 
 
-    font-size: 30px;
+    font-size: 20px;
     cursor:pointer;
     color: rgb(70, 70, 70);
     cursor: pointer;
@@ -430,11 +427,14 @@ body {
 }
 
 
-.body-form-block-btn {
+.body-form-block-btn, .body-form-block-btn .df {
     display: flex;
     align-items: center;
+    justify-content: center;
     grid-gap: 10px;
-    padding-top: 1em;
+    padding: 1em 0;
+    white-space: nowrap;
+    flex-wrap: wrap;
 }
 .form-body-label-btn {
     color: var(--main-color);
@@ -449,6 +449,40 @@ body {
     transition: .2s;
 }
 
+.body-form-block-summa {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.body-form-block-summa h4 {
+    font-family: 'Roboto', serif;
+    font-weight: 500;
+    color: rgb(49, 49, 49);
+    margin: 0;
+    font-size: 30px;
+    text-align: center;
+    line-height: 0;
+}
+
+
+
+
+
+.clone-geo option:first-child {
+    color: white;
+    background: rgb(177, 177, 177);
+    cursor: pointer;
+}
+option[value="none"] {
+    background-color: rgb(177, 177, 177);
+    color: white
+}
+.clone-geo {
+    display: none;
+}
+.clone-geo-remove {
+    cursor: pointer;
+}
 
 @media (max-width: 425px) {
     .dropbtn {

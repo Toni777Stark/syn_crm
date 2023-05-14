@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{% static 'manager/css/style.css' %}">
 </head>
 <body>
-<div class="body">
+<div class="body" onload="onload()">
 
 
     <div id="header">
@@ -208,13 +208,15 @@
                                     placeholder="Цена" 
                                     maxlength="8"
                                     type="text"
-                                    id="count_soue1_1"
-                                    onkeyup="calc_soue1()"
-                                    onkeypress="calc_soue1()" >
+                                    id="input-summa-1-row"
+                                    onchange="submit__form(this.value);"
+                                    >
                                 </div>
 
                                 <div class="form-body-block-input">
-                                    <input type="number" placeholder="Кол-во" maxlength="8">
+                                    <input type="number" placeholder="Кол-во" maxlength="8"
+                                    id="input-kolvo-1-row"
+                                    onchange="submit__form(this.value);">
                                 </div>
 
                                 <div class="form-body-block-input">
@@ -274,11 +276,15 @@
                             </div>
 
                             <div class="form-body-block-input">
-                                <input type="number" placeholder="Цена" maxlength="8">
+                                <input type="number" placeholder="Цена" maxlength="8"
+                                id="input-summa-2-row"
+                                onchange="submit__form(this.value);">
                             </div>
 
                             <div class="form-body-block-input">
-                                <input type="number" placeholder="Кол-во" maxlength="8">
+                                <input type="number" placeholder="Кол-во" maxlength="8"
+                                id="input-kolvo-2-row"
+                                onchange="submit__form(this.value);">
                             </div>
 
                             <div class="form-body-block-input">
@@ -336,11 +342,15 @@
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="number" placeholder="Цена" maxlength="8">
+                            <input type="number" placeholder="Цена" maxlength="8"
+                            id="input-summa-3-row"
+                            onchange="submit__form(this.value);">
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="number" placeholder="Кол-во" maxlength="8">
+                            <input type="number" placeholder="Кол-во" maxlength="8"
+                            id="input-kolvo-3-row"
+                            onchange="submit__form(this.value);">
                         </div>
 
                         <div class="form-body-block-input">
@@ -398,11 +408,15 @@
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="number" placeholder="Цена" maxlength="8">
+                            <input type="number" placeholder="Цена" maxlength="8"
+                            id="input-summa-4-row"
+                            onchange="submit__form(this.value);">
                         </div>
 
                         <div class="form-body-block-input">
-                            <input type="number" placeholder="Кол-во" maxlength="8">
+                            <input type="number" placeholder="Кол-во" maxlength="8"
+                            id="input-kolvo-4-row"
+                            onchange="submit__form(this.value);">
                         </div>
 
                         <div class="form-body-block-input">
@@ -460,11 +474,15 @@
                     </div>
 
                     <div class="form-body-block-input">
-                        <input type="number" placeholder="Цена" maxlength="8">
+                        <input type="number" placeholder="Цена" maxlength="8"
+                        id="input-summa-5-row"
+                        onchange="submit__form(this.value);">
                     </div>
 
                     <div class="form-body-block-input">
-                        <input type="number" placeholder="Кол-во" maxlength="8">
+                        <input type="number" placeholder="Кол-во" maxlength="8"
+                        id="input-kolvo-5-row"
+                        onchange="submit__form(this.value);">
                     </div>
 
                     <div class="form-body-block-input">
@@ -515,11 +533,11 @@
             <div class="body-form-block-btn mt-4">
 
                 <div class="body-form-block-summa mb-2">
-                    <h4>Общая сумма: <span id="result_soue1_1">0</span>$</h4>
+                    <h4>Общая сумма: <span id="form_summa_vivod">0</span>$</h4>
                 </div>
                 
                 <div class="df">
-                    <button class="btn btn-primary btn-add-zakaz">Добавить заказ</button>
+                    <button class="btn btn-primary btn-add-zakaz" onclick="submit__form()">Добавить заказ</button>
                     <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
                     <label class="form-body-label-btn" for="btn-check-2" id="form-body-label-btn">Связка</label>
                 </div>

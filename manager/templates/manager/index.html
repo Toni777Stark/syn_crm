@@ -33,7 +33,6 @@
 
                 <img src="{% static 'manager/user-icons/default.png' %}" alt="" class="header-user-icon">
 
-                 Unknown ˅
                  
             </button>
             <div class="dropdown-content" id="myDropdown">
@@ -50,7 +49,7 @@
                     <br>
                     <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
                         {% csrf_token %}
-                        <button type="submit">Войти</button>
+                        <button type="submit">Выйти</button>
                     </form>
             </div>
         </div>

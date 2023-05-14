@@ -40,6 +40,19 @@ select:hover,
 input:hover {
     border: 0.7px solid rgb(168, 168, 168);
 }
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+
+
 
 
 body {
@@ -356,6 +369,16 @@ body {
 }
 
 
+.date-calendar-input::-webkit-datetime-edit, .date-text-input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+.date-input {
+    width: 100%;
+}
+
+
+
+
 .form-body-row-block .form-body-row {
     width: fit-content;
 }
@@ -393,13 +416,6 @@ body {
     width: 250px;
 }
 
-
-
-.date-input {
-    width: 100%;
-}
-
-
 .form-body-add-zakaz .left-bar-open-btn {
     display: flex;
     align-items: center;
@@ -429,9 +445,6 @@ body {
     color: rgb(70, 70, 70);
     cursor: pointer;
     border: 0.3px solid var(--whitegray-color);
-}
-.date-calendar-input::-webkit-datetime-edit, .date-text-input::-webkit-calendar-picker-indicator {
-    display: none;
 }
 
 
@@ -495,6 +508,49 @@ option[value="none"] {
 .clone-geo-remove {
     cursor: pointer;
 }
+
+
+.form-list-zakazi-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+
+.form-list-zakazi {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.form-table-name {
+    display: flex;
+    width: 100%;
+}
+.form-table-name h5 {
+    width: 100%;
+}
+.form-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    grid-gap: 5px;
+}
+.form-table div {
+    display: flex;
+    width: 100%;
+}
+.form-table div h5 {
+    width: 100%;
+    margin: 0;
+}
+
+.form-list-btn {
+    display: flex;
+    grid-gap: 20px;
+}
+
+
 
 @media (max-width: 425px) {
     .dropbtn {

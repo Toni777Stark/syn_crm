@@ -539,11 +539,86 @@
                 <div class="df">
                     <button class="btn btn-primary btn-add-zakaz" onclick="submit__form()">Добавить заказ</button>
                     <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-                    <label class="form-body-label-btn" for="btn-check-2" id="form-body-label-btn">Связка</label>
+                    <label class="form-body-label-btn noselect" for="btn-check-2" id="form-body-label-btn">Связка</label>
                 </div>
 
             </div>
 
+
+            <hr>
+            <div class="form-list-zakazi-block">
+
+                <h3 class="form-list-zakazi-name mb-3">Мои заказы</h3>
+
+                <div class="form-list-zakazi">
+                    <div class="form-table-name mb-2">
+                        <h5>Номер заказа</h5>
+                        <h5>Дата</h5>
+                        <h5>Срок</h5>
+                        <h5>Клиент</h5>
+                        <h5>Сумма</h5>
+                        <h5>Статус</h5>
+                    </div>
+
+
+                    <!-- Вот сюда надо данные из бд -->
+                    <div class="form-table">
+
+                        <div>
+                            <h5>1541</h5>
+
+                            <h5>01.05.2023 15:10:51</h5>
+
+                            <h5>02.05.2023 15:10:51</h5>
+
+                            <h5>@client</h5>
+
+                            <h5>500$</h5>
+
+                            <h5>Отгружен</h5>
+                        </div>
+
+                        <div>
+                            <h5>1541</h5>
+
+                            <h5>01.05.2023 15:10:51</h5>
+
+                            <h5>02.05.2023 15:10:51</h5>
+
+                            <h5>@client</h5>
+
+                            <h5>500$</h5>
+                            
+                            <h5>Отгружен</h5>
+                        </div>
+
+                        <div>
+                            <h5>1541</h5>
+
+                            <h5>01.05.2023 15:10:51</h5>
+
+                            <h5>02.05.2023 15:10:51</h5>
+
+                            <h5>@client</h5>
+
+                            <h5>500$</h5>
+                            
+                            <h5>Отгружен</h5>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-list-btn mt-5">
+                    <i class="fa fa-backward" aria-hidden="true"></i>
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <i class="fa fa-forward" aria-hidden="true"></i>
+                </div>
+            </div>
         </form>
     </div>
     </div>

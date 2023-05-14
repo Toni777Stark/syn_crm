@@ -18,6 +18,8 @@ window.onclick = function(event) {
   }
 }
 
+const body = document.querySelector("body")
+
 const addclient = document.getElementById("pop-add-client")
 
 const addbirzh = document.getElementById("pop-add-birzh")
@@ -31,17 +33,21 @@ const close_btn = document.getElementById("closeSide_bar")
 function addclient_show() {
   addbirzh.classList.remove('active')
   addclient.classList.add('active')
+  body.classList.add('none-scroll')
 }
 function addclient_close() {
   addclient.classList.remove('active')
+  body.classList.remove('none-scroll')
 }
 
 function addbirzh_show() {
   addbirzh.classList.add('active')
   addclient.classList.remove('active')
+  body.classList.add('none-scroll')
 }
 function addbirzh_close() {
   addbirzh.classList.remove('active')
+  body.classList.remove('none-scroll')
 }
 
 

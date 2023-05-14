@@ -1,0 +1,52 @@
+.pop-window {
+    transform: scale(0);
+    transition: .3s;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    top: 30px;
+    z-index: 1;
+
+    background: rgba(0, 0, 0, 0.405);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.pop-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    background: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 2.3em;
+}
+.pop-container .block-new-client .form-new-client .btn {
+    width: 100%;
+}
+
+
+.pop-window-close-btn {
+    font-size:25px;
+    cursor:pointer;
+    color: black;
+    border: 0;
+    text-decoration: none;
+    margin: 0.5em;
+}
+.pop-window.active {
+    transform: scale(1);
+    transition: .3s;
+}
+.pop-window div form input {
+    width: var(--input-left-bar-input-width);
+}
+.block-new-client {
+    padding: 1em 4em 3em 3em;
+}

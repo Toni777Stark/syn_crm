@@ -1,0 +1,99 @@
+:root {
+    --main-color: rgb(0, 76, 255);
+    --whitegray-color: rgb(200, 200, 200);
+
+
+    --input-left-bar-input-width: 200px;
+    --input-small-width: 11.5%;
+    --input-big-width: 23.5%;
+}
+
+
+.form-body-row-block hr {
+    margin: 2em 0em;
+    color: #383838;
+}
+.form-body-row-block hr:first-child {
+    margin-top: 0;
+}
+
+
+.btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+select,
+select:active,
+select:focus,
+select:hover,
+input,
+input:active,
+input:focus, 
+input:hover  {
+    height: 40px;
+    outline: 0;
+    border: 0.3px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    padding: 0.3em;
+    color: rgb(107, 107, 107);
+}
+select:hover,
+input:hover {
+    border: 0.7px solid rgb(168, 168, 168);
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+body {
+    display: flex;
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.body-content {
+    display: flex;
+    width: 100%;
+    padding-top: 30px;
+}
+.pop-window {
+    display: flex;
+    flex-direction: column;
+}
+.none-scroll {
+    position: fixed; 
+    overflow-y:scroll;
+}
+
+
+
+.form-new-client {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5em;
+    margin-top: 1.5em;
+    grid-gap: 10px;
+}
+.form-new-client input {
+    padding-left: .7em;
+    width: var(--input-left-bar-input-width);
+}
+.form-new-client button, .form-new-client button:hover, 
+.form-new-client button:focus, .form-new-client button:active,
+.form-new-client button:active:focus {
+    width: fit-content;
+    background-color: var(--main-color);
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+

@@ -16,10 +16,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'manager/css/style.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'manager/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'manager/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'manager/css/pop-window.css' %}">
+    <link rel="stylesheet" href="{% static 'manager/css/content.css' %}">
+    <link rel="stylesheet" href="{% static 'manager/css/side-bar.css' %}">
+    <link rel="stylesheet" href="{% static 'manager/css/footer.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'manager/css/media.css' %}">
 </head>
 <body>
-<div class="body" onload="onload()">
+<div class="body">
 
 
     <div id="header">
@@ -117,7 +127,7 @@
                                     <option value= {{ client.name }}></option>
                                  {% endfor %}
                             </datalist>
-                        <span class="left-bar-open-btn fa fa-plus" onclick="addclient_show()"></span>
+                        <span class="pop-window-open-btn fa fa-plus" onclick="addclient_show()"></span>
                     </div>
 
                     <div class="form-body-block-input">
@@ -199,7 +209,7 @@
                                             <option value="birzha-name">{{ exchange.name }}</option>
                                         {% endfor %}
                                     </select>
-                                    <span data-name="add-btn" class="left-bar-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
+                                    <span data-name="add-btn" class="pop-window-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
                                 </div>
 
                                 <div class="form-body-block-input">
@@ -258,7 +268,7 @@
                                         <option value="tovar-geo" default>{{ geo.name }}</option>
                                     {% endfor %}
                                     </select>
-                                    <span data-name="add-btn" class="left-bar-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_1_row()"></span>
+                                    <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_1_row()"></span>
                                 </div>
 
 
@@ -326,7 +336,7 @@
                                     <option value="tovar-geo" default>{{ geo.name }}</option>
                                 {% endfor %}
                                 </select>
-                                <span data-name="add-btn" class="left-bar-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_2_row()"></span>
+                                <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_2_row()"></span>
                             </div>
                     </div>
                     <div class="form-body-row">
@@ -392,7 +402,7 @@
                                 <option value="tovar-geo" default>{{ geo.name }}</option>
                             {% endfor %}
                             </select>
-                            <span data-name="add-btn" class="left-bar-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_3_row()"></span>
+                            <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_3_row()"></span>
                         </div>
                     </div>
                     <div class="form-body-row">
@@ -458,7 +468,7 @@
                                 <option value="tovar-geo" default>{{ geo.name }}</option>
                             {% endfor %}
                             </select>
-                            <span data-name="add-btn" class="left-bar-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_4_row()"></span>
+                            <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_4_row()"></span>
                         </div>
                     </div>
                     <div class="form-body-row">
@@ -524,7 +534,7 @@
                             <option value="tovar-geo" default>{{ geo.name }}</option>
                         {% endfor %}
                         </select>
-                        <span data-name="add-btn" class="left-bar-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_5_row()"></span>
+                        <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_5_row()"></span>
                     </div>
             </div>
                 </div>
@@ -641,9 +651,9 @@
 </div>
 
 
-    <div id="pop-add-client" class="left-bar">
+    <div id="pop-add-client" class="pop-window">
         <div class="pop-container">
-            <i href="javascript:void(0)" class="fa fa-times left-bar-close-btn" onclick="addclient_close()"></i>
+            <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="addclient_close()"></i>
 
             <div class="block-new-client">
                 <h3>Новый клиент</h2>
@@ -656,9 +666,9 @@
         </div>
     </div>
 
-    <div id="pop-add-birzh" class="left-bar">
+    <div id="pop-add-birzh" class="pop-window">
         <div class="pop-container">
-            <i href="javascript:void(0)" class="fa fa-times left-bar-close-btn" onclick="addbirzh_close()"></i>
+            <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="addbirzh_close()"></i>
 
             <div class="block-new-client">
                 <h3>Новая биржа</h2>
@@ -682,7 +692,7 @@
             <option value="tovar-geo" default>{{ geo.name }}</option>
         {% endfor %}
         </select>
-        <span data-name="add-btn" class="left-bar-open-btn clone-geo-remove fa fa-minus" onclick="remove_geo_clone()"></span>
+        <span data-name="add-btn" class="pop-window-open-btn clone-geo-remove fa fa-minus" onclick="remove_geo_clone()"></span>
         </select>
     </div>
 

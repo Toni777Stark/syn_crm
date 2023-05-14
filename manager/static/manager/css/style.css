@@ -5,7 +5,7 @@
 
     --input-left-bar-input-width: 200px;
     --input-small-width: 11.5%;
-    --input-big-width: 23.5%
+    --input-big-width: 23.5%;
 }
 
 
@@ -65,7 +65,7 @@ body {
 .body-content {
     display: flex;
     width: 100%;
-    margin-top: 30px;
+    padding-top: 30px;
 }
 .side-bar {
     background-color: rgb(56, 68, 64);
@@ -317,6 +317,12 @@ body {
 
 /* body-content */
 .content-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 98vh;
+
+
     padding: 1.5em .3em 0em 1.5em;
     transition: .5s;
     grid-gap: 50px;
@@ -526,6 +532,7 @@ option[value="none"] {
 .form-table-name {
     display: flex;
     width: 100%;
+    grid-gap: 5px;
 }
 .form-table-name h5 {
     width: 100%;
@@ -539,6 +546,7 @@ option[value="none"] {
 .form-table div {
     display: flex;
     width: 100%;
+    grid-gap: 5px;
 }
 .form-table div h5 {
     width: 100%;
@@ -548,8 +556,24 @@ option[value="none"] {
 .form-list-btn {
     display: flex;
     grid-gap: 20px;
+    align-items: center;
+}
+.form-list-page-number {
+    margin-bottom: 5px;
 }
 
+
+
+
+footer {
+    text-align: center;
+    width: 100%;
+}
+footer h5 {
+    font-size: 15px;
+    color: rgb(84, 84, 84);
+    font-weight: 400;
+}
 
 
 @media (max-width: 425px) {
@@ -595,5 +619,15 @@ option[value="none"] {
     {
         width: 100%;
         max-width: 250px;
+    }
+
+
+
+
+    .form-table-name h5 {
+        font-size: 12px;
+    }
+    .form-table div h5 {
+        font-size: 10px;
     }
 }

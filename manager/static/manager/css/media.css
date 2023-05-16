@@ -34,19 +34,17 @@
     }
 
 
-    .form-body-add-tovar .form-body-row .form-body-block-input:nth-child(2),
-    .form-body-add-tovar .form-body-row .form-body-block-input:nth-child(3) 
+    .form-body-add-tovar .form-body-block-input:nth-child(2),
+    .form-body-add-tovar .form-body-block-input:nth-child(3) 
     {
         width: 100%;
-        max-width: 120px;
     }
 
 
-    .form-body-add-tovar .form-body-row .form-body-block-input,
+    .form-body-add-tovar .form-body-row-block .form-body-row .form-body-block-input,
     .form-body-add-zakaz .form-body-block-input 
     {
         width: 100%;
-        max-width: 250px;
     }
 
 

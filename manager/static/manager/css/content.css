@@ -1,4 +1,44 @@
 /* body-content */
+
+
+.form-body-row-block hr {
+    margin: 2em 0em;
+    color: #383838;
+}
+.form-body-row-block hr:first-child {
+    margin-top: 0;
+}
+
+
+.btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+select,
+select:active,
+select:focus,
+select:hover,
+
+input,
+input:active,
+input:focus, 
+input:hover
+{
+    height: 40px;
+    outline: 0;
+    border: 0.3px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    padding: 0.3em;
+    color: rgb(107, 107, 107);
+    width: 100%;
+}
+#select-state {
+    display: none;
+}
+select:hover,
+input:hover {
+    border: 0.7px solid rgb(168, 168, 168);
+}
 .content-block {
     display: flex;
     flex-direction: column;
@@ -43,6 +83,11 @@
     min-width: 180px;
     grid-gap: 2.5px;
 }
+.form-body-row-block .form-body-row {
+    width: 100%;
+}
+
+
 .form-body-block-input input,
 .form-body-block-input select {
     width: 100%;
@@ -58,29 +103,20 @@
 }
 
 
-.date-calendar-input::-webkit-datetime-edit, .date-text-input::-webkit-calendar-picker-indicator {
-    display: none;
-}
-.date-input {
-    width: 100%;
-}
 
 
-
-
-.form-body-row-block .form-body-row {
-    width: 100%;
-}
 .form-body-row-block {
     display: flex;
     flex-direction: column;
     grid-gap: 15px;
     align-items: center;
 }
-
+.form-body-add-tovar .form-body-row {
+    flex-wrap: wrap;
+}
 .form-body-add-tovar .form-body-block-input {
-    min-width: 160px;
-    width: 12%;
+    min-width: 150px;
+    width: 10%;
 }
 
 .form-body-add-tovar .form-body-row h5:first-child {
@@ -122,21 +158,6 @@
     justify-content: center;
     width: 80px;
     height: 40px;
-}
-.pop-window-open-btn::before {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-
-
-    font-size: 20px;
-    cursor:pointer;
-    color: rgb(70, 70, 70);
-    cursor: pointer;
-    border: 0.3px solid var(--whitegray-color);
 }
 
 
@@ -240,6 +261,7 @@ option[value="none"] {
 .form-table div h5 {
     width: 100%;
     margin: 0;
+    font-weight: 400;
 }
 
 .form-list-btn {
@@ -254,4 +276,14 @@ option[value="none"] {
 }
 .form-list-btn i {
     cursor: pointer;
+    padding: 1em;
+}
+
+
+/* input */
+.date-calendar-input::-webkit-datetime-edit, .date-text-input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+.date-input {
+    width: 100%;
 }

@@ -138,3 +138,9 @@ function submit__form() {
 
   form_summa_vivod.innerHTML= form__summa;
 }
+
+$(document).ready(function () {
+  $('#select-state').selectize({
+      sortField: 'text'
+  });
+});

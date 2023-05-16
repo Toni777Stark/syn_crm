@@ -69,36 +69,6 @@ function closeSide_bar() {
 }
 
 
-function add_geo_clone_1_row() {
-    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-      .css({"display":"flex"})
-          .appendTo( ".form-body-row-block>.form-body-row:nth-child(1)" ); // вставляем клонированный элемент
-};
-function add_geo_clone_2_row() {
-    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-      .css({"display":"flex"})
-          .appendTo( ".form-body-row-block>.form-body-row:nth-child(2)" ); // вставляем клонированный элемент
-};
-
-function add_geo_clone_3_row() {
-  $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-    .css({"display":"flex"})
-        .appendTo( ".form-body-row-block>.form-body-row:nth-child(3)" ); // вставляем клонированный элемент
-};
-function add_geo_clone_4_row() {
-    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-      .css({"display":"flex"})
-          .appendTo( ".form-body-row-block>.form-body-row:nth-child(4)" ); // вставляем клонированный элемент
-};
-
-function add_geo_clone_5_row() {
-  $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-    .css({"display":"flex"})
-        .appendTo( ".form-body-row-block>.form-body-row:nth-child(5)" ); // вставляем клонированный элемент
-};
-function remove_geo_clone() {
-    $( ".clone-geo" ).css({"display":"none"})
-};
 
 
 
@@ -107,9 +77,7 @@ function remove_geo_clone() {
 
 
 
-
-
-function submit__form() {
+function onChange__form() {
   const form_summa_vivod = document.querySelector('#form_summa_vivod')
 
 
@@ -140,7 +108,26 @@ function submit__form() {
 }
 
 $(document).ready(function () {
-  $('#select-state').selectize({
-      sortField: 'text'
-  });
+//change selectboxes to selectize mode to be searchable
+    $("select").select2();
 });
+
+
+
+
+var table_full_page = 3
+var table_page = 1
+
+function table_page_left() {
+  if (table_page >= 2 ) {
+    table_page = table_page - 1
+    $("#table-page-number").text(table_page);}
+}
+
+function table_page_right() {
+  if (table_page == table_full_page) {
+  } else {
+    table_page = table_page + 1
+    $("#table-page-number").text(table_page);
+  }
+}

@@ -7,22 +7,22 @@
             <div class="form-body-row">
 
                 <div class="form-body-block-input pidel-input">
-                    <input type="text" placeholder="Клиент" list="client-name">
-                        <datalist id="client-name">
-                             {% for client in clients %}
-                                <option value= {{ client.name }}></option>
-                             {% endfor %}
-                        </datalist>
+                        <select name="client-name">
+                            <option value="none">Клиент</option>
+                            {% for client in clients %}
+                                <option value={{ client.name }}>{{ client.name }}</option>
+                            {% endfor %}
+                        </select>
                     <span class="pop-window-open-btn fa fa-plus" onclick="addclient_show()"></span>
                 </div>
 
                 <div class="form-body-block-input">
-                    <input type="text" placeholder="Язык общения" list="client-lang">
-                        <datalist id="client-lang">
-                            <option value="Рус"></option>
-                            <option value="Анг"></option>
-                            <option value="Укр"></option>
-                        </datalist>
+                    <select name="client-lang">
+                            <option value="none">Язык</option>
+                            <option value="rus">Русский</option>
+                            <option value="ua">Украинский</option>
+                            <option value="eng">Английский</option>
+                    </select>
                 </div>
 
                 <div class="form-body-block-input">
@@ -38,12 +38,12 @@
             <div class="form-body-row">
 
                 <div class="form-body-block-input ">
-                    <input type="text" placeholder="Тип оплаты" list="client-oplata">
-                        <datalist id="client-oplata">
-                            <option value="Master-card / Visa / Мир"></option>
-                            <option value="Qiwi кошелек"></option>
-                            <option value="btc / tether"></option>
-                        </datalist>
+                        <select name="client-oplata">
+                            <option value="none">Тип оплаты</option>
+                            <option value="bank-card">Master-card / Visa / Мир</option>
+                            <option value="Qiwi">Qiwi кошелек</option>
+                            <option value="btc-tether">btc / tether</option>
+                        </select>
                 </div>
 
                 <div class="form-body-block-input form-body-upload-file">
@@ -52,29 +52,29 @@
 
 
                 <div class="form-body-block-input">
-                    <input type="text" placeholder="Приоритет" list="zakaz-prioritet">
-                        <datalist id="zakaz-prioritet">
-                            <option value="Высокий"></option>
-                            <option value="Средний"></option>
-                            <option value="Низкий"></option>
-                        </datalist>
+                        <select name="zakaz-prioritet">
+                            <option value="none">Приоритет</option>
+                            <option value="high">Высокий</option>
+                            <option value="norm">Средний</option>
+                            <option value="easy">Низкий</option>
+                        </select>
                 </div>
 
 
                 <div class="form-body-block-input">
-                    <input type="text" placeholder="Тип заказа" list="zakaz-type">
-                        <datalist id="zakaz-type">
-                            <option value="Дежурный со склада"></option>
-                            <option value="Оплачен"></option>
-                            <option value="Отсрочка"></option>
-                            <option value="В гаранте"></option>
-                            <option value="Возврат"></option>
-                            <option value="Замена"></option>
-                            <option value="Рекламация"></option>
-                            <option value="Тест"></option>
-                            <option value="Ремонт"></option>
-                            <option value="На склад без оплаты"></option>
-                        </datalist>
+                        <select name="zakaz-type">
+                            <option value="none">Тип заказа</option>
+                            <option value="Дежурный со склада">Дежурный со склада</option>
+                            <option value="Оплачен">Оплачен</option>
+                            <option value="Отсрочка">Отсрочка</option>
+                            <option value="В гаранте">В гаранте</option>
+                            <option value="Возврат">Возврат</option>
+                            <option value="Замена">Замена</option>
+                            <option value="Рекламация">Рекламация</option>
+                            <option value="Тест">Тест</option>
+                            <option value="Ремонт">Ремонт</option>
+                            <option value="На склад без оплаты">На склад без оплаты</option>
+                        </select>
                 </div>
             </div>
         </div>
@@ -105,14 +105,14 @@
                                 maxlength="8"
                                 type="text"
                                 id="input-summa-1-row"
-                                onchange="submit__form(this.value);"
+                                onchange="onChange__form(this.value);"
                                 >
                             </div>
 
                             <div class="form-body-block-input">
                                 <input type="number" placeholder="Кол-во" maxlength="8"
                                 id="input-kolvo-1-row"
-                                onchange="submit__form(this.value);">
+                                onchange="onChange__form(this.value);">
                             </div>
 
                             <div class="form-body-block-input">
@@ -147,14 +147,13 @@
                                 </select>
                             </div>
 
-                            <div class="form-body-block-input pidel-input">
+                            <div class="form-body-block-input">
                                 <select name="tovar-geo">
                                     <option value="none">ГЕО</option>
                                     {% for geo in geos %}
                                     <option value="tovar-geo" default>{{ geo.name }}</option>
                                 {% endfor %}
                                 </select>
-                                <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_1_row()"></span>
                             </div>
 
 
@@ -174,44 +173,26 @@
                         <div class="form-body-block-input">
                             <input type="number" placeholder="Цена" maxlength="8"
                             id="input-summa-2-row"
-                            onchange="submit__form(this.value);">
+                            onchange="onChange__form(this.value);">
                         </div>
 
                         <div class="form-body-block-input">
                             <input type="number" placeholder="Кол-во" maxlength="8"
                             id="input-kolvo-2-row"
-                            onchange="submit__form(this.value);">
+                            onchange="onChange__form(this.value);">
                         </div>
 
                         <div class="form-body-block-input">
                             <input type="text" placeholder="Коментарий" maxlength="250">
                         </div>
 
-                        <div class="form-body-block-input"><!--
+                        <div class="form-body-block-input">
                             <select name="tovar-type-email">
                                 <option value="none">Тип почты</option>
                                 <option value="gmail">@gmail.com</option>
                                 <option value="yandex">@yandex.ru</option>
                                 <option value="mail">@mail.ru</option>
-                            </select>-->
-                            <select id="select-state" placeholder="Pick a state...">
-                                <option value="">Select a state...</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="DC">District of Columbia</option>
-                                <option value="FL">Florida</option>
-                                <option value="GA">Georgia</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="ID">Idaho</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IN">Indiana</option>
-                              </select>
+                            </select>
                         </div>
 
                         <div class="form-body-block-input">
@@ -233,14 +214,13 @@
                             </select>
                         </div>
 
-                        <div class="form-body-block-input pidel-input">
+                        <div class="form-body-block-input">
                             <select name="tovar-geo">
                                 <option value="none">ГЕО</option>
                                 {% for geo in geos %}
                                 <option value="tovar-geo" default>{{ geo.name }}</option>
                             {% endfor %}
                             </select>
-                            <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_2_row()"></span>
                         </div>
                 </div>
                 <div class="form-body-row">
@@ -258,13 +238,13 @@
                     <div class="form-body-block-input">
                         <input type="number" placeholder="Цена" maxlength="8"
                         id="input-summa-3-row"
-                        onchange="submit__form(this.value);">
+                        onchange="onChange__form(this.value);">
                     </div>
 
                     <div class="form-body-block-input">
                         <input type="number" placeholder="Кол-во" maxlength="8"
                         id="input-kolvo-3-row"
-                        onchange="submit__form(this.value);">
+                        onchange="onChange__form(this.value);">
                     </div>
 
                     <div class="form-body-block-input">
@@ -299,14 +279,13 @@
                         </select>
                     </div>
 
-                    <div class="form-body-block-input pidel-input">
+                    <div class="form-body-block-input">
                         <select name="tovar-geo">
                             <option value="none">ГЕО</option>
                             {% for geo in geos %}
                             <option value="tovar-geo" default>{{ geo.name }}</option>
                         {% endfor %}
                         </select>
-                        <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_3_row()"></span>
                     </div>
                 </div>
                 <div class="form-body-row">
@@ -324,13 +303,13 @@
                     <div class="form-body-block-input">
                         <input type="number" placeholder="Цена" maxlength="8"
                         id="input-summa-4-row"
-                        onchange="submit__form(this.value);">
+                        onchange="onChange__form(this.value);">
                     </div>
 
                     <div class="form-body-block-input">
                         <input type="number" placeholder="Кол-во" maxlength="8"
                         id="input-kolvo-4-row"
-                        onchange="submit__form(this.value);">
+                        onchange="onChange__form(this.value);">
                     </div>
 
                     <div class="form-body-block-input">
@@ -365,14 +344,13 @@
                         </select>
                     </div>
 
-                    <div class="form-body-block-input pidel-input">
+                    <div class="form-body-block-input">
                         <select name="tovar-geo">
                             <option value="none">ГЕО</option>
                             {% for geo in geos %}
                             <option value="tovar-geo" default>{{ geo.name }}</option>
                         {% endfor %}
                         </select>
-                        <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_4_row()"></span>
                     </div>
                 </div>
                 <div class="form-body-row">
@@ -390,13 +368,13 @@
                 <div class="form-body-block-input">
                     <input type="number" placeholder="Цена" maxlength="8"
                     id="input-summa-5-row"
-                    onchange="submit__form(this.value);">
+                    onchange="onChange__form(this.value);">
                 </div>
 
                 <div class="form-body-block-input">
                     <input type="number" placeholder="Кол-во" maxlength="8"
                     id="input-kolvo-5-row"
-                    onchange="submit__form(this.value);">
+                    onchange="onChange__form(this.value);">
                 </div>
 
                 <div class="form-body-block-input">
@@ -431,14 +409,13 @@
                     </select>
                 </div>
 
-                <div class="form-body-block-input pidel-input">
+                <div class="form-body-block-input">
                     <select name="tovar-geo">
                         <option value="none">ГЕО</option>
                         {% for geo in geos %}
                         <option value="tovar-geo" default>{{ geo.name }}</option>
                     {% endfor %}
                     </select>
-                    <span data-name="add-btn" class="pop-window-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_5_row()"></span>
                 </div>
         </div>
             </div>
@@ -527,18 +504,18 @@
 
 
             <div class="form-list-btn mt-5">
-                <i class="fa fa-backward" aria-hidden="true"></i>
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
+<!--                <i class="fa fa-backward" aria-hidden="true"></i>  -->
+                <i class="fa fa-angle-left" onclick="table_page_left()" aria-hidden="true"></i>
 
                 <h5 class="form-list-page-number">
                     Страница
-                    <span id="page-number-btn-1">1</span>
+                    <span id="table-page-number">1</span>
                     Из
-                    <span id="page-number-btn-2">10</span>
+                    <span id="table-full-page">3</span>
                 </h5>
 
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                <i class="fa fa-forward" aria-hidden="true"></i>
+                <i class="fa fa-angle-right" onclick="table_page_right()" aria-hidden="true"></i>
+<!--                <i class="fa fa-forward" aria-hidden="true"></i> -->
             </div>
         </div>
     </form>

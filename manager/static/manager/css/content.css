@@ -1,44 +1,9 @@
 /* body-content */
-
-
-.form-body-row-block hr {
-    margin: 2em 0em;
-    color: #383838;
+.pidel-input {
+    display: flex;
+    grid-gap: 5px;
 }
-.form-body-row-block hr:first-child {
-    margin-top: 0;
-}
-
-
-.btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
-    box-shadow: none;
-}
-
-select,
-select:active,
-select:focus,
-select:hover,
-
-input,
-input:active,
-input:focus, 
-input:hover
-{
-    height: 40px;
-    outline: 0;
-    border: 0.3px solid rgb(200, 200, 200);
-    border-radius: 5px;
-    padding: 0.3em;
-    color: rgb(107, 107, 107);
-    width: 100%;
-}
-#select-state {
-    display: none;
-}
-select:hover,
-input:hover {
-    border: 0.7px solid rgb(168, 168, 168);
-}
+/* content */
 .content-block {
     display: flex;
     flex-direction: column;
@@ -58,112 +23,137 @@ input:hover {
 }
 
 
+/* hr styles */
+.form-body-add-tovar hr {
+    margin: 2em 0em;
+    color: #383838;
+}
+.form-body-add-tovar hr:first-child {
+    margin-top: 0;
+}
+
+
+/* input and select style */
+input, select
+{
+    height: 40px;
+    outline: 0;
+    border: 0.3px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    padding: 0.3em;
+    color: rgb(107, 107, 107);
+}
+.select2-container--default .select2-selection--single {
+    display: flex;
+    align-items: center;
+    border: 0.3px solid rgb(200, 200, 200);
+    height: 40px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 26px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+}
+.btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.date-calendar-input::-webkit-datetime-edit, .date-text-input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+.date-input {
+    width: 100%;
+}
+
+
+
+
+
+/* form body add zakaz and form body add tovar */
 .form-body-add-zakaz, .form-body-add-tovar {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     grid-gap: 15px;
     margin-left: .5em;
     flex-wrap: wrap;
 }
-
-
 .form-body-row {
     display: flex;
     grid-gap: 5px;
-    flex-wrap: wrap;
-    justify-content: center;
     margin-left: 1em;
     margin-right: 1em;
-    align-items: center;
-}
-
-.form-body-block-input  {
-    display: flex;
-    width: var(--input-big-width);
-    min-width: 180px;
-    grid-gap: 2.5px;
-}
-.form-body-row-block .form-body-row {
-    width: 100%;
+    flex-wrap: wrap;
 }
 
 
-.form-body-block-input input,
-.form-body-block-input select {
-    width: 100%;
-}
 
-.form-body-upload-input {
-    color: rgb(117, 117, 117);
-}
+/* add zakaz */
 .form-body-upload-input::-webkit-file-upload-button {
     border: 0;
     outline: 0;
     display: none;
 }
+.form-body-upload-input {
+    cursor: pointer;
+}
+.form-body-add-zakaz .form-body-block-input
+{
+    width: 312px;
+}
+.form-body-add-zakaz .form-body-block-input select,
+.form-body-add-zakaz .form-body-block-input input  {
+    width: inherit;
+}
 
 
 
+
+/* add tovar */
 
 .form-body-row-block {
     display: flex;
     flex-direction: column;
     grid-gap: 15px;
-    align-items: center;
 }
-.form-body-add-tovar .form-body-row {
-    flex-wrap: wrap;
-}
-.form-body-add-tovar .form-body-block-input {
-    min-width: 150px;
-    width: 10%;
-}
-
 .form-body-add-tovar .form-body-row h5:first-child {
     margin: 0;
     font-size: 20px;
     font-weight: 300;
     margin-right: 10px;
 }
-.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(1)
-{
-    display: flex;
-    align-items: center;
-    min-width: 180px;
-    width: 10%;
-}
-.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(2),
-.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(3) 
-{
-    min-width: 85px;
-    width: 85px;
-}
 
-.form-body-add-tovar .form-body-row .form-body-block-input:nth-child(4) 
+
+.form-body-add-tovar .form-body-block-input {
+    display: flex;
+}
+.form-body-add-tovar .form-body-block-input select,
+.form-body-add-tovar .form-body-block-input input  {
+    width: inherit;
+}
+.form-body-add-tovar .form-body-block-input:nth-child(2),
+.form-body-add-tovar .form-body-block-input:nth-child(3) {
+    width: 80px;
+}
+.form-body-add-tovar .form-body-block-input:nth-child(1)
 {
     width: 250px;
 }
 
-.form-body-add-zakaz .pop-window-open-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 50px;
-}
-
-.form-body-add-tovar .pop-window-open-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 40px;
-}
 
 
 
 
 
+
+
+
+
+
+
+/* СВЯЗКА */
 .body-form-block-btn, .body-form-block-btn .df {
     display: flex;
     align-items: center;
@@ -186,6 +176,8 @@ input:hover {
     transition: .2s;
 }
 
+
+/* Считает сумму */
 .body-form-block-summa {
     display: flex;
     justify-content: center;
@@ -205,7 +197,7 @@ input:hover {
 
 
 
-
+/* Клонирует гео инпут */
 .clone-geo option:first-child {
     color: white;
     background: rgb(177, 177, 177);
@@ -223,6 +215,7 @@ option[value="none"] {
 }
 
 
+/* TABLE */
 .form-list-zakazi-block {
     display: flex;
     flex-direction: column;
@@ -280,10 +273,3 @@ option[value="none"] {
 }
 
 
-/* input */
-.date-calendar-input::-webkit-datetime-edit, .date-text-input::-webkit-calendar-picker-indicator {
-    display: none;
-}
-.date-input {
-    width: 100%;
-}

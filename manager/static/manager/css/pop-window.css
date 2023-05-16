@@ -98,3 +98,19 @@
     text-decoration: none;
     margin: 0.5em;
 }
+
+
+.form-body-add-zakaz .pop-window-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 50px;
+}
+.form-body-add-tovar .pop-window-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    max-width: 40px;
+}

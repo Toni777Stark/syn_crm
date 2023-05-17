@@ -60,22 +60,19 @@ input, select
     box-shadow: none;
 }
 
-.date-calendar-input::-webkit-datetime-edit, .date-text-input::-webkit-calendar-picker-indicator {
-    display: none;
+
+input[type="date" i]::-webkit-calendar-picker-indicator {
+    padding: 12px 0 12px 69%;
+    cursor: pointer;
 }
-.date-input {
-    width: 100%;
+input::-webkit-datetime-edit {
+    cursor: text;
 }
-
-
-
-
-
 /* form body add zakaz and form body add tovar */
 .form-body-add-zakaz, .form-body-add-tovar {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     grid-gap: 15px;
     margin-left: .5em;
     flex-wrap: wrap;
@@ -83,9 +80,11 @@ input, select
 .form-body-row {
     display: flex;
     grid-gap: 5px;
-    margin-left: 1em;
-    margin-right: 1em;
     flex-wrap: wrap;
+}
+/* name form */
+.name-block-input {
+    width: 100%;
 }
 
 
@@ -101,13 +100,12 @@ input, select
 }
 .form-body-add-zakaz .form-body-block-input
 {
-    width: 312px;
+    width: 310px;
 }
 .form-body-add-zakaz .form-body-block-input select,
 .form-body-add-zakaz .form-body-block-input input  {
     width: inherit;
 }
-
 
 
 
@@ -128,6 +126,7 @@ input, select
 
 .form-body-add-tovar .form-body-block-input {
     display: flex;
+    align-items: center;
 }
 .form-body-add-tovar .form-body-block-input select,
 .form-body-add-tovar .form-body-block-input input  {

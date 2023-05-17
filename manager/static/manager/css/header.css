@@ -42,15 +42,19 @@
 }
 /* Кнопка выпадающего списка */
 .dropbtn {
-    background-color: #ffffff00;
-    color: white;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: .3s;
-    margin-right: 1em;
-    width: 120px;
-  }
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff00;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
+  margin-right: 0.5em;
+  width: 120px;
+  height: 30px;
+  align-items: center;
+}
   
   /* Кнопка выпадающего меню при наведении и фокусировке */
   .dropbtn:hover, .dropbtn:focus {

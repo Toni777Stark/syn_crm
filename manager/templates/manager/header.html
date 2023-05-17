@@ -7,10 +7,11 @@
         <i id="closeSide_bar" class="fa fa-angle-left side-bar-close-btn" onclick="closeSide_bar()"></i>
     </div>
     <div id="user-tools">
-        <button onclick="myFunction()" class="dropbtn">
-            {% firstof user.get_short_name user.get_username %}
+        <button onclick="drop_show_header()" class="dropbtn">
 
             <img src="{% static 'manager/user-icons/default.png' %}" alt="" class="header-user-icon">
+
+            <h5 class="header-user-name">{% firstof user.get_short_name user.get_username %}</h5>
 
         </button>
         <div class="dropdown-content" id="myDropdown">

@@ -1,0 +1,275 @@
+/* body-content */
+.pidel-input {
+    display: flex;
+    grid-gap: 5px;
+}
+/* content */
+.content-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 98vh;
+
+
+    padding: 1.5em .3em 0em 1.5em;
+    transition: .5s;
+    grid-gap: 50px;
+    flex: 1;
+    margin-left: 225px;
+}
+.content-block.active-content-block {
+    transition: .5s;
+    margin-left: 0px;
+}
+
+
+/* hr styles */
+.form-body-add-tovar hr {
+    margin: 2em 0em;
+    color: #383838;
+}
+.form-body-add-tovar hr:first-child {
+    margin-top: 0;
+}
+
+
+/* input and select style */
+input, select
+{
+    height: 40px;
+    outline: 0;
+    border: 0.3px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    padding: 0.3em;
+    color: rgb(107, 107, 107);
+}
+.select2-container--default .select2-selection--single {
+    display: flex;
+    align-items: center;
+    border: 0.3px solid rgb(200, 200, 200);
+    height: 40px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 26px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+}
+.btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.date-calendar-input::-webkit-datetime-edit, .date-text-input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+.date-input {
+    width: 100%;
+}
+
+
+
+
+
+/* form body add zakaz and form body add tovar */
+.form-body-add-zakaz, .form-body-add-tovar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-gap: 15px;
+    margin-left: .5em;
+    flex-wrap: wrap;
+}
+.form-body-row {
+    display: flex;
+    grid-gap: 5px;
+    margin-left: 1em;
+    margin-right: 1em;
+    flex-wrap: wrap;
+}
+
+
+
+/* add zakaz */
+.form-body-upload-input::-webkit-file-upload-button {
+    border: 0;
+    outline: 0;
+    display: none;
+}
+.form-body-upload-input {
+    cursor: pointer;
+}
+.form-body-add-zakaz .form-body-block-input
+{
+    width: 312px;
+}
+.form-body-add-zakaz .form-body-block-input select,
+.form-body-add-zakaz .form-body-block-input input  {
+    width: inherit;
+}
+
+
+
+
+/* add tovar */
+
+.form-body-row-block {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 15px;
+}
+.form-body-add-tovar .form-body-row h5:first-child {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 300;
+    margin-right: 10px;
+}
+
+
+.form-body-add-tovar .form-body-block-input {
+    display: flex;
+}
+.form-body-add-tovar .form-body-block-input select,
+.form-body-add-tovar .form-body-block-input input  {
+    width: inherit;
+}
+.form-body-add-tovar .form-body-block-input:nth-child(2),
+.form-body-add-tovar .form-body-block-input:nth-child(3) {
+    width: 80px;
+}
+.form-body-add-tovar .form-body-block-input:nth-child(1)
+{
+    width: 250px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* СВЯЗКА */
+.body-form-block-btn, .body-form-block-btn .df {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+    padding: 1em 0;
+    white-space: nowrap;
+    flex-wrap: wrap;
+}
+.form-body-label-btn {
+    color: var(--main-color);
+    border-radius: 2.5px;
+    outline: 1px solid var(--main-color);
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: .2s;
+}
+.form-body-label-btn.active {
+    background-color: rgba(0, 76, 255, 0.148);
+    transition: .2s;
+}
+
+
+/* Считает сумму */
+.body-form-block-summa {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.body-form-block-summa h4 {
+    text-decoration:underline;
+    font-family: 'Roboto', serif;
+    font-weight: 500;
+    color: rgb(73, 73, 73);
+    margin: 0;
+    font-size: 25px;
+    text-align: center;
+    line-height: 0;
+}
+
+
+
+
+/* Клонирует гео инпут */
+.clone-geo option:first-child {
+    color: white;
+    background: rgb(177, 177, 177);
+    cursor: pointer;
+}
+option[value="none"] {
+    background-color: rgb(177, 177, 177);
+    color: white
+}
+.clone-geo {
+    display: none;
+}
+.clone-geo-remove {
+    cursor: pointer;
+}
+
+
+/* TABLE */
+.form-list-zakazi-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.form-list-zakazi-name {
+    width: 100%;
+    text-align: left;
+}
+
+.form-list-zakazi {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.form-table-name {
+    display: flex;
+    width: 100%;
+    grid-gap: 5px;
+}
+.form-table-name h5 {
+    width: 100%;
+}
+.form-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    grid-gap: 5px;
+}
+.form-table div {
+    display: flex;
+    width: 100%;
+    grid-gap: 5px;
+}
+.form-table div h5 {
+    width: 100%;
+    margin: 0;
+    font-weight: 400;
+}
+
+.form-list-btn {
+    display: flex;
+    grid-gap: 20px;
+    align-items: center;
+}
+.form-list-page-number {
+    margin-bottom: 5px;
+    font-size: 17.5px;
+    margin: 0;
+}
+.form-list-btn i {
+    cursor: pointer;
+    padding: 1em;
+}
+
+

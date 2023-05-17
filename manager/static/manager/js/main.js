@@ -18,6 +18,8 @@ window.onclick = function(event) {
   }
 }
 
+const body = document.querySelector("body")
+
 const addclient = document.getElementById("pop-add-client")
 
 const addbirzh = document.getElementById("pop-add-birzh")
@@ -31,17 +33,21 @@ const close_btn = document.getElementById("closeSide_bar")
 function addclient_show() {
   addbirzh.classList.remove('active')
   addclient.classList.add('active')
+  body.classList.add('none-scroll')
 }
 function addclient_close() {
   addclient.classList.remove('active')
+  body.classList.remove('none-scroll')
 }
 
 function addbirzh_show() {
   addbirzh.classList.add('active')
   addclient.classList.remove('active')
+  body.classList.add('none-scroll')
 }
 function addbirzh_close() {
   addbirzh.classList.remove('active')
+  body.classList.remove('none-scroll')
 }
 
 
@@ -63,36 +69,6 @@ function closeSide_bar() {
 }
 
 
-function add_geo_clone_1_row() {
-    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-      .css({"display":"flex"})
-          .appendTo( ".form-body-row-block>.form-body-row:nth-child(1)" ); // вставляем клонированный элемент
-};
-function add_geo_clone_2_row() {
-    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-      .css({"display":"flex"})
-          .appendTo( ".form-body-row-block>.form-body-row:nth-child(2)" ); // вставляем клонированный элемент
-};
-
-function add_geo_clone_3_row() {
-  $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-    .css({"display":"flex"})
-        .appendTo( ".form-body-row-block>.form-body-row:nth-child(3)" ); // вставляем клонированный элемент
-};
-function add_geo_clone_4_row() {
-    $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-      .css({"display":"flex"})
-          .appendTo( ".form-body-row-block>.form-body-row:nth-child(4)" ); // вставляем клонированный элемент
-};
-
-function add_geo_clone_5_row() {
-  $( '.clone-geo:last' ).clone() // создаем копию первого элемента формы
-    .css({"display":"flex"})
-        .appendTo( ".form-body-row-block>.form-body-row:nth-child(5)" ); // вставляем клонированный элемент
-};
-function remove_geo_clone() {
-    $( ".clone-geo" ).css({"display":"none"})
-};
 
 
 
@@ -101,9 +77,7 @@ function remove_geo_clone() {
 
 
 
-
-
-function submit__form() {
+function onChange__form() {
   const form_summa_vivod = document.querySelector('#form_summa_vivod')
 
 
@@ -131,4 +105,29 @@ function submit__form() {
   const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row  
 
   form_summa_vivod.innerHTML= form__summa;
+}
+
+$(document).ready(function () {
+//change selectboxes to selectize mode to be searchable
+    $("select").select2();
+});
+
+
+
+
+var table_full_page = 3
+var table_page = 1
+
+function table_page_left() {
+  if (table_page >= 2 ) {
+    table_page = table_page - 1
+    $("#table-page-number").text(table_page);}
+}
+
+function table_page_right() {
+  if (table_page == table_full_page) {
+  } else {
+    table_page = table_page + 1
+    $("#table-page-number").text(table_page);
+  }
 }

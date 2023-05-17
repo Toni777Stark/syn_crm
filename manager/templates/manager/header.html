@@ -1,0 +1,37 @@
+{% load static %}
+{% load i18n static %}
+
+<div id="header">
+    <div class="side-bar-link-block d-flex">
+        <i id="openSide_bar" class="fa fa-bars side-bar-open-btn" onclick="openSide_bar()"></i>
+        <i id="closeSide_bar" class="fa fa-angle-left side-bar-close-btn" onclick="closeSide_bar()"></i>
+    </div>
+    <div id="user-tools">
+        <button onclick="myFunction()" class="dropbtn">
+            {% firstof user.get_short_name user.get_username %}
+
+            <img src="{% static 'manager/user-icons/default.png' %}" alt="" class="header-user-icon">
+
+             Unknown ˅
+             
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+<!--
+                <a href="{{ site_url }}">
+                    На сайт
+                </a>
+-->                    
+<!--
+                <a href="{% url 'admin:password_change' %}">
+                    Изменить пароль
+                </a>
+-->  
+                <br>
+                <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Войти</button>
+                </form>
+        </div>
+    </div>
+
+</div>

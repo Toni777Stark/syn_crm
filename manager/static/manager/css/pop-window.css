@@ -1,0 +1,116 @@
+.form-new-client button, .form-new-client button:hover, 
+.form-new-client button:focus, .form-new-client button:active,
+.form-new-client button:active:focus,
+
+.form-new-birzha button, .form-new-birzha button:hover, 
+.form-new-birzha button:focus, .form-new-birzha button:active,
+.form-new-birzha button:active:focus
+{
+    width: fit-content;
+    background-color: var(--main-color);
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+
+/* pop-window */
+.pop-window {
+    display: flex;
+    flex-direction: column;
+
+    transform: scale(0);
+    transition: .3s;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    top: 30px;
+    z-index: 1;
+
+    background: rgba(0, 0, 0, 0.405);
+
+    align-items: center;
+    justify-content: center;
+}
+.pop-window.active {
+    transform: scale(1);
+    transition: .3s;
+}
+
+/* pop-container */
+.pop-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    background: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 2.3em;
+}
+.pop-container .btn {
+    width: 100%;
+}
+
+/* main-form-block */
+.form-new-client, .form-new-birzha {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5em;
+    margin-top: 1.5em;
+    grid-gap: 10px;
+}
+.block-new-client, .block-new-birzha {
+    padding: 1em 4em 3em 3em;
+}
+
+
+/* input */
+.form-new-client input, .form-new-birzha input {
+    padding-left: .7em;
+    width: var(--input-left-bar-input-width);
+}
+
+/* btn */
+.pop-window-open-btn::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+
+    font-size: 20px;
+    cursor:pointer;
+    color: rgb(70, 70, 70);
+    cursor: pointer;
+    border: 0.3px solid var(--whitegray-color);
+}
+.pop-window-close-btn {
+    font-size:25px;
+    cursor:pointer;
+    color: black;
+    border: 0;
+    text-decoration: none;
+    margin: 0.5em;
+}
+
+
+.form-body-add-zakaz .pop-window-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 50px;
+}
+.form-body-add-tovar .pop-window-open-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    max-width: 40px;
+}

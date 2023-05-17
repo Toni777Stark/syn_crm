@@ -254,7 +254,7 @@
                                     <select name="tovar-geo">
                                         <option value="none">ГЕО</option>
                                         {% for geo in geos %}
-                                        <option value="tovar-geo" default>{{ geo.name }}</option>
+                                        <option value={{ geo.id }} default>{{ geo.name }}</option>
                                     {% endfor %}
                                     </select>
                                     <span data-name="add-btn" class="left-bar-open-btn clone-geo-btn fa fa-plus" onclick="add_geo_clone_1_row()"></span>

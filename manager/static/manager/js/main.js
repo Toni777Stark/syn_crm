@@ -119,7 +119,7 @@ var table_full_page = 3
 var table_page = 1
 
 function table_page_left() {
-  if (table_page >= 2 ) {
+  if (table_page > 1 ) {
     table_page = table_page - 1
     $("#table-page-number").text(table_page);}
 }
@@ -131,3 +131,14 @@ function table_page_right() {
     $("#table-page-number").text(table_page);
   }
 }
+
+
+$('.form-body-copy-icon').click(function() {
+  $('#tovar-emulator-1-row').clone().attr({"id":"tovar-emulator-2-row"}).appendTo("#form-body-2-row")
+  $('#tovar-geo-1-row').clone().attr({"id":"tovar-geo-2-row"}).appendTo("#form-body-2-row")
+
+
+
+  $("#tovar-geo-2-row").closest("#tovar-geo-2-row").remove();
+  $("#tovar-emulator-2-row").closest("#tovar-emulator-2-row").remove();
+});

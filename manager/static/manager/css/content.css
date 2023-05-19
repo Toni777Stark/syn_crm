@@ -145,9 +145,25 @@ input::-webkit-datetime-edit {
 
 
 
-
-
-
+/* copy icon */
+.form-body-copy-icon {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--whitegray-color);
+    border-radius: 5px;
+}
+.form-body-copy-icon:before {
+    content: "\f24d";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 
 
 

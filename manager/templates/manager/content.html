@@ -85,9 +85,9 @@
         <div class="form-body-add-tovar">
             <h2 class="name-block-input" style="margin-top: 1em;">Товар</h2>
             <div class="form-body-row-block">
-                <div class="form-body-row">
+                <div class="form-body-row" id="form-body-1-row">
 
-                            <div class="form-body-block-input pidel-input">
+                            <div class="form-body-block-input pidel-input" id="birzha-name-1-row">
                                 <h5>#1</h5>
                                 <select name="birzha-name">
                                     <option value="none">Биржа</option>
@@ -98,7 +98,7 @@
                                 <span data-name="add-btn" class="pop-window-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
                             </div>
 
-                            <div class="form-body-block-input">
+                            <div class="form-body-block-input" id="input-summa-1-row">
                                 <input 
                                 type="number" 
                                 placeholder="Цена" 
@@ -109,17 +109,17 @@
                                 >
                             </div>
 
-                            <div class="form-body-block-input">
+                            <div class="form-body-block-input" id="input-kolvo-1-row">
                                 <input type="number" placeholder="Кол-во" maxlength="8"
                                 id="input-kolvo-1-row"
                                 onchange="onChange__form(this.value);">
                             </div>
 
-                            <div class="form-body-block-input">
+                            <div class="form-body-block-input" id="comment-1-row">
                                 <input type="text" placeholder="Коментарий" maxlength="250">
                             </div>
 
-                            <div class="form-body-block-input">
+                            <div class="form-body-block-input" id="type-email-1-row">
                                 <select name="tovar-type-email">
                                     <option value="none">Тип почты</option>
                                     <option value="gmail">@gmail.com</option>
@@ -128,7 +128,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-body-block-input">
+                            <div class="form-body-block-input" id="type-number-1-row">
                                 <select name="tovar-type-number">
                                     <option value="none">Тип телефона</option>
                                     <option value="+7">+7</option>
@@ -138,7 +138,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-body-block-input">
+                            <div class="form-body-block-input" id="tovar-emulator-1-row">
                                 <select name="tovar-emulator">
                                     <option value="none">Эмулятор</option>
                                     <option value="BlueStacks">BlueStacks</option>
@@ -147,7 +147,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-body-block-input">
+                            <div class="form-body-block-input" id="tovar-geo-1-row">
                                 <select name="tovar-geo">
                                     <option value="none">ГЕО</option>
                                     {% for geo in geos %}
@@ -157,12 +157,15 @@
                             </div>
 
 
+                            <i class="form-body-copy-icon fa fa-clone" aria-hidden="true"
+                            title="Кликните чтобы скопировать все выбранные вариант на вторую строку."></i>
+
                 </div>
-                <div class="form-body-row">
+                <div class="form-body-row" id="form-body-2-row">
 
                         <div class="form-body-block-input">
                             <h5>#2</h5>
-                            <select name="birzha-name">
+                            <select name="birzha-name" id="birzha-name-2-row">
                                     <option value="none">Биржа</option>
                                 {% for exchange in exchanges %}
                                     <option value="birzha-name">{{ exchange.name }}</option>
@@ -205,7 +208,7 @@
                             </select>
                         </div>
 
-                        <div class="form-body-block-input">
+                        <div class="form-body-block-input" id="tovar-emulator-2-row">
                             <select name="tovar-emulator">
                                 <option value="none">Эмулятор</option>
                                 <option value="BlueStacks">BlueStacks</option>
@@ -214,7 +217,7 @@
                             </select>
                         </div>
 
-                        <div class="form-body-block-input">
+                        <div class="form-body-block-input" id="tovar-geo-2-row">
                             <select name="tovar-geo">
                                 <option value="none">ГЕО</option>
                                 {% for geo in geos %}

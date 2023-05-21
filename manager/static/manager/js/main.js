@@ -153,6 +153,8 @@ function form_body_copy_1_row() {
     $('#tovar-emulator-1-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-emulator-2-row .select2-container .select2-selection");
     $('#tovar-geo-1-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-geo-2-row .select2-container .select2-selection");
 
+
+    onChange__form()
 };
 
 
@@ -176,6 +178,9 @@ function form_body_copy_2_row() {
     $('#tovar-emulator-2-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-emulator-3-row .select2-container .select2-selection");
     $('#tovar-geo-2-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-geo-3-row .select2-container .select2-selection");
     
+
+
+    onChange__form()
 };
 
 
@@ -199,6 +204,9 @@ function form_body_copy_3_row() {
     $('#tovar-emulator-3-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-emulator-4-row .select2-container .select2-selection");
     $('#tovar-geo-3-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-geo-4-row .select2-container .select2-selection");
     
+
+
+    onChange__form()
 };
 
 
@@ -222,6 +230,9 @@ function form_body_copy_4_row() {
     $('#tovar-emulator-4-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-emulator-5-row .select2-container .select2-selection");
     $('#tovar-geo-4-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-geo-5-row .select2-container .select2-selection");
     
+
+
+    onChange__form()
 };
 
 /*

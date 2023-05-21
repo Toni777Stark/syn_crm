@@ -17,3 +17,7 @@ def index(request):
         'clients': clients
     }
     return render(request, 'manager/index.html', data)
+
+
+def test(request):
+    return render(request, 'manager/test.html')

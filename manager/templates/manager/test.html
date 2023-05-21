@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST CLONE</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'manager/css/content.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'manager/css/test.css' %}">
+</head>
+<body>
+    <div class="select-block-1">
+
+        <div class="my-select-clone-1">
+            <select>
+                <option value="">Option-1</option>
+                <option value="">Option-fawfawf 2</option>
+                <option value="">Option-3</option>
+            </select>
+        </div>
+
+        <div class="my-select-clone-2">
+            <select>
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
+            </select>
+        </div>
+
+        <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="select_copy()"
+        title="Кликните чтобы скопировать это поле"></i>
+    </div>
+
+    <div class="select-block-2">
+
+        <div class="my-select-clone-3">
+            <select>
+                <option value="">Option-1</option>
+                <option value="">Option-2</option>
+                <option value="">Option-3</option>
+            </select>
+        </div>
+
+    </div>
+</body>
+</html>
+<script src="{% static 'manager/js/jquery.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="{% static 'manager/js/test.js' %}"></script>
+<script src="https://kit.fontawesome.com/419032dc53.js" crossorigin="anonymous"></script>
+</html>

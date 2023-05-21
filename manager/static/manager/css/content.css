@@ -43,6 +43,9 @@ input, select
     padding: 0.3em;
     color: rgb(107, 107, 107);
 }
+.select2-dropdown {
+    z-index: 1;
+}
 .select2-container--default .select2-selection--single {
     display: flex;
     align-items: center;
@@ -60,7 +63,7 @@ input, select
     box-shadow: none;
 }
 
-
+/* date */
 input[type="date" i]::-webkit-calendar-picker-indicator {
     padding: 12px 0 12px 69%;
     cursor: pointer;
@@ -81,6 +84,7 @@ input::-webkit-datetime-edit {
     display: flex;
     grid-gap: 5px;
     flex-wrap: wrap;
+    align-items: center;
 }
 /* name form */
 .name-block-input {
@@ -132,11 +136,11 @@ input::-webkit-datetime-edit {
 .form-body-add-tovar .form-body-block-input input  {
     width: inherit;
 }
-.form-body-add-tovar .form-body-block-input:nth-child(2),
-.form-body-add-tovar .form-body-block-input:nth-child(3) {
+.form-body-add-tovar .form-body-block-input:nth-child(3),
+.form-body-add-tovar .form-body-block-input:nth-child(4) {
     width: 80px;
 }
-.form-body-add-tovar .form-body-block-input:nth-child(1)
+.form-body-add-tovar .form-body-block-input:nth-child(2)
 {
     width: 250px;
 }

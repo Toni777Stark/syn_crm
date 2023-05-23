@@ -24,13 +24,13 @@
 
 <!-- side bar -->
 {% block main-sidebar %}
-<li class="nav-item active">
-    <a href="#" class="nav-link" aria-current="page">
+<li class="nav-item">
+    <a href="http://127.0.0.1:8000/" class="nav-link" aria-current="page">
         <i class="fa fa-calendar"></i><h5>Заказы</h5>
     </a>
 </li>
-<li class="nav-item">
-    <a href="#" class="nav-link link-body-emphasis">
+<li class="nav-item active">
+    <a href="http://127.0.0.1:8000/manager-test" class="nav-link link-body-emphasis">
         <i class="fa fa-calendar"></i><h5>Отказы</h5>
     </a>
 </li>
@@ -57,9 +57,9 @@
     <div class="up-checkbox-container">
         <h2 class="name-checkbox">Было на утро</h2>
 
-        <label class="checkbox-ios">
+        <label class="checkbox-label">
             <input type="checkbox">
-            <span class="checkbox-ios-switch"></span>
+            <span class="checkbox-switch"></span>
         </label>
 
         <h2 class="name-checkbox">На сейчас <p>По плану утра</p></h2>
@@ -77,18 +77,49 @@
             <div class="manager-block">
                 <div class="manager">
                     <h2 class="manager-name">Ирина</h2>
+                    <ul class="list-group">
+                      <li class="list-group-item" data-id="1" draggable="true">
+                        <img src="{% static 'manager-test/img/binance-logo.png' %}" draggable="false" alt="">
+                      </li>
+                      <li class="list-group-item" data-id="2" draggable="true">
+                        <img src="{% static 'manager-test/img/binance-logo.png' %}" draggable="false" alt="">
+                      </li>
+                      <li class="list-group-item" data-id="3" draggable="true">
+                        <img src="{% static 'manager-test/img/binance-logo.png' %}" draggable="false" alt="">
+                      </li>
+                      <li class="list-group-item" data-id="4" draggable="true">
+                        <img src="{% static 'manager-test/img/binance-logo.png' %}" draggable="false" alt="">
+                      </li>
+                      <li class="list-group-item" data-id="5" draggable="true">
+                        <img src="{% static 'manager-test/img/revolut-logo.png' %}" draggable="false" alt="">
+                      </li>
+                      <li class="list-group-item" data-id="6" draggable="true">
+                        <img src="{% static 'manager-test/img/revolut-logo.png' %}" draggable="false" alt="">
+                      </li>
+                      <li class="list-group-item" data-id="7" draggable="true">
+                        <img src="{% static 'manager-test/img/wise-logo.png' %}" draggable="false" alt="">
+                      </li>
+                      <li class="list-group-item" data-id="8" draggable="true">
+                        <img src="{% static 'manager-test/img/wise-logo.png' %}" draggable="false" alt="">
+                      </li>
+                    </ul>
                 </div>
+              
                 <div class="manager">
-                    <h2 class="manager-name">Генадий</h2>
+                    <h2 class="manager-name">Дмитрий</h2>
+                    <ul class="list-group"></ul>
                 </div>
+              
                 <div class="manager">
-                    <h2 class="manager-name">Дима</h2>
+                    <h2 class="manager-name">Геннадий</h2>
+                    <ul class="list-group"></ul>
                 </div>
+              
                 <div class="manager">
-                    <h2 class="manager-name">Антон</h2>
+                    <h2 class="manager-name">Максим</h2>
+                    <ul class="list-group"></ul>
                 </div>
             </div>
-
         </div>
 
                 
@@ -102,15 +133,19 @@
             <div class="manager-block">
                 <div class="manager">
                     <h2 class="manager-name">Ирина</h2>
+                    <ul class="list-group"></ul>
                 </div>
                 <div class="manager">
                     <h2 class="manager-name">Генадий</h2>
+                    <ul class="list-group"></ul>
                 </div>
                 <div class="manager">
                     <h2 class="manager-name">Дима</h2>
+                    <ul class="list-group"></ul>
                 </div>
                 <div class="manager">
                     <h2 class="manager-name">Антон</h2>
+                    <ul class="list-group"></ul>
                 </div>
             </div>
 
@@ -137,4 +172,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="{% static 'manager/js/main.js' %}" type="text/javascript"></script>
 <script src="{% static 'manager-test/js/main.js' %}"></script>
+<script src="{% static 'manager-test/js/drag-and-drop.js' %}"></script>
 {% endblock %}

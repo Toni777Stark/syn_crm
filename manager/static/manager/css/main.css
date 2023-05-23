@@ -21,15 +21,11 @@
 /* main */
 body {
     display: flex;
+    flex-direction: column          ;
 }
 .none-scroll {
     position: fixed; 
     overflow-y:scroll;
-    width: 100%;
-}
-.body {
-    display: flex;
-    flex-direction: column;
     width: 100%;
 }
 .body-content {

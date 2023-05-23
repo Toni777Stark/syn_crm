@@ -19,5 +19,5 @@ def index(request):
     return render(request, 'manager/index.html', data)
 
 
-def test(request):
-    return render(request, 'manager/test.html')
+def manager_test(request):
+    return render(request, 'manager-test/index.html')

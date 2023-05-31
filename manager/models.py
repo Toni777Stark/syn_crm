@@ -52,12 +52,9 @@ class Orders(models.Model):
     summ = models.DecimalField('Сумма', max_digits=10, decimal_places=2)
     date = models.DateTimeField('Дата', auto_now_add=True)
     deadline = models.DateTimeField('Срок заказа')
-    proof = models.ImageField('Подтверждение',upload_to='proof')
     priority = models.IntegerField('Приоритет', default=3)
-    payment_type = models.CharField('Тип оплаты', max_length=50)
     status = models.CharField('Статус', max_length=50, default='Не в работе')
     bundle = models.BooleanField('Связка', default=False)
-    comment = models.CharField('Коментарий', max_length=250)
     order_type = models.CharField('Тип заказа', max_length=50)
 
     def __str__(self):

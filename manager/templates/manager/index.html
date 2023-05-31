@@ -55,83 +55,34 @@
 <!-- main content-block -->
 {% block main-content %}
 <div id="content-block" class="content-block">
-<form action="#" class="form-body" method="post">
-
-
+<form class="form-body" method="post">
+{% csrf_token %}
     <div class="form-body-add-zakaz">
         <h2 class="name-block-input">Новый заказ</h2>
         <div class="form-body-row">
 
             <div class="form-body-block-input pidel-input">
-                    <select name="client-name">
-                        <option value="none">Клиент</option>
-                        {% for client in clients %}
-                            <option value={{ client.name }}>{{ client.name }}</option>
-                        {% endfor %}
-                    </select>
+                {{form.client}}
                 <span class="pop-window-open-btn fa fa-plus" onclick="addclient_show()"></span>
             </div>
 
-            <div class="form-body-block-input">
-                <select name="client-lang">
-                        <option value="none">Язык</option>
-                        <option value="rus">Русский</option>
-                        <option value="ua">Украинский</option>
-                        <option value="eng">Английский</option>
-                </select>
-            </div>
+<!--            <div class="form-body-block-input">-->
+<!--                <select name="client-lang">-->
+<!--                        <option value="none">Язык</option>-->
+<!--                        <option value="rus">Русский</option>-->
+<!--                        <option value="ua">Украинский</option>-->
+<!--                        <option value="eng">Английский</option>-->
+<!--                </select>-->
+<!--            </div>-->
 
             <div class="form-body-block-input">
-                <input type="date" placeholder="Дата" class="date-input">
+                {{form.deadline}}
             </div>
 
             <div class="form-body-block-input">
-                <input type="text" placeholder="Коментарий" maxlength="50">
-            </div>
-        </div>
-
-
-        <div class="form-body-row">
-
-            <div class="form-body-block-input ">
-                    <select name="client-oplata">
-                        <option value="none">Тип оплаты</option>
-                        <option value="bank-card">Master-card / Visa / Мир</option>
-                        <option value="Qiwi">Qiwi кошелек</option>
-                        <option value="btc-tether">btc / tether</option>
-                    </select>
+                {{form.priority}}
             </div>
 
-            <div class="form-body-block-input form-body-upload-file">
-                <input type="file" class="form-body-upload-input" multiple accept="image/jpeg,image/jpg,image/png,image/svg,image/webp">
-            </div>
-
-
-            <div class="form-body-block-input">
-                    <select name="zakaz-prioritet">
-                        <option value="none">Приоритет</option>
-                        <option value="high">Высокий</option>
-                        <option value="norm">Средний</option>
-                        <option value="easy">Низкий</option>
-                    </select>
-            </div>
-
-
-            <div class="form-body-block-input">
-                    <select name="zakaz-type">
-                        <option value="none">Тип заказа</option>
-                        <option value="Дежурный со склада">Дежурный со склада</option>
-                        <option value="Оплачен">Оплачен</option>
-                        <option value="Отсрочка">Отсрочка</option>
-                        <option value="В гаранте">В гаранте</option>
-                        <option value="Возврат">Возврат</option>
-                        <option value="Замена">Замена</option>
-                        <option value="Рекламация">Рекламация</option>
-                        <option value="Тест">Тест</option>
-                        <option value="Ремонт">Ремонт</option>
-                        <option value="На склад без оплаты">На склад без оплаты</option>
-                    </select>
-            </div>
         </div>
     </div>
 
@@ -145,25 +96,16 @@
 
                         <h5>#1</h5>
                         <div class="form-body-block-input pidel-input" id="birzha-name-1-row">
-                            <select name="birzha-name">
-                                <option value="none">Биржа</option>
-                                {% for exchange in exchanges %}
-                                    <option value="birzha-name">{{ exchange.name }}</option>
-                                {% endfor %}
-                            </select>
+                            {{form.exchange1}}
                             <span data-name="add-btn" class="pop-window-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
                         </div>
 
                         <div class="form-body-block-input" id="summa-1-row">
-                            <input 
-                            type="number" 
-                            placeholder="Цена" 
-                            maxlength="8"
-                            type="text"
+                            <input type="number" placeholder="Цена" maxlength="8" type="text"
                             id="input-summa-1-row"
-                            onchange="onChange__form(this.value);"
-                            >
+                            onchange="onChange__form(this.value);">
                         </div>
+
 
                         <div class="form-body-block-input" id="kolvo-1-row">
                             <input type="number" placeholder="Кол-во" maxlength="8"
@@ -172,7 +114,8 @@
                         </div>
 
                         <div class="form-body-block-input" id="comment-1-row">
-                            <input type="text" placeholder="Коментарий" maxlength="250">
+<!--                            <input type="text" placeholder="Коментарий" maxlength="250">-->
+                            {{form.comment1}}
                         </div>
 
                         <div class="form-body-block-input" id="type-email-1-row">
@@ -501,12 +444,16 @@
 
         <div class="body-form-block-summa mb-2">
             <h4>Общая сумма: <span id="form_summa_vivod">0</span>$</h4>
+            <input type="hidden" id="summ" name="summ" value="0">
         </div>
         
         <div class="df">
             <button class="btn btn-primary btn-add-zakaz">Добавить заказ</button>
-            <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-            <label class="form-body-label-btn noselect" for="btn-check-2" id="form-body-label-btn">Связка</label>
+<!--            <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">-->
+<!--            <label class="form-body-label-btn noselect" for="btn-check-2" id="form-body-label-btn">Связка</label>-->
+            {{ form.bundle }}
+            <label for="{{ form.bundle.id_for_label }}" class="form-body-label-btn noselect" id="form-body-label-btn">
+                {{ form.bundle.label }}</label>
         </div>
 
     </div>

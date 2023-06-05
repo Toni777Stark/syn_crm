@@ -147,11 +147,10 @@
                         </div>
 
                         <div class="form-body-block-input" id="tovar-geo-1-row">
-                            <select name="tovar-geo">
-                                <option value="none">ГЕО</option>
+                            <select name="tovar-geo" multiple data-maximum-selection-length="2">
                                 {% for geo in geos %}
                                 <option value="tovar-geo" default>{{ geo.name }}</option>
-                            {% endfor %}
+                                {% endfor %}
                             </select>
                         </div>
 
@@ -217,11 +216,10 @@
                     </div>
 
                     <div class="form-body-block-input" id="tovar-geo-2-row">
-                        <select name="tovar-geo">
-                            <option value="none">ГЕО</option>
+                        <select name="tovar-geo" multiple data-maximum-selection-length="2">
                             {% for geo in geos %}
                             <option value="tovar-geo" default>{{ geo.name }}</option>
-                        {% endfor %}
+                            {% endfor %}
                         </select>
                     </div>
 
@@ -286,11 +284,10 @@
                         </div>
 
                         <div class="form-body-block-input" id="tovar-geo-3-row">
-                            <select name="tovar-geo">
-                                <option value="none">ГЕО</option>
+                            <select name="tovar-geo" multiple data-maximum-selection-length="2">
                                 {% for geo in geos %}
                                 <option value="tovar-geo" default>{{ geo.name }}</option>
-                            {% endfor %}
+                                {% endfor %}
                             </select>
                         </div>
 
@@ -354,11 +351,10 @@
                 </div>
 
                 <div class="form-body-block-input" id="tovar-geo-4-row">
-                    <select name="tovar-geo">
-                        <option value="none">ГЕО</option>
+                    <select name="tovar-geo" multiple data-maximum-selection-length="2">
                         {% for geo in geos %}
                         <option value="tovar-geo" default>{{ geo.name }}</option>
-                    {% endfor %}
+                        {% endfor %}
                     </select>
                 </div>
 
@@ -423,11 +419,10 @@
                 </div>
 
                 <div class="form-body-block-input" id="tovar-geo-5-row">
-                    <select name="tovar-geo" multiple>
-                        <option value="none">ГЕО</option>
+                    <select name="tovar-geo" multiple data-maximum-selection-length="2">
                         {% for geo in geos %}
                         <option value="tovar-geo" default>{{ geo.name }}</option>
-                    {% endfor %}
+                        {% endfor %}
                     </select>
                 </div>
 
@@ -624,8 +619,12 @@
 <!-- main scripts-block -->
 {% block main-scripts %}
 <script src="{% static 'manager/js/jquery.js' %}"></script>
+<script src="{% static 'manager/js/main.js' %}" type="text/javascript"></script>
+<script src="{% static 'manager/js/content.js' %}" type="text/javascript"></script>
+
 <script src="https://kit.fontawesome.com/419032dc53.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="{% static 'manager/js/main.js' %}" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/ru.js" defer></script>
 {% endblock %}

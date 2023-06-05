@@ -61,17 +61,39 @@ input, select
 .btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
     box-shadow: none;
 }
+
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid var(--whitegray-color);
+}
 .select2-selection, .select2-container .select2-selection--multiple .select2-selection__rendered {
     display: flex;
     align-items: center;
     height: 40px;
+}
+.select2-container .select2-search--inline .select2-search__field {
+    margin: 0;
+    margin-bottom: 2px;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     font-size: 15px;
     background: transparent;
     border: 0;
     margin: 0;
-    padding: 0 .3em;
+    padding: .3em;
+    padding-bottom: 0.5em;
+}
+
+.select2-container--default .select2-selection--single.prompt,
+.select2-container--default .select2-selection--multiple.prompt,
+.prompt {
+    border: 0.3px solid red;
+}
+
+.select2-container--default .select2-selection--single.done, 
+.select2-container--default .select2-selection--multiple.done,
+.done {
+    border: 0.3px solid green;
 }
 
 /* date */
@@ -135,7 +157,9 @@ input::-webkit-datetime-edit {
     margin: 0;
     font-size: 20px;
     font-weight: 300;
-    margin-right: 10px;
+    margin-right: 5px;
+    width: 23px;
+    border: 0px;
 }
 
 

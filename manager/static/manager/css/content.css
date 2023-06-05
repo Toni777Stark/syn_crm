@@ -61,6 +61,18 @@ input, select
 .btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.dropdown-toggle:focus {
     box-shadow: none;
 }
+.select2-selection, .select2-container .select2-selection--multiple .select2-selection__rendered {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    font-size: 15px;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0 .3em;
+}
 
 /* date */
 input[type="date" i]::-webkit-calendar-picker-indicator {
@@ -233,7 +245,7 @@ input::-webkit-datetime-edit {
 
 
 
-/* Клонирует гео инпут */
+/* Клонирует ряд */
 .clone-geo option:first-child {
     color: white;
     background: rgb(177, 177, 177);

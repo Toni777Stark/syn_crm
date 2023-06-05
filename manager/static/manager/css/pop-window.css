@@ -58,7 +58,6 @@
 .form-new-client, .form-new-birzha {
     display: flex;
     flex-direction: column;
-    margin-left: 1.5em;
     margin-top: 1.5em;
     grid-gap: 10px;
 }

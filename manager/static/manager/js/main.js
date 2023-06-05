@@ -69,7 +69,14 @@ function closeSide_bar() {
 }
 
 
-
+var width = document.documentElement.clientWidth;
+console.log(width)
+if (width <= 1600) {
+  side_bar.classList.add('active')
+  open_btn.classList.add('active')
+  close_btn.classList.add('active')
+  content_block.classList.add('active-content-block')
+}
 
 
 
@@ -79,7 +86,7 @@ function closeSide_bar() {
 
 function onChange__form() {
   const form_summa_vivod = document.querySelector('#form_summa_vivod')
-  const summ = document.getElementById('summ')
+
 
   const kolvo_1_row = document.getElementById('input-kolvo-1-row');
   const summa_1_row = document.getElementById('input-summa-1-row');
@@ -103,7 +110,7 @@ function onChange__form() {
   const kolvo_summa_5_row = kolvo_5_row.value * summa_5_row.value
 
   const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row  
-  summ.value = form__summa
+
   form_summa_vivod.innerHTML= form__summa;
 }
 

@@ -1,3 +1,13 @@
+/* Функция для облегчения работы */
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+$('.btn-add-zakaz').click(function() {
+  $('.btn-add-zakaz-lower').addClass('active');
+  sleep(2500).then(() => { $('.btn-add-zakaz-lower').removeClass('active'); });
+});
+
 /* Когда пользователь нажимает на кнопку,
 переключение между скрытием и отображением раскрывающегося содержимого */
 function drop_show_header() {
@@ -242,33 +252,4 @@ function form_body_copy_4_row() {
     onChange__form()
 };
 
-/*
-const form = document.querySelector('.form-body');
-const inputs = document.querySelector('input');
 
-inputs.forEach(input => {
-  input.addEventListener('blur', () => {
-    const formData = new FormData(form);
-    fetch('/submit-form/', {
-      method: 'POST',
-      body: formData
-    });
-  });
-});
-*/
-/*
-document.addEventListener("DOMContentLoaded", function() { // событие загрузки страницы
-
-  // выбираем на странице все элементы типа textarea и input
-  document.querySelectorAll('select, input').forEach(function(e) {
-      // если данные значения уже записаны в sessionStorage, то вставляем их в поля формы
-      // путём этого мы как раз берём данные из памяти браузера, если страница была случайно перезагружена
-      if(e.value === '') e.value = window.sessionStorage.getItem(e.name, e.value);
-      // на событие ввода данных (включая вставку с помощью мыши) вешаем обработчик
-      e.addEventListener('input', function() {
-          // и записываем в sessionStorage данные, в качестве имени используя атрибут name поля элемента ввода
-          window.sessionStorage.setItem(e.name, e.value);
-      })
-  })
-
-}); */

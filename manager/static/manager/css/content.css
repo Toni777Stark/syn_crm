@@ -181,6 +181,20 @@ input::-webkit-datetime-edit {
     white-space: nowrap;
     flex-wrap: wrap;
 }
+.body-form-block-btn {
+    flex-direction: column;
+}
+.btn-add-zakaz-lower {
+    user-select: none;
+    color: transparent;
+    transition: .7s;
+    margin-top: -2.5em;
+}
+.btn-add-zakaz-lower.active {
+    color: rgb(26, 149, 26);
+    margin-top: -1em;
+    transition: .7s;
+}
 .form-body-label-btn {
     color: var(--main-color);
     border-radius: 2.5px;
@@ -193,6 +207,10 @@ input::-webkit-datetime-edit {
     background-color: rgba(0, 76, 255, 0.148);
     transition: .2s;
 }
+#id_bundle {
+    display: none;
+}
+
 
 
 /* Считает сумму */
@@ -275,7 +293,6 @@ option[value="none"] {
     margin: 0;
     font-weight: 400;
     width: 100%;
-    height: 100%;
 }
 
 .form-list-btn {

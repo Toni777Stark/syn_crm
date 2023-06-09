@@ -1,0 +1,53 @@
+:root {
+    --main-color: rgb(0, 76, 255);
+    --whitegray-color: rgb(200, 200, 200);
+
+
+    --input-left-bar-input-width: 200px;
+    --input-small-width: 11.5%;
+    --input-big-width: 23.5%;
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+/* main */
+body {
+    display: flex;
+    flex-direction: column          ;
+}
+.none-scroll {
+    position: fixed; 
+    overflow-y:scroll;
+    width: 100%;
+}
+.body-content {
+    display: flex;
+    width: 100%;
+    padding-top: 30px;
+}
+
+/* content */
+.content-block {
+    display: flex;
+    flex-direction: column;
+    min-height: 98vh;
+
+
+    padding: 1.5em .3em 0em 1.5em;
+    transition: .5s;
+    grid-gap: 50px;
+    flex: 1;
+    margin-left: 225px;
+}
+.content-block.active-content-block {
+    transition: .5s;
+    margin-left: 0px;
+}

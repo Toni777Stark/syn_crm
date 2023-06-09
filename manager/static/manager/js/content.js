@@ -1,6 +1,8 @@
+$(".comment input").attr("id", "")
+
+
 const addclient = document.getElementById("pop-add-client")
 const addbirzh = document.getElementById("pop-add-birzh")
-
 
 function addclient_show() {
     addbirzh.classList.remove('active')
@@ -23,37 +25,37 @@ function addbirzh_close() {
 }
 
 
-const form_summa_vivod = document.querySelector('#form_summa_vivod')
-
-
-const kolvo_1_row = document.getElementById('input-kolvo-1-row');
-const summa_1_row = document.getElementById('input-summa-1-row');
-
-const kolvo_2_row = document.getElementById('input-kolvo-2-row');
-const summa_2_row = document.getElementById('input-summa-2-row');
-
-const kolvo_3_row = document.getElementById('input-kolvo-3-row');
-const summa_3_row = document.getElementById('input-summa-3-row');
-
-const kolvo_4_row = document.getElementById('input-kolvo-4-row');
-const summa_4_row = document.getElementById('input-summa-4-row');
-
-const kolvo_5_row = document.getElementById('input-kolvo-5-row');
-const summa_5_row = document.getElementById('input-summa-5-row');
-
 
 /* summa */
-function onChange__form() {
+const form_summa_vivod = document.querySelector('#form_summa_vivod')
+
   
-  const kolvo_summa_1_row = kolvo_1_row.value * summa_1_row.value
-  const kolvo_summa_2_row = kolvo_2_row.value * summa_2_row.value
-  const kolvo_summa_3_row = kolvo_3_row.value * summa_3_row.value
-  const kolvo_summa_4_row = kolvo_4_row.value * summa_4_row.value
-  const kolvo_summa_5_row = kolvo_5_row.value * summa_5_row.value
+const kolvo_1_row = document.querySelector('#form-body-1-row .kolvo input');
+const summa_1_row = document.querySelector('#form-body-1-row .summa input');
 
-  const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row  
+const kolvo_2_row = document.querySelector('#form-body-2-row .kolvo input');
+const summa_2_row = document.querySelector('#form-body-2-row .summa input');
 
-  form_summa_vivod.innerHTML= form__summa;
+const kolvo_3_row = document.querySelector('#form-body-3-row .kolvo input');
+const summa_3_row = document.querySelector('#form-body-3-row .summa input');
+
+const kolvo_4_row = document.querySelector('#form-body-4-row .kolvo input');
+const summa_4_row = document.querySelector('#form-body-4-row .summa input');
+
+const kolvo_5_row = document.querySelector('#form-body-5-row .kolvo input');
+const summa_5_row = document.querySelector('#form-body-5-row .summa input');
+
+function onChange__form() {
+
+    const kolvo_summa_1_row = kolvo_1_row.value * summa_1_row.value
+    const kolvo_summa_2_row = kolvo_2_row.value * summa_2_row.value
+    const kolvo_summa_3_row = kolvo_3_row.value * summa_3_row.value
+    const kolvo_summa_4_row = kolvo_4_row.value * summa_4_row.value
+    const kolvo_summa_5_row = kolvo_5_row.value * summa_5_row.value
+
+    const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row  
+
+    form_summa_vivod.innerHTML= form__summa;
 }
 
 /* select2 */
@@ -96,116 +98,81 @@ function table_page_right() {
 
 
 const select_check = $('.form-body-block-input').on('select2:select', $('.form-body-row') , function () {
-    $(this).siblings().find('input, .select2-container--default .select2-selection--single, .select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default .select2-selection--multiple').addClass('prompt');
-    $(this).find('.select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple').addClass('done');
+    $(this).siblings().find('input, .select2-container--default .select2-selection--single, .select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default .select2-selection--multiple').addClass('prompt').attr('required', '').attr('title', 'Обязательное поле');
+    $(this).find('.select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple').addClass('done').attr('title', 'Обязательное поле');
 });
 
 const input_check = $('.form-body-block-input').on('change', $('.form-body-row'), function () {
-    $(this).siblings().find('input, .select2-container--default .select2-selection--single, .select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default .select2-selection--multiple').addClass('prompt');
-    $(this).find('input').addClass('done');
+    $(this).siblings().find('input, .select2-container--default .select2-selection--single, .select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default .select2-selection--multiple').addClass('prompt').attr('required', '').attr('title', 'Обязательное поле');
+    $(this).find('input').addClass('done').attr('title', 'Обязательное поле');
 });
 
-function form_body_copy_1_row() {
-
-    $("#birzha-name-2-row .select2-selection__rendered").closest("#birzha-name-2-row .select2-selection__rendered").remove();
-    $("#comment-2-row input").closest("#comment-2-row input").remove();
-    $("#input-kolvo-2-row").closest("#input-kolvo-2-row").remove();
-    $("#input-summa-2-row").closest("#input-summa-2-row").remove();
-    $("#type-email-2-row .select2-selection__rendered").closest("#type-email-2-row .select2-selection__rendered").remove();
-    $("#type-number-2-row .select2-selection__rendered").closest("#type-number-2-row .select2-selection__rendered").remove();
-    $("#tovar-emulator-2-row .select2-selection__rendered").closest("#tovar-emulator-2-row .select2-selection__rendered").remove();
-    $("#tovar-geo-2-row .select2-selection__rendered").closest("#tovar-geo-2-row .select2-selection__rendered").remove();
-
-    $('#birzha-name-1-row .select2-selection__rendered').clone().appendTo("#birzha-name-2-row .select2-selection");
-    $('#input-summa-1-row').clone().attr({"id":"input-summa-2-row"}).appendTo("#summa-2-row")
-    $('#input-kolvo-1-row').clone().attr({"id":"input-kolvo-2-row"}).appendTo("#kolvo-2-row")
-    $('#comment-1-row input').clone().appendTo("#comment-2-row")
-    $('#type-email-1-row .select2-selection__rendered').clone().appendTo("#type-email-2-row .select2-selection");
-    $('#type-number-1-row .select2-selection__rendered').clone().appendTo("#type-number-2-row .select2-selection");
-    $('#tovar-emulator-1-row .select2-selection__rendered').clone().appendTo("#tovar-emulator-2-row .select2-selection");
-    $('#tovar-geo-1-row .select2-selection__rendered').clone().appendTo("#tovar-geo-2-row .select2-selection");
+function form_body_clone(form_body_row_append, form_body_row_copy) {
+    /* REMOVE */
+    $(form_body_row_append).find(".select2-selection__rendered, input").remove()
+    /* CLONE */
+    $(form_body_row_copy).find(".birzha-name .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .birzha-name .select2-selection`)
+    $(form_body_row_copy).find(".summa input").clone().removeClass("done prompt").appendTo(`${form_body_row_append} .summa`)
+    $(form_body_row_copy).find(".kolvo input").clone().removeClass("done prompt").appendTo(`${form_body_row_append} .kolvo`)
+    $(form_body_row_copy).find(".comment input").clone().removeClass("done prompt").appendTo(`${form_body_row_append} .comment`)
+    $(form_body_row_copy).find(".type-email .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .type-email .select2-selection`)
+    $(form_body_row_copy).find(".type-number .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .type-number .select2-selection`)
+    $(form_body_row_copy).find(".tovar-emulator .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .tovar-emulator .select2-selection`)
+    $(form_body_row_copy).find(".tovar-geo .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .tovar-geo .select2-selection`)
 
     onChange__form()
-    select_check.name
-    input_check.name
-};
+}
+function form_body_copy_1_row() { form_body_clone("#form-body-2-row", "#form-body-1-row") };
+function form_body_copy_2_row() { form_body_clone("#form-body-3-row", "#form-body-2-row") };
+function form_body_copy_3_row() { form_body_clone("#form-body-4-row", "#form-body-3-row") };
+function form_body_copy_4_row() { form_body_clone("#form-body-5-row", "#form-body-4-row") };
 
 
-function form_body_copy_2_row() {
-
-    $("#birzha-name-3-row .select2-container .select2-selection .select2-selection__rendered").closest("#birzha-name-3-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#comment-3-row input").closest("#comment-3-row input").remove();
-    $("#input-kolvo-3-row").closest("#input-kolvo-3-row").remove();
-    $("#input-summa-3-row").closest("#input-summa-3-row").remove();
-    $("#type-email-3-row .select2-container .select2-selection .select2-selection__rendered").closest("#type-email-3-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#type-number-3-row .select2-container .select2-selection .select2-selection__rendered").closest("#type-number-3-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#tovar-emulator-3-row .select2-container .select2-selection .select2-selection__rendered").closest("#tovar-emulator-3-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#tovar-geo-3-row .select2-container .select2-selection .select2-selection__rendered").closest("#tovar-geo-3-row .select2-container .select2-selection .select2-selection__rendered").remove();
-
-    $('#birzha-name-2-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#birzha-name-3-row .select2-container .select2-selection");
-    $('#input-summa-2-row').clone().attr({"id":"input-summa-3-row"}).appendTo("#summa-3-row")
-    $('#input-kolvo-2-row').clone().attr({"id":"input-kolvo-3-row"}).appendTo("#kolvo-3-row")
-    $('#comment-2-row input').clone().appendTo("#comment-3-row")
-    $('#type-email-2-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#type-email-3-row .select2-container .select2-selection");
-    $('#type-number-2-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#type-number-3-row .select2-container .select2-selection");
-    $('#tovar-emulator-2-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-emulator-3-row .select2-container .select2-selection");
-    $('#tovar-geo-2-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-geo-3-row .select2-container .select2-selection");
-    
 
 
-    onChange__form()
-};
-
-
-function form_body_copy_3_row() {
-
-    $("#birzha-name-4-row .select2-container .select2-selection .select2-selection__rendered").closest("#birzha-name-4-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#comment-4-row input").closest("#comment-4-row input").remove();
-    $("#input-kolvo-4-row").closest("#input-kolvo-4-row").remove();
-    $("#input-summa-4-row").closest("#input-summa-4-row").remove();
-    $("#type-email-4-row .select2-container .select2-selection .select2-selection__rendered").closest("#type-email-4-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#type-number-4-row .select2-container .select2-selection .select2-selection__rendered").closest("#type-number-4-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#tovar-emulator-4-row .select2-container .select2-selection .select2-selection__rendered").closest("#tovar-emulator-4-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#tovar-geo-4-row .select2-container .select2-selection .select2-selection__rendered").closest("#tovar-geo-4-row .select2-container .select2-selection .select2-selection__rendered").remove();
-
-    $('#birzha-name-3-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#birzha-name-4-row .select2-container .select2-selection");
-    $('#input-summa-3-row').clone().attr({"id":"input-summa-4-row"}).appendTo("#summa-4-row")
-    $('#input-kolvo-3-row').clone().attr({"id":"input-kolvo-4-row"}).appendTo("#kolvo-4-row")
-    $('#comment-3-row input').clone().appendTo("#comment-4-row")
-    $('#type-email-3-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#type-email-4-row .select2-container .select2-selection");
-    $('#type-number-3-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#type-number-4-row .select2-container .select2-selection");
-    $('#tovar-emulator-3-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-emulator-4-row .select2-container .select2-selection");
-    $('#tovar-geo-3-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-geo-4-row .select2-container .select2-selection");
-    
-
-
-    onChange__form()
-};
-
-
-function form_body_copy_4_row() {
-
-    $("#birzha-name-5-row .select2-container .select2-selection .select2-selection__rendered").closest("#birzha-name-5-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#comment-5-row input").closest("#comment-5-row input").remove();
-    $("#input-kolvo-5-row").closest("#input-kolvo-5-row").remove();
-    $("#input-summa-5-row").closest("#input-summa-5-row").remove();
-    $("#type-email-5-row .select2-container .select2-selection .select2-selection__rendered").closest("#type-email-5-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#type-number-5-row .select2-container .select2-selection .select2-selection__rendered").closest("#type-number-5-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#tovar-emulator-5-row .select2-container .select2-selection .select2-selection__rendered").closest("#tovar-emulator-5-row .select2-container .select2-selection .select2-selection__rendered").remove();
-    $("#tovar-geo-5-row .select2-container .select2-selection .select2-selection__rendered").closest("#tovar-geo-5-row .select2-container .select2-selection .select2-selection__rendered").remove();
-
-    $('#birzha-name-4-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#birzha-name-5-row .select2-container .select2-selection");
-    $('#input-summa-4-row').clone().attr({"id":"input-summa-5-row"}).appendTo("#summa-5-row")
-    $('#input-kolvo-4-row').clone().attr({"id":"input-kolvo-5-row"}).appendTo("#kolvo-5-row")
-    $('#comment-4-row input').clone().appendTo("#comment-5-row")
-    $('#type-email-4-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#type-email-5-row .select2-container .select2-selection");
-    $('#type-number-4-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#type-number-5-row .select2-container .select2-selection");
-    $('#tovar-emulator-4-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-emulator-5-row .select2-container .select2-selection");
-    $('#tovar-geo-4-row .select2-container .select2-selection .select2-selection__rendered').clone().appendTo("#tovar-geo-5-row .select2-container .select2-selection");
-    
-
-
-    onChange__form()
-
-
-};
+// Для обработчика форма
+// input value
+// кол-во
+kolvo_1_row // указывать через $(kolvo_summa).val()
+kolvo_2_row // указывать через $(kolvo_summa).val()
+kolvo_3_row // указывать через $(kolvo_summa).val()
+kolvo_4_row // указывать через $(kolvo_summa).val()
+kolvo_5_row // указывать через $(kolvo_summa).val()
+// сумма
+summa_1_row // указывать через $(kolvo_summa).val()
+summa_2_row // указывать через $(kolvo_summa).val()
+summa_3_row // указывать через $(kolvo_summa).val()
+summa_4_row // указывать через $(kolvo_summa).val()
+summa_5_row // указывать через $(kolvo_summa).val()
+// select
+// биржа
+birzha_1_row = $("#form-body-1-row .birzha-name .select2-selection__rendered").text();
+birzha_2_row = $("#form-body-2-row .birzha-name .select2-selection__rendered").text();
+birzha_3_row = $("#form-body-3-row .birzha-name .select2-selection__rendered").text();
+birzha_4_row = $("#form-body-4-row .birzha-name .select2-selection__rendered").text();
+birzha_5_row = $("#form-body-5-row .birzha-name .select2-selection__rendered").text();
+// тип почты
+type_email_1_row = $("#form-body-1-row .type-email .select2-selection__rendered").text();
+type_email_2_row = $("#form-body-2-row .type-email .select2-selection__rendered").text();
+type_email_3_row = $("#form-body-3-row .type-email .select2-selection__rendered").text();
+type_email_4_row = $("#form-body-4-row .type-email .select2-selection__rendered").text();
+type_email_5_row = $("#form-body-5-row .type-email .select2-selection__rendered").text();
+// тип номера
+type_number_1_row = $("#form-body-1-row .type-number .select2-selection__rendered").text();
+type_number_2_row = $("#form-body-2-row .type-number .select2-selection__rendered").text();
+type_number_3_row = $("#form-body-3-row .type-number .select2-selection__rendered").text();
+type_number_4_row = $("#form-body-4-row .type-number .select2-selection__rendered").text();
+type_number_5_row = $("#form-body-5-row .type-number .select2-selection__rendered").text();
+// тип почты
+tovar_emulator_1_row = $("#form-body-1-row .tovar-emulator .select2-selection__rendered").text();
+tovar_emulator_2_row = $("#form-body-2-row .tovar-emulator .select2-selection__rendered").text();
+tovar_emulator_3_row = $("#form-body-3-row .tovar-emulator .select2-selection__rendered").text();
+tovar_emulator_4_row = $("#form-body-4-row .tovar-emulator .select2-selection__rendered").text();
+tovar_emulator_5_row = $("#form-body-5-row .tovar-emulator .select2-selection__rendered").text();
+// тип почты
+tovar_geo_1_row = $("#form-body-1-row .tovar-geo .select2-selection__rendered").text();
+tovar_geo_2_row = $("#form-body-2-row .tovar-geo .select2-selection__rendered").text();
+tovar_geo_3_row = $("#form-body-3-row .tovar-geo .select2-selection__rendered").text();
+tovar_geo_4_row = $("#form-body-4-row .tovar-geo .select2-selection__rendered").text();
+tovar_geo_5_row = $("#form-body-5-row .tovar-geo .select2-selection__rendered").text();
+console.log(tovar_emulator_4_row)

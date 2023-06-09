@@ -10,6 +10,7 @@
     transition: 0.5s;
     background-color: rgb(56, 68, 64);
     padding-bottom: 5em;
+    z-index: 1;
 }
 .side-bar.active {
     margin-left: -225px;

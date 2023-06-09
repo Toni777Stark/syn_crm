@@ -49,5 +49,9 @@ def index(request):
     return render(request, 'manager/index.html', data)
 
 
-def manager_test(request):
-    return render(request, 'manager-test/index.html')
+def refusals(request):
+    return render(request, 'refusals/index.html')
+
+
+def refunds(request):
+    return render(request, 'refunds/index.html')

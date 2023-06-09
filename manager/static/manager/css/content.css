@@ -3,24 +3,6 @@
     display: flex;
     grid-gap: 5px;
 }
-/* content */
-.content-block {
-    display: flex;
-    flex-direction: column;
-    min-height: 98vh;
-
-
-    padding: 1.5em .3em 0em 1.5em;
-    transition: .5s;
-    grid-gap: 50px;
-    flex: 1;
-    margin-left: 225px;
-}
-.content-block.active-content-block {
-    transition: .5s;
-    margin-left: 0px;
-}
-
 
 /* hr styles */
 .form-body-add-tovar hr {
@@ -84,17 +66,6 @@ input, select
     padding-bottom: 0.5em;
 }
 
-.select2-container--default .select2-selection--single.prompt,
-.select2-container--default .select2-selection--multiple.prompt,
-.prompt {
-    border: 0.3px solid red;
-}
-
-.select2-container--default .select2-selection--single.done, 
-.select2-container--default .select2-selection--multiple.done,
-.done {
-    border: 0.3px solid green;
-}
 
 /* date */
 input[type="date" i]::-webkit-calendar-picker-indicator {
@@ -347,3 +318,17 @@ option[value="none"] {
 }
 
 
+
+/* valid */
+
+.select2-container--default .select2-selection--single.prompt,
+.select2-container--default .select2-selection--multiple.prompt,
+.prompt {
+    border: 0.3px solid rgb(249, 176, 176);
+}
+
+.select2-container--default .select2-selection--single.done, 
+.select2-container--default .select2-selection--multiple.done,
+.done {
+    border: 0.3px solid rgba(109, 162, 96, 0.575);
+}

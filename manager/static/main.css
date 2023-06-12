@@ -7,6 +7,9 @@
     --input-small-width: 11.5%;
     --input-big-width: 23.5%;
 }
+a, a:hover, a:focus, a:active {
+    color: unset;
+}
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */

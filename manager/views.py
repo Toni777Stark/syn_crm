@@ -4,6 +4,7 @@ from .models import Geo
 from .models import Exchanges
 from .models import Clients
 from .forms import OrdersForm
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -39,12 +40,18 @@ def index(request):
     exchanges = Exchanges.objects.all()
     clients = Clients.objects.all()
     form = OrdersForm()
+
+    paginator = Paginator(clients, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     data = {
         'orders': orders,
         'geos': geos,
         'exchanges': exchanges,
         'clients': clients,
-        'form': form
+        'form': form,
+        'page_obj': page_obj,
+        'page_max_page': paginator.num_pages
     }
     return render(request, 'manager/index.html', data)
 

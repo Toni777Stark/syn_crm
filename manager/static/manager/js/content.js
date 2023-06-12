@@ -130,6 +130,8 @@ function form_body_copy_4_row() { form_body_clone("#form-body-5-row", "#form-bod
 
 
 
+
+/*
 // Для обработчика форма
 // input value
 // кол-во
@@ -176,3 +178,4 @@ tovar_geo_3_row = $("#form-body-3-row .tovar-geo .select2-selection__rendered").
 tovar_geo_4_row = $("#form-body-4-row .tovar-geo .select2-selection__rendered").text();
 tovar_geo_5_row = $("#form-body-5-row .tovar-geo .select2-selection__rendered").text();
 console.log(tovar_emulator_4_row)
+*/

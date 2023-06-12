@@ -503,11 +503,9 @@
                 </div>
                 
                 <div>
-                {% for client in clients %}
-
-                    <h5>@{{ client.name }}</h5>
-
-                {% endfor %}
+                    {% for client in page_obj %}
+                    <h5>{{ client.tg }}</h5>
+                    {% endfor %}
                 </div>
                 
                 <div>
@@ -544,18 +542,26 @@
 
 
         <div class="form-list-btn mt-5">
-<!--                <i class="fa fa-backward" aria-hidden="true"></i>  -->
-            <i class="fa fa-angle-left" onclick="table_page_left()" aria-hidden="true"></i>
+			{% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">
+				<i class="fa fa-angle-left" onclick="table_page_left()" aria-hidden="true"></i>
+			</a>
+			{% endif %}
 
+			
             <h5 class="form-list-page-number">
                 Страница
-                <span id="table-page-number">1</span>
+                <span id="table-page-number">{{ page_obj.number }}</span>
                 Из
-                <span id="table-full-page">3</span>
+                <span id="table-full-page">{{ page_max_page }}</span>
             </h5>
 
-            <i class="fa fa-angle-right" onclick="table_page_right()" aria-hidden="true"></i>
-<!--                <i class="fa fa-forward" aria-hidden="true"></i> -->
+            
+			{% if page_obj.has_next %}
+			 <a href="?page={{ page_obj.next_page_number }}">
+				<i class="fa fa-angle-right" onclick="table_page_right()" aria-hidden="true"></i>
+			</a>
+			{% endif %}
         </div>
     </div>
 </form>

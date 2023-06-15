@@ -142,15 +142,15 @@ input::-webkit-datetime-edit {
 .form-body-add-tovar .form-body-block-input input  {
     width: inherit;
 }
-.form-body-add-tovar .form-body-block-input:nth-child(3),
-.form-body-add-tovar .form-body-block-input:nth-child(4) {
-    width: 80px;
-}
-.form-body-add-tovar .form-body-block-input:nth-child(2)
-{
+.birzha-name {
     width: 250px;
 }
-
+.kolvo, .summa {
+    width: 80px;
+}
+.tovar-rezident {
+    width: 150px;
+}
 
 
 
@@ -280,9 +280,22 @@ option[value="none"] {
     display: flex;
     width: 100%;
     grid-gap: 5px;
+    user-select: none;
 }
 .form-table-name h5 {
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
     width: 100%;
+    cursor: pointer;
+}
+.form-table-name h5 i {
+    display: none;
+    color: rgb(71, 71, 71);
+    margin-top: 5px;
+}
+.form-table-name h5 i.active {
+    display: inline-block;
 }
 .form-table {
     display: flex;
@@ -324,11 +337,11 @@ option[value="none"] {
 .select2-container--default .select2-selection--single.prompt,
 .select2-container--default .select2-selection--multiple.prompt,
 .prompt {
-    border: 0.3px solid rgb(249, 176, 176);
+    border: 0.3px solid rgb(246, 148, 148);
 }
 
 .select2-container--default .select2-selection--single.done, 
 .select2-container--default .select2-selection--multiple.done,
 .done {
-    border: 0.3px solid rgba(109, 162, 96, 0.575);
+    border: 0.3px solid rgba(64, 120, 50, 0.575);
 }

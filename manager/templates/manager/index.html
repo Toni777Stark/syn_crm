@@ -53,16 +53,7 @@
                 {{form.client}}
                 <span class="pop-window-open-btn fa fa-plus" onclick="addclient_show()"></span>
             </div>
-
-<!--            <div class="form-body-block-input">-->
-<!--                <select name="client-lang">-->
-<!--                        <option value="none">Язык</option>-->
-<!--                        <option value="rus">Русский</option>-->
-<!--                        <option value="ua">Украинский</option>-->
-<!--                        <option value="eng">Английский</option>-->
-<!--                </select>-->
-<!--            </div>-->
-
+            
             <div class="form-body-block-input">
                 {{form.deadline}}
             </div>
@@ -84,19 +75,19 @@
 
                         <h5>#1</h5>
                         <div class="form-body-block-input pidel-input birzha-name">
-                            {{form.exchange1}}
                             <span data-name="add-btn" class="pop-window-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
+                            {{form.exchange1}}
                         </div>
 
                         <div class="form-body-block-input summa">
                             <input type="number" placeholder="Цена" maxlength="8"
-                            oninput="onChange__form(this.value);">
+                            oninput="onChange__form();">
                         </div>
 
 
                         <div class="form-body-block-input kolvo">
                             <input type="number" placeholder="Кол-во" maxlength="8"
-                            oninput="onChange__form(this.value);">
+                            oninput="onChange__form();">
                         </div>
 
                         <div class="form-body-block-input comment">
@@ -132,6 +123,15 @@
                             </select>
                         </div>
 
+                        <div class="form-body-block-input tovar-rezident">
+                            <select name="tovar-rezident">
+                                <option value="none" default>Резидент</option>
+                                {% for geo in geos %}
+                                <option value="tovar-geo" default>{{ geo.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
                         <div class="form-body-block-input tovar-geo">
                             <select name="tovar-geo" multiple data-maximum-selection-length="2">
                                 {% for geo in geos %}
@@ -140,15 +140,13 @@
                             </select>
                         </div>
 
-                        <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_copy_1_row()"
-                        title="Кликните чтобы скопировать все выбранные вариант на следующую строку."></i>
-
             </div>
             <div class="form-body-row" id="form-body-2-row">
             
 
                     <h5>#2</h5>
-                    <div class="form-body-block-input birzha-name">
+                    <div class="form-body-block-input birzha-name pidel-input">
+                        <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-2-row', '#form-body-1-row')"></i>
                         <select name="birzha-name">
                                 <option value="none">Биржа</option>
                             {% for exchange in exchanges %}
@@ -159,13 +157,13 @@
 
                     <div class="form-body-block-input summa">
                         <input type="number" placeholder="Цена" maxlength="8"
-                        oninput="onChange__form(this.value);">
+                        oninput="onChange__form();">
                     </div>
 
 
                     <div class="form-body-block-input kolvo">
                         <input type="number" placeholder="Кол-во" maxlength="8"
-                        oninput="onChange__form(this.value);">
+                        oninput="onChange__form();">
                     </div>
 
                     <div class="form-body-block-input input-block comment">
@@ -200,6 +198,15 @@
                         </select>
                     </div>
 
+                    <div class="form-body-block-input tovar-rezident">
+                        <select name="tovar-rezident">
+                            <option value="none" default>Резидент</option>
+                            {% for geo in geos %}
+                            <option value="tovar-geo" default>{{ geo.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
                     <div class="form-body-block-input tovar-geo">
                         <select name="tovar-geo" multiple data-maximum-selection-length="2">
                             {% for geo in geos %}
@@ -208,15 +215,13 @@
                         </select>
                     </div>
 
-                    <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_copy_2_row()"
-                    title="Кликните чтобы скопировать все выбранные вариант на следующую строку."></i>
-
             </div>
             <div class="form-body-row" id="form-body-3-row">
             
 
                 <h5>#3</h5>
-                <div class="form-body-block-input birzha-name">
+                <div class="form-body-block-input birzha-name pidel-input">
+                    <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-3-row', '#form-body-2-row')"></i>
                     <select name="birzha-name">
                             <option value="none">Биржа</option>
                         {% for exchange in exchanges %}
@@ -227,13 +232,13 @@
 
                 <div class="form-body-block-input summa">
                     <input type="number" placeholder="Цена" maxlength="8"
-                    oninput="onChange__form(this.value);">
+                    oninput="onChange__form();">
                 </div>
 
 
                 <div class="form-body-block-input kolvo">
                     <input type="number" placeholder="Кол-во" maxlength="8"
-                    oninput="onChange__form(this.value);">
+                    oninput="onChange__form();">
                 </div>
 
                 <div class="form-body-block-input input-block comment">
@@ -268,6 +273,15 @@
                     </select>
                 </div>
 
+                <div class="form-body-block-input tovar-rezident">
+                    <select name="tovar-rezident">
+                        <option value="none" default>Резидент</option>
+                        {% for geo in geos %}
+                        <option value="tovar-geo" default>{{ geo.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
                 <div class="form-body-block-input tovar-geo">
                     <select name="tovar-geo" multiple data-maximum-selection-length="2">
                         {% for geo in geos %}
@@ -275,15 +289,13 @@
                         {% endfor %}
                     </select>
                 </div>
-
-                <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_copy_3_row()"
-                title="Кликните чтобы скопировать все выбранные вариант на следующую строку."></i>
 
             </div>
             <div class="form-body-row" id="form-body-4-row">
 
                 <h5>#4</h5>
-                <div class="form-body-block-input birzha-name">
+                <div class="form-body-block-input birzha-name pidel-input">
+                    <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-4-row', '#form-body-3-row')"></i>
                     <select name="birzha-name">
                             <option value="none">Биржа</option>
                         {% for exchange in exchanges %}
@@ -294,13 +306,13 @@
 
                 <div class="form-body-block-input summa">
                     <input type="number" placeholder="Цена" maxlength="8"
-                    oninput="onChange__form(this.value);">
+                    oninput="onChange__form();">
                 </div>
 
 
                 <div class="form-body-block-input kolvo">
                     <input type="number" placeholder="Кол-во" maxlength="8"
-                    oninput="onChange__form(this.value);">
+                    oninput="onChange__form();">
                 </div>
 
                 <div class="form-body-block-input input-block comment">
@@ -335,6 +347,15 @@
                     </select>
                 </div>
 
+                <div class="form-body-block-input tovar-rezident">
+                    <select name="tovar-rezident">
+                        <option value="none" default>Резидент</option>
+                        {% for geo in geos %}
+                        <option value="tovar-geo" default>{{ geo.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
                 <div class="form-body-block-input tovar-geo">
                     <select name="tovar-geo" multiple data-maximum-selection-length="2">
                         {% for geo in geos %}
@@ -342,17 +363,14 @@
                         {% endfor %}
                     </select>
                 </div>
-
-                <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_copy_4_row()"
-                title="Кликните чтобы скопировать все выбранные вариант на следующую строку."></i>
-
             </div>
 
             <div class="form-body-row" id="form-body-5-row">
             
 
                 <h5>#5</h5>
-                <div class="form-body-block-input birzha-name">
+                <div class="form-body-block-input birzha-name pidel-input">
+                    <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-5-row', '#form-body-4-row')"></i>
                     <select name="birzha-name">
                             <option value="none">Биржа</option>
                         {% for exchange in exchanges %}
@@ -363,13 +381,13 @@
 
                 <div class="form-body-block-input summa">
                     <input type="number" placeholder="Цена" maxlength="8"
-                    oninput="onChange__form(this.value);">
+                    oninput="onChange__form();">
                 </div>
 
 
                 <div class="form-body-block-input kolvo">
                     <input type="number" placeholder="Кол-во" maxlength="8"
-                    oninput="onChange__form(this.value);">
+                    oninput="onChange__form();">
                 </div>
 
                 <div class="form-body-block-input input-block comment">
@@ -404,6 +422,15 @@
                     </select>
                 </div>
 
+                <div class="form-body-block-input tovar-rezident">
+                    <select name="tovar-rezident">
+                        <option value="none" default>Резидент</option>
+                        {% for geo in geos %}
+                        <option value="tovar-geo" default>{{ geo.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
                 <div class="form-body-block-input tovar-geo">
                     <select name="tovar-geo" multiple data-maximum-selection-length="2">
                         {% for geo in geos %}
@@ -411,10 +438,6 @@
                         {% endfor %}
                     </select>
                 </div>
-
-                <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_copy_5_row()"
-                title="Кликните чтобы скопировать все выбранные вариант на следующую строку."></i>
-
             </div>
 
 
@@ -437,7 +460,11 @@
                 {{ form.bundle.label }}</label>
         </div>
 
+        {% if error %}
+        <h6 class="btn-add-zakaz-lower error">{{ error }}</h6>
+        {% else %}
         <h6 class="btn-add-zakaz-lower">Форма была добавлена!</h6>
+        {% endif %}
     </div>
 
 
@@ -448,12 +475,12 @@
 
         <div class="form-list-zakazi">
             <div class="form-table-name mb-2">
-                <h5>Номер заказа</h5>
-                <h5>Дата</h5>
-                <h5>Срок</h5>
-                <h5>Клиент</h5>
-                <h5>Сумма</h5>
-                <h5>Статус</h5>
+                <h5>Номер заказа<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Дата<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Срок<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Клиент<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Сумма<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Статус<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
             </div>
 
 
@@ -544,7 +571,7 @@
         <div class="form-list-btn mt-5">
 			{% if page_obj.has_previous %}
             <a href="?page={{ page_obj.previous_page_number }}">
-				<i class="fa fa-angle-left" onclick="table_page_left()" aria-hidden="true"></i>
+				<i class="fa fa-angle-left" aria-hidden="true"></i>
 			</a>
 			{% endif %}
 
@@ -559,7 +586,7 @@
             
 			{% if page_obj.has_next %}
 			 <a href="?page={{ page_obj.next_page_number }}">
-				<i class="fa fa-angle-right" onclick="table_page_right()" aria-hidden="true"></i>
+				<i class="fa fa-angle-right"  aria-hidden="true"></i>
 			</a>
 			{% endif %}
         </div>

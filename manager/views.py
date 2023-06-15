@@ -51,7 +51,9 @@ def index(request):
         'clients': clients,
         'form': form,
         'page_obj': page_obj,
-        'page_max_page': paginator.num_pages
+        'page_max_page': paginator.num_pages,
+
+        'error': error,
     }
     return render(request, 'manager/index.html', data)
 

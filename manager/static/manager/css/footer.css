@@ -6,4 +6,5 @@ footer h5 {
     font-size: 15px;
     color: rgb(84, 84, 84);
     font-weight: 400;
+    user-select: none;
 }

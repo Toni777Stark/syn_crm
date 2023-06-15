@@ -83,6 +83,7 @@ input::-webkit-datetime-edit {
     grid-gap: 15px;
     margin-left: .5em;
     flex-wrap: wrap;
+    user-select: none;
 }
 .form-body-row {
     display: flex;
@@ -153,8 +154,6 @@ input::-webkit-datetime-edit {
 }
 
 
-
-
 /* СВЯЗКА */
 .body-form-block-btn, .body-form-block-btn .df {
     display: flex;
@@ -202,6 +201,7 @@ input::-webkit-datetime-edit {
     display: flex;
     justify-content: center;
     width: 100%;
+    user-select: none;
 }
 .body-form-block-summa h4 {
     text-decoration:underline;
@@ -213,7 +213,9 @@ input::-webkit-datetime-edit {
     text-align: center;
     line-height: 0;
 }
-
+#form_summa_vivod {
+    user-select: all;
+}
 
 
 
@@ -245,6 +247,7 @@ option[value="none"] {
 .form-list-zakazi-name {
     width: 100%;
     text-align: left;
+    user-select: none;
 }
 
 .form-list-zakazi {
@@ -296,6 +299,7 @@ option[value="none"] {
     display: flex;
     grid-gap: 20px;
     align-items: center;
+    user-select: none;
 }
 .form-list-page-number {
     margin-bottom: 5px;

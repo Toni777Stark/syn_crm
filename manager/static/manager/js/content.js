@@ -28,8 +28,7 @@ function addbirzh_close() {
 
 
 /* summa */
-
-const oninput_form = $('.form-body-block-input').on('input', $('.form-body-row'), function () {
+function onChange__form() {
     const form_summa_vivod = document.querySelector('#form_summa_vivod')
     const kolvo_1_row = document.querySelector('#form-body-1-row .kolvo input');
     const summa_1_row = document.querySelector('#form-body-1-row .summa input');
@@ -51,7 +50,10 @@ const oninput_form = $('.form-body-block-input').on('input', $('.form-body-row')
     const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row  
 
     form_summa_vivod.innerHTML= form__summa;
-});
+    $('.form-body-block-input').on('input', $('.form-body-row'), function () {
+        onChange__form
+    });
+}
 
 /* select2 */
 $(document).ready(function () {
@@ -72,15 +74,25 @@ $(document).ready(function () {
 const label_toggle_btn = document.getElementById("form-body-label-btn");
 label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.toggle("active"));
 
-
-const select_check = $('.form-body-block-input').on('select2:select', $('.form-body-row') , function () {
-    $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
-    $(this).find('.select2-selection').addClass('done');
+const select_check = $('.form-body-block-input').on('select2:select', $('.form-body-row') , function (e) {
+    if (e.params.data.id == "none") {
+        $(this).siblings().find('input, .select2-selection').removeClass('prompt').removeAttr('required', '');
+        $(this).find('.select2-selection').removeClass('done');
+    } else {
+        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).find('.select2-selection').addClass('done');
+    }
 });
 
+
 const input_check = $('.form-body-block-input').on('input', $('.form-body-row'), function () {
-    $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
-    $(this).find('input').addClass('done');
+    if ($(this).find('input').val() >= 1) {
+        $(this).find('input').addClass('done')
+        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+    } else {
+        $(this).find('input').removeClass('done')
+        $(this).siblings().find('input, .select2-selection').removeClass('prompt').removeAttr('required');
+    }
 });
 
 function form_body_clone(form_body_row_append, form_body_row_copy) {

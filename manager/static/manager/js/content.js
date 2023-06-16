@@ -1,5 +1,5 @@
 $(".comment input").attr("id", "")
-
+$(".birzha-name select option:first-child").attr("value", "none")
 
 const addclient = document.getElementById("pop-add-client")
 const addbirzh = document.getElementById("pop-add-birzh")
@@ -23,10 +23,6 @@ function addbirzh_close() {
     addbirzh.classList.remove('active')
     body.classList.remove('none-scroll')
 }
-
-
-
-
 /* summa */
 function onChange__form() {
     const form_summa_vivod = document.querySelector('#form_summa_vivod')
@@ -69,15 +65,35 @@ $(document).ready(function () {
     })
 });
 
-
 /* Связка */
 const label_toggle_btn = document.getElementById("form-body-label-btn");
 label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.toggle("active"));
 
-const select_check = $('.form-body-block-input').on('select2:select', $('.form-body-row') , function (e) {
+
+$('.form-body-block-input').on('select2:unselect', $('.form-body-row') , function () {
+    if ($(".select2-selection__rendered .select2-selection__choice").length == 0 ) {
+        if ($(".form-body-row").siblings().find('.done').length > 1) {
+            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).find('.select2-selection').removeClass('done');
+        } else {
+            $(this).siblings().find('input, .select2-selection').removeClass('done prompt')
+            $(this).find('.select2-selection').removeClass('done prompt');
+        }
+    } else {
+        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).find('.select2-selection').addClass('done');
+    }
+});
+
+$('.form-body-block-input').on('select2:select', $('.form-body-row') , function (e) {
     if (e.params.data.id == "none") {
-        $(this).siblings().find('input, .select2-selection').removeClass('prompt').removeAttr('required', '');
-        $(this).find('.select2-selection').removeClass('done');
+        if ($(".form-body-row").siblings().find('.done').length > 1) {
+            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).find('.select2-selection').removeClass('done');
+        } else {
+            $(this).siblings().find('input, .select2-selection').removeClass('prompt')
+            $(this).find('.select2-selection').removeClass('done prompt');
+        }
     } else {
         $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
         $(this).find('.select2-selection').addClass('done');
@@ -85,13 +101,18 @@ const select_check = $('.form-body-block-input').on('select2:select', $('.form-b
 });
 
 
-const input_check = $('.form-body-block-input').on('input', $('.form-body-row'), function () {
-    if ($(this).find('input').val() >= 1) {
-        $(this).find('input').addClass('done')
-        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+$('.form-body-block-input').on('input', $('.form-body-row'), function () {
+    if ($(this).find('input').val() == "") {
+        if ($(".form-body-row").siblings().find('.done').length > 1) {
+            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).find('input').removeClass('done');
+        } else {
+            $(this).siblings().find('input, .select2-selection').removeClass('prompt')
+            $(this).find('input').removeClass('done prompt');
+        }
     } else {
-        $(this).find('input').removeClass('done')
-        $(this).siblings().find('input, .select2-selection').removeClass('prompt').removeAttr('required');
+        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).find('input').addClass('done');
     }
 });
 

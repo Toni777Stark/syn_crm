@@ -31,7 +31,7 @@ def index(request):
             mail_type1 = form.cleaned_data['mail_type1']
             type_of_number1 = form.cleaned_data['type_of_number1']
             emulator1 = form.cleaned_data['emulator1']
-            print(manager, client, comment1)
+            print(manager, client, comment1, geo1, resident1)
         else:
             error = 'Не верно заполнил'
 

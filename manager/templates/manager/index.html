@@ -80,14 +80,12 @@
                         </div>
 
                         <div class="form-body-block-input summa">
-                            <input type="number" placeholder="Цена" maxlength="8"
-                            oninput="onChange__form();">
+                            {{form.price1}}
                         </div>
 
 
                         <div class="form-body-block-input kolvo">
-                            <input type="number" placeholder="Кол-во" maxlength="8"
-                            oninput="onChange__form();">
+                            {{form.quantity1}}
                         </div>
 
                         <div class="form-body-block-input comment">
@@ -124,20 +122,11 @@
                         </div>
 
                         <div class="form-body-block-input tovar-rezident">
-                            <select name="tovar-rezident">
-                                <option value="none" default>Резидент</option>
-                                {% for geo in geos %}
-                                <option value="tovar-geo" default>{{ geo.name }}</option>
-                                {% endfor %}
-                            </select>
+                            {{ form.resident1 }}
                         </div>
 
                         <div class="form-body-block-input tovar-geo">
-                            <select name="tovar-geo" multiple data-maximum-selection-length="2">
-                                {% for geo in geos %}
-                                <option value="tovar-geo" default>{{ geo.name }}</option>
-                                {% endfor %}
-                            </select>
+                            {{ form.geo1 }}
                         </div>
 
             </div>

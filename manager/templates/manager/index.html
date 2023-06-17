@@ -72,364 +72,210 @@
         <h2 class="name-block-input" style="margin-top: 1em;">Товар</h2>
         <div class="form-body-row-block">
             <div class="form-body-row" id="form-body-1-row">
+                <h5>#1</h5>
+                <span data-name="add-btn" class="pop-window-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
+                <div class="form-body-block-input birzha-name">
+                    {{form.exchange1}}
+                </div>
 
-                        <h5>#1</h5>
-                        <span data-name="add-btn" class="pop-window-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
-                        <div class="form-body-block-input birzha-name">
-                            {{form.exchange1}}
-                        </div>
-
-                        <div class="form-body-block-input summa">
-                            {{form.price1}}
-                        </div>
+                <div class="form-body-block-input summa">
+                    {{form.price1}}
+                </div>
 
 
-                        <div class="form-body-block-input kolvo">
-                            {{form.quantity1}}
-                        </div>
+                <div class="form-body-block-input kolvo">
+                    {{form.quantity1}}
+                </div>
 
-                        <div class="form-body-block-input comment">
-<!--                            <input type="text" placeholder="Коментарий" maxlength="250">-->
-                            {{form.comment1}}
-                        </div>
+                <div class="form-body-block-input comment">
+                    {{form.comment1}}
+                </div>
 
-                        <div class="form-body-block-input type-email">
-                            <select name="tovar-type-email">
-                                <option value="none">Тип почты</option>
-                                <option value="gmail">@gmail.com</option>
-                                <option value="yandex">@yandex.ru</option>
-                                <option value="mail">@mail.ru</option>
-                            </select>
-                        </div>
+                <div class="form-body-block-input type-email">
+                    {{ form.mail1 }}
+                </div>
 
-                        <div class="form-body-block-input type-number">
-                            <select name="tovar-type-number">
-                                <option value="none">Тип телефона</option>
-                                <option value="+7">+7</option>
-                                <option value="+380">+380</option>
-                                <option value="+111">+111</option>
-                                <option value="+123">+123</option>
-                            </select>
-                        </div>
+                <div class="form-body-block-input type-number">
+                    {{ form.number1 }}
+                </div>
 
-                        <div class="form-body-block-input tovar-emulator">
-                            <select name="tovar-emulator">
-                                <option value="none">Эмулятор</option>
-                                <option value="BlueStacks">BlueStacks</option>
-                                <option value="NoxPlayer">NoxPlayer</option>
-                                <option value="MedaiaPlayer">MedaiaPlayer</option>
-                            </select>
-                        </div>
+                <div class="form-body-block-input tovar-emulator">
+                    {{ form.emulator1 }}
+                </div>
 
-                        <div class="form-body-block-input tovar-rezident">
-                            {{ form.resident1 }}
-                        </div>
+                <div class="form-body-block-input tovar-rezident">
+                    {{ form.resident1 }}
+                </div>
 
-                        <div class="form-body-block-input tovar-geo">
-                            {{ form.geo1 }}
-                        </div>
+                <div class="form-body-block-input tovar-geo">
+                    {{ form.geo1 }}
+                </div>
 
             </div>
+
             <div class="form-body-row" id="form-body-2-row">
-            
+                <h5>#2</h5>
+                <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-2-row', '#form-body-1-row')"></i>
+                <div class="form-body-block-input birzha-name">
+                    {{form.exchange2}}
+                </div>
 
-                    <h5>#2</h5>
-                    <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-2-row', '#form-body-1-row')"></i>
-                    <div class="form-body-block-input birzha-name">
-                        <select name="birzha-name">
-                                <option value="none">Биржа</option>
-                            {% for exchange in exchanges %}
-                                <option value="{{ exchange.name }}">{{ exchange.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
-                    <div class="form-body-block-input summa">
-                        <input type="number" placeholder="Цена" maxlength="8"
-                        oninput="onChange__form();">
-                    </div>
+                <div class="form-body-block-input summa">
+                    {{form.price2}}
+                </div>
 
 
-                    <div class="form-body-block-input kolvo">
-                        <input type="number" placeholder="Кол-во" maxlength="8"
-                        oninput="onChange__form();">
-                    </div>
+                <div class="form-body-block-input kolvo">
+                    {{form.quantity2}}
+                </div>
 
-                    <div class="form-body-block-input input-block comment">
-                        <input type="text" placeholder="Коментарий" maxlength="250">
-                    </div>
+                <div class="form-body-block-input comment">
+                    {{form.comment2}}
+                </div>
 
-                    <div class="form-body-block-input type-email">
-                        <select name="tovar-type-email">
-                            <option value="none">Тип почты</option>
-                            <option value="gmail">@gmail.com</option>
-                            <option value="yandex">@yandex.ru</option>
-                            <option value="mail">@mail.ru</option>
-                        </select>
-                    </div>
+                <div class="form-body-block-input type-email">
+                    {{ form.mail2 }}
+                </div>
 
-                    <div class="form-body-block-input type-number">
-                        <select name="tovar-type-number">
-                            <option value="none">Тип телефона</option>
-                            <option value="+7">+7</option>
-                            <option value="+380">+380</option>
-                            <option value="+111">+111</option>
-                            <option value="+123">+123</option>
-                        </select>
-                    </div>
+                <div class="form-body-block-input type-number">
+                    {{ form.number2 }}
+                </div>
 
-                    <div class="form-body-block-input tovar-emulator">
-                        <select name="tovar-emulator">
-                            <option value="none">Эмулятор</option>
-                            <option value="BlueStacks">BlueStacks</option>
-                            <option value="NoxPlayer">NoxPlayer</option>
-                            <option value="MedaiaPlayer">MedaiaPlayer</option>
-                        </select>
-                    </div>
+                <div class="form-body-block-input tovar-emulator">
+                    {{ form.emulator2 }}
+                </div>
 
-                    <div class="form-body-block-input tovar-rezident">
-                        <select name="tovar-rezident">
-                            <option value="none" default>Резидент</option>
-                            {% for geo in geos %}
-                            <option value="tovar-geo" default>{{ geo.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+                <div class="form-body-block-input tovar-rezident">
+                    {{ form.resident2 }}
+                </div>
 
-                    <div class="form-body-block-input tovar-geo">
-                        <select name="tovar-geo" multiple data-maximum-selection-length="2">
-                            {% for geo in geos %}
-                            <option value="tovar-geo" default>{{ geo.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
+                <div class="form-body-block-input tovar-geo">
+                    {{ form.geo2 }}
+                </div>
             </div>
-            <div class="form-body-row" id="form-body-3-row">
-            
 
+            <div class="form-body-row" id="form-body-3-row">
                 <h5>#3</h5>
                 <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-3-row', '#form-body-2-row')"></i>
                 <div class="form-body-block-input birzha-name">
-                    <select name="birzha-name">
-                            <option value="none">Биржа</option>
-                        {% for exchange in exchanges %}
-                            <option value="{{ exchange.name }}">{{ exchange.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{form.exchange3}}
                 </div>
 
                 <div class="form-body-block-input summa">
-                    <input type="number" placeholder="Цена" maxlength="8"
-                    oninput="onChange__form();">
+                    {{form.price3}}
                 </div>
 
 
                 <div class="form-body-block-input kolvo">
-                    <input type="number" placeholder="Кол-во" maxlength="8"
-                    oninput="onChange__form();">
+                    {{form.quantity3}}
                 </div>
 
-                <div class="form-body-block-input input-block comment">
-                    <input type="text" placeholder="Коментарий" maxlength="250">
+                <div class="form-body-block-input comment">
+                    {{form.comment3}}
                 </div>
 
                 <div class="form-body-block-input type-email">
-                    <select name="tovar-type-email">
-                        <option value="none">Тип почты</option>
-                        <option value="gmail">@gmail.com</option>
-                        <option value="yandex">@yandex.ru</option>
-                        <option value="mail">@mail.ru</option>
-                    </select>
+                    {{ form.mail3 }}
                 </div>
 
                 <div class="form-body-block-input type-number">
-                    <select name="tovar-type-number">
-                        <option value="none">Тип телефона</option>
-                        <option value="+7">+7</option>
-                        <option value="+380">+380</option>
-                        <option value="+111">+111</option>
-                        <option value="+123">+123</option>
-                    </select>
+                    {{ form.number3 }}
                 </div>
 
                 <div class="form-body-block-input tovar-emulator">
-                    <select name="tovar-emulator">
-                        <option value="none">Эмулятор</option>
-                        <option value="BlueStacks">BlueStacks</option>
-                        <option value="NoxPlayer">NoxPlayer</option>
-                        <option value="MedaiaPlayer">MedaiaPlayer</option>
-                    </select>
+                    {{ form.emulator3 }}
                 </div>
 
                 <div class="form-body-block-input tovar-rezident">
-                    <select name="tovar-rezident">
-                        <option value="none" default>Резидент</option>
-                        {% for geo in geos %}
-                        <option value="tovar-geo" default>{{ geo.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form.resident3 }}
                 </div>
 
                 <div class="form-body-block-input tovar-geo">
-                    <select name="tovar-geo" multiple data-maximum-selection-length="2">
-                        {% for geo in geos %}
-                        <option value="tovar-geo" default>{{ geo.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form.geo3 }}
                 </div>
-
             </div>
-            <div class="form-body-row" id="form-body-4-row">
 
+            <div class="form-body-row" id="form-body-4-row">
                 <h5>#4</h5>
                 <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-4-row', '#form-body-3-row')"></i>
                 <div class="form-body-block-input birzha-name">
-                    <select name="birzha-name">
-                            <option value="none">Биржа</option>
-                        {% for exchange in exchanges %}
-                            <option value="{{ exchange.name }}">{{ exchange.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{form.exchange4}}
                 </div>
 
                 <div class="form-body-block-input summa">
-                    <input type="number" placeholder="Цена" maxlength="8"
-                    oninput="onChange__form();">
+                    {{form.price4}}
                 </div>
 
 
                 <div class="form-body-block-input kolvo">
-                    <input type="number" placeholder="Кол-во" maxlength="8"
-                    oninput="onChange__form();">
+                    {{form.quantity4}}
                 </div>
 
-                <div class="form-body-block-input input-block comment">
-                    <input type="text" placeholder="Коментарий" maxlength="250">
+                <div class="form-body-block-input comment">
+                    {{form.comment4}}
                 </div>
 
                 <div class="form-body-block-input type-email">
-                    <select name="tovar-type-email">
-                        <option value="none">Тип почты</option>
-                        <option value="gmail">@gmail.com</option>
-                        <option value="yandex">@yandex.ru</option>
-                        <option value="mail">@mail.ru</option>
-                    </select>
+                    {{ form.mail4 }}
                 </div>
 
                 <div class="form-body-block-input type-number">
-                    <select name="tovar-type-number">
-                        <option value="none">Тип телефона</option>
-                        <option value="+7">+7</option>
-                        <option value="+380">+380</option>
-                        <option value="+111">+111</option>
-                        <option value="+123">+123</option>
-                    </select>
+                    {{ form.number4 }}
                 </div>
 
                 <div class="form-body-block-input tovar-emulator">
-                    <select name="tovar-emulator">
-                        <option value="none">Эмулятор</option>
-                        <option value="BlueStacks">BlueStacks</option>
-                        <option value="NoxPlayer">NoxPlayer</option>
-                        <option value="MedaiaPlayer">MedaiaPlayer</option>
-                    </select>
+                    {{ form.emulator4 }}
                 </div>
 
                 <div class="form-body-block-input tovar-rezident">
-                    <select name="tovar-rezident">
-                        <option value="none" default>Резидент</option>
-                        {% for geo in geos %}
-                        <option value="tovar-geo" default>{{ geo.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form.resident4 }}
                 </div>
 
                 <div class="form-body-block-input tovar-geo">
-                    <select name="tovar-geo" multiple data-maximum-selection-length="2">
-                        {% for geo in geos %}
-                        <option value="tovar-geo" default>{{ geo.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form.geo4 }}
                 </div>
             </div>
 
             <div class="form-body-row" id="form-body-5-row">
-            
-
                 <h5>#5</h5>
                 <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-5-row', '#form-body-4-row')"></i>
                 <div class="form-body-block-input birzha-name">
-                    <select name="birzha-name">
-                            <option value="none">Биржа</option>
-                        {% for exchange in exchanges %}
-                            <option value="{{ exchange.name }}">{{ exchange.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{form.exchange5}}
                 </div>
 
                 <div class="form-body-block-input summa">
-                    <input type="number" placeholder="Цена" maxlength="8"
-                    oninput="onChange__form();">
+                    {{form.price5}}
                 </div>
 
 
                 <div class="form-body-block-input kolvo">
-                    <input type="number" placeholder="Кол-во" maxlength="8"
-                    oninput="onChange__form();">
+                    {{form.quantity5}}
                 </div>
 
-                <div class="form-body-block-input input-block comment">
-                    <input type="text" placeholder="Коментарий" maxlength="250">
+                <div class="form-body-block-input comment">
+                    {{form.comment5}}
                 </div>
 
                 <div class="form-body-block-input type-email">
-                    <select name="tovar-type-email">
-                        <option value="none">Тип почты</option>
-                        <option value="gmail">@gmail.com</option>
-                        <option value="yandex">@yandex.ru</option>
-                        <option value="mail">@mail.ru</option>
-                    </select>
+                    {{ form.mail5 }}
                 </div>
 
                 <div class="form-body-block-input type-number">
-                    <select name="tovar-type-number">
-                        <option value="none">Тип телефона</option>
-                        <option value="+7">+7</option>
-                        <option value="+380">+380</option>
-                        <option value="+111">+111</option>
-                        <option value="+123">+123</option>
-                    </select>
+                    {{ form.number5 }}
                 </div>
 
                 <div class="form-body-block-input tovar-emulator">
-                    <select name="tovar-emulator">
-                        <option value="none">Эмулятор</option>
-                        <option value="BlueStacks">BlueStacks</option>
-                        <option value="NoxPlayer">NoxPlayer</option>
-                        <option value="MedaiaPlayer">MedaiaPlayer</option>
-                    </select>
+                    {{ form.emulator5 }}
                 </div>
 
                 <div class="form-body-block-input tovar-rezident">
-                    <select name="tovar-rezident">
-                        <option value="none" default>Резидент</option>
-                        {% for geo in geos %}
-                        <option value="tovar-geo" default>{{ geo.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form.resident5 }}
                 </div>
 
                 <div class="form-body-block-input tovar-geo">
-                    <select name="tovar-geo" multiple data-maximum-selection-length="2">
-                        {% for geo in geos %}
-                        <option value="tovar-geo" default>{{ geo.name }}</option>
-                        {% endfor %}
-                    </select>
+                    {{ form.geo5 }}
                 </div>
             </div>
-
-
         </div>
     </div>
 

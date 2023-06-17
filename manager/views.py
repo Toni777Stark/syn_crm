@@ -1,8 +1,5 @@
 from django.shortcuts import render
-from .models import Orders
-from .models import Geo
-from .models import Exchanges
-from .models import Clients
+from .models import Orders, Geo, Exchanges, Clients, Products
 from .forms import OrdersForm
 from django.core.paginator import Paginator
 
@@ -13,6 +10,7 @@ def index(request):
         form = OrdersForm(request.POST)
         if form.is_valid():
             manager = request.user
+            print(manager)
             client = form.cleaned_data['client']
             summ = request.POST.get('summ')
             deadline = form.cleaned_data['deadline']
@@ -20,20 +18,29 @@ def index(request):
             bundle = form.cleaned_data['bundle']
             order = Orders(manager=manager, client=client, summ=summ, deadline=deadline, priority=priority,
                            bundle=bundle, order_type="Дежурному отгрузить со склада")
-            # order.save()
-            # order_id = order.pk
-            comment1 = form.cleaned_data['comment1']
-            exchange1 = form.cleaned_data['exchange1']
-            price1 = form.cleaned_data['price1']
-            quantity1 = form.cleaned_data['quantity1']
-            geo1 = form.cleaned_data['geo1']
-            resident1 = form.cleaned_data['resident1']
-            mail_type1 = form.cleaned_data['mail_type1']
-            type_of_number1 = form.cleaned_data['type_of_number1']
-            emulator1 = form.cleaned_data['emulator1']
-            print(manager, client, comment1, geo1, resident1)
+            order.save()
+            order_id = order.pk
+            if form.cleaned_data['comment1'] is not None:
+                comment1 = form.cleaned_data['comment1']
+                exchange1 = form.cleaned_data['exchange1']
+                price1 = form.cleaned_data['price1']
+                quantity1 = form.cleaned_data['quantity1']
+                geo1 = form.cleaned_data['geo1']
+                resident1 = form.cleaned_data['resident1']
+                mail_type1 = form.cleaned_data['mail_type1']
+                type_of_number1 = form.cleaned_data['type_of_number1']
+                emulator1 = form.cleaned_data['emulator1']
+                product1 = Products(order=order, comment=comment1, exchange=exchange1, price=price1, quantity=quantity1,
+                                    geo_id=geo1, resident=resident1, mail_type=mail_type1, type_of_number= type_of_number1,
+                                    emulator_id=emulator1)
+                product1.save()
+                print(manager, client, comment1, geo1, resident1)
         else:
             error = 'Не верно заполнил'
+            print(error)
+            for field, errors in form.errors.items():
+                for error in errors:
+                    print(f"Ошибка в поле '{field}': {error}")
 
     orders = Orders.objects.all()
     geos = Geo.objects.all()

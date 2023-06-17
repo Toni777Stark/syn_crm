@@ -15,6 +15,41 @@ class Geo(models.Model):
         verbose_name_plural = "Страны"
 
 
+class MailType(models.Model):
+    # Гео
+    name = models.CharField('Тип почты', max_length=250)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Тип почты"
+        verbose_name_plural = "Тип почт"
+
+
+class TypeOfNumber(models.Model):
+    # Гео
+    name = models.CharField('Тип номера', max_length=250)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Тип номера"
+        verbose_name_plural = "Тип номеров"
+
+
+class Emulator(models.Model):
+    # Гео
+    name = models.CharField('Эмулятор', max_length=250)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Эмулятор"
+        verbose_name_plural = "Эмуляторы"
+
 class Exchanges(models.Model):
     # Биржы
     name = models.CharField('Название', max_length=50, unique=True)
@@ -69,10 +104,10 @@ class Products(models.Model):
     # Товары
     order = models.ForeignKey(Orders, on_delete=models.CASCADE, related_name='product')
     comment = models.CharField('Коментарий', max_length=250)
-    exchange = models.ForeignKey(Exchanges, on_delete=models.CASCADE)
+    exchange = models.ForeignKey(Exchanges, verbose_name='Биржа', null=True, on_delete=models.CASCADE)
     price = models.IntegerField('Цена')
     quantity = models.IntegerField('Количество')
-    geo = models.ForeignKey(Geo, on_delete=models.PROTECT, related_name='geos')
+    geo_id = models.CharField('Гео', max_length=250)
     resident = models.ForeignKey(Geo, on_delete=models.PROTECT, related_name='residents')
     mail_type = models.CharField('Тип почты', max_length=250)
     type_of_number = models.CharField('Тип номера', max_length=250)

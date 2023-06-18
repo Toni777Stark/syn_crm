@@ -13,7 +13,6 @@
     margin-top: 0;
 }
 
-
 /* input and select style */
 input, select
 {
@@ -178,6 +177,11 @@ input::-webkit-datetime-edit {
     margin-top: -1em;
     transition: .7s;
 }
+.btn-add-zakaz-lower.active.error {
+    color: rgb(211, 8, 8);
+    margin-top: -1em;
+    transition: .7s;
+}
 .form-body-label-btn {
     color: var(--main-color);
     border-radius: 2.5px;
@@ -321,7 +325,7 @@ option[value="none"] {
     border: 0.3px solid rgb(246, 148, 148);
 }
 
-.select2-container--default .select2-selection--single.done, 
+.select2-container--default .select2-selection--single.done,
 .select2-container--default .select2-selection--multiple.done,
 .done {
     border: 0.3px solid rgba(64, 120, 50, 0.575);

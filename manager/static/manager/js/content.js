@@ -56,12 +56,14 @@ $(document).ready(function () {
 //change selectboxes to selectize mode to be searchable
     $('select').select2({
         language: "ru",
+        required: 'True'
     });
 
-    $('select[name="geo1"]').select2({
+    $('.tovar-geo select').select2({
         placeholder: 'ГЕО',
         closeOnSelect: false,
         language: "ru",
+        required: 'True',
     })
 });
 
@@ -70,51 +72,51 @@ const label_toggle_btn = document.getElementById("form-body-label-btn");
 label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.toggle("active"));
 
 
-//$('.form-body-block-input').on('select2:unselect', $('.form-body-row') , function () {
-//    if ($(".select2-selection__rendered .select2-selection__choice").length == 0 ) {
-//        if ($(".form-body-row").siblings().find('.done').length > 1) {
-//            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
-//            $(this).find('.select2-selection').removeClass('done');
-//        } else {
-//            $(this).siblings().find('input, .select2-selection').removeClass('done prompt')
-//            $(this).find('.select2-selection').removeClass('done prompt');
-//        }
-//    } else {
-//        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
-//        $(this).find('.select2-selection').addClass('done');
-//    }
-//});
-//
-//$('.form-body-block-input').on('select2:select', $('.form-body-row') , function (e) {
-//    if (e.params.data.id == "none") {
-//        if ($(".form-body-row").siblings().find('.done').length > 1) {
-//            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
-//            $(this).find('.select2-selection').removeClass('done');
-//        } else {
-//            $(this).siblings().find('input, .select2-selection').removeClass('prompt')
-//            $(this).find('.select2-selection').removeClass('done prompt');
-//        }
-//    } else {
-//        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
-//        $(this).find('.select2-selection').addClass('done');
-//    }
-//});
-//
-//
-//$('.form-body-block-input').on('input', $('.form-body-row'), function () {
-//    if ($(this).find('input').val() == "") {
-//        if ($(".form-body-row").siblings().find('.done').length > 1) {
-//            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
-//            $(this).find('input').removeClass('done');
-//        } else {
-//            $(this).siblings().find('input, .select2-selection').removeClass('prompt')
-//            $(this).find('input').removeClass('done prompt');
-//        }
-//    } else {
-//        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
-//        $(this).find('input').addClass('done');
-//    }
-//});
+$('.form-body-block-input').on('select2:unselect', $('.form-body-row') , function () {
+    if ($(".select2-selection__rendered .select2-selection__choice").length == 0 ) {
+        if ($(".form-body-row").siblings().find('.done').length > 1) {
+            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).find('.select2-selection').removeClass('done');
+        } else {
+            $(this).siblings().find('input, .select2-selection').removeClass('done prompt')
+            $(this).find('.select2-selection').removeClass('done prompt');
+        }
+    } else {
+        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).find('.select2-selection').addClass('done');
+    }
+});
+
+$('.form-body-block-input').on('select2:select', $('.form-body-row') , function (e) {
+    if (e.params.data.id == "none") {
+        if ($(".form-body-row").siblings().find('.done').length > 1) {
+            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).find('.select2-selection').removeClass('done');
+        } else {
+            $(this).siblings().find('input, .select2-selection').removeClass('prompt')
+            $(this).find('.select2-selection').removeClass('done prompt');
+        }
+    } else {
+        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).find('.select2-selection').addClass('done');
+    }
+});
+
+
+$('.form-body-block-input').on('input', $('.form-body-row'), function () {
+    if ($(this).find('input').val() == "") {
+        if ($(".form-body-row").siblings().find('.done').length > 1) {
+            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).find('input').removeClass('done');
+        } else {
+            $(this).siblings().find('input, .select2-selection').removeClass('prompt')
+            $(this).find('input').removeClass('done prompt');
+        }
+    } else {
+        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).find('input').addClass('done');
+    }
+});
 
 function form_body_clone(form_body_row_append, form_body_row_copy) {
     /* REMOVE */
@@ -173,6 +175,10 @@ function form_body_clone(form_body_row_append, form_body_row_copy) {
 
 
 $('.form-table-name h5').on('click', function(){
-    $('.form-table-name h5 i').removeClass('active');
-    $(this).find("i").addClass('active');
+    if ($(this).find('i').is('.active')) {
+        $(this).find("i").removeClass('active');
+    } else {
+        $('.form-table-name h5 i').removeClass('active');
+        $(this).find("i").addClass('active');
+    }
 });

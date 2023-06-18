@@ -49,7 +49,7 @@
         <h2 class="name-block-input">Новый заказ</h2>
         <div class="form-body-row">
 
-            <div class="form-body-block-input pidel-input">
+            <div class="form-body-block-input birzha-name pidel-input">
                 {{form.client}}
                 <span class="pop-window-open-btn fa fa-plus" onclick="addclient_show()"></span>
             </div>
@@ -288,8 +288,6 @@
         
         <div class="df">
             <button class="btn btn-primary btn-add-zakaz">Добавить заказ</button>
-<!--            <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">-->
-<!--            <label class="form-body-label-btn noselect" for="btn-check-2" id="form-body-label-btn">Связка</label>-->
             {{ form.bundle }}
             <label for="{{ form.bundle.id_for_label }}" class="form-body-label-btn noselect" id="form-body-label-btn">
                 {{ form.bundle.label }}</label>

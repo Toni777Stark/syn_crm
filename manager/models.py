@@ -109,7 +109,7 @@ class Products(models.Model):
     price = models.IntegerField('Цена')
     quantity = models.IntegerField('Количество')
     geo_id = models.CharField('Гео', max_length=250)
-    resident = models.ForeignKey(Geo, verbose_name='Гео', on_delete=models.PROTECT, related_name='residents')
+    resident = models.ForeignKey(Geo, verbose_name='Резидент', on_delete=models.PROTECT, related_name='residents')
     mail_type = models.CharField('Тип почты', max_length=250)
     type_of_number = models.CharField('Тип номера', max_length=250)
     emulator = models.CharField('Эмулятор', max_length=250)

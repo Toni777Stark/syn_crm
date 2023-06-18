@@ -26,7 +26,7 @@ class OrdersForm(forms.Form):
     mail1 = forms.ModelChoiceField(queryset=MailType.objects.all(), empty_label='Тип почты', required=False)
     number1 = forms.ModelChoiceField(queryset=TypeOfNumber.objects.all(), empty_label='Тип номера', required=False)
     emulator1 = forms.ModelChoiceField(queryset=Emulator.objects.all(), empty_label='Эмулятор', required=False)
-    geo1 = forms.ModelMultipleChoiceField(queryset=Geo.objects.all(), widget=CustomSelect, required=False)
+    geo1 = forms.ModelMultipleChoiceField(queryset=Geo.objects.all(), required=False)
     resident1 = forms.ModelChoiceField(queryset=Geo.objects.all(), empty_label='Резидент', required=False)
 
     comment2 = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Коментарий'}), required=False)

@@ -29,8 +29,6 @@ def index(request):
                 mail_type1 = form.cleaned_data['mail1']
                 type_of_number1 = form.cleaned_data['number1']
                 emulator1 = form.cleaned_data['emulator1']
-                for value in geo1:
-                    print(value)
                 # product1 = Products(order=order, comment=comment1, exchange=exchange1, price=price1, quantity=quantity1,
                 #                     geo_id=geo1, resident=resident1, mail_type=mail_type1, type_of_number=type_of_number1,
                 #                     emulator=emulator1)

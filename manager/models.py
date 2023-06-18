@@ -102,13 +102,14 @@ class Orders(models.Model):
 
 class Products(models.Model):
     # Товары
-    order = models.ForeignKey(Orders, on_delete=models.CASCADE, related_name='product')
+    order = models.ForeignKey(Orders, verbose_name='Номер заказа', on_delete=models.CASCADE, related_name='product')
     comment = models.CharField('Коментарий', max_length=250)
-    exchange = models.ForeignKey(Exchanges, verbose_name='Биржа', null=True, on_delete=models.CASCADE)
+    exchange = models.ForeignKey(Exchanges, verbose_name='Биржа', on_delete=models.PROTECT, related_name='exchange_pr',
+                                 null=True, blank=True)
     price = models.IntegerField('Цена')
     quantity = models.IntegerField('Количество')
     geo_id = models.CharField('Гео', max_length=250)
-    resident = models.ForeignKey(Geo, on_delete=models.PROTECT, related_name='residents')
+    resident = models.ForeignKey(Geo, verbose_name='Гео', on_delete=models.PROTECT, related_name='residents')
     mail_type = models.CharField('Тип почты', max_length=250)
     type_of_number = models.CharField('Тип номера', max_length=250)
     emulator = models.CharField('Эмулятор', max_length=250)

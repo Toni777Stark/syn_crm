@@ -33,16 +33,20 @@
             <i id="closeSide_bar" class="fa fa-angle-left side-bar-close-btn" onclick="closeSide_bar()"></i>
         </div>
         <div id="user-tools">
-            <button onclick="drop_show_header()" class="dropbtn">
+            <div onclick="drop_show_header()" class="dropbtn">
     
                 <img src="{% static 'manager/user-icons/default.png' %}" alt="" class="header-user-icon">
     
                 <h5 class="header-user-name">{% firstof user.get_short_name user.get_username %}</h5>
     
-            </button>
+                <i></i>
+            </div>
             <div class="dropdown-content" id="myDropdown">
-                    <br>
-                    <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+                    <form class="header-admin-btn" method="post" action="{% url 'admin:index' %}">
+                        {% csrf_token %}
+                        <button type="submit">Вернуться</button>
+                    </form>
+                    <form class="header-admin-btn" method="post" action="{% url 'admin:logout' %}">
                         {% csrf_token %}
                         <button type="submit">Выйти</button>
                     </form>

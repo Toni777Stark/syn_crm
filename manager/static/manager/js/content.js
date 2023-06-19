@@ -1,4 +1,8 @@
 $(".comment input").attr("id", "")
+$(".tovar-geo select").attr({
+    'multiple': '',
+    'data-maximum-selection-length': '2'
+})
 //$(".birzha-name select option:first-child").attr("value", "none")
 
 const addclient = document.getElementById("pop-add-client")
@@ -53,17 +57,16 @@ function onChange__form() {
 
 /* select2 */
 $(document).ready(function () {
-//change selectboxes to selectize mode to be searchable
     $('select').select2({
         language: "ru",
-        required: 'True'
+        required: 'false'
     });
 
     $('.tovar-geo select').select2({
         placeholder: 'ГЕО',
         closeOnSelect: false,
         language: "ru",
-        required: 'True',
+        required: 'false',
     })
 });
 

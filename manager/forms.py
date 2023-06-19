@@ -18,7 +18,7 @@ class OrdersForm(forms.Form):
     bundle = forms.BooleanField(label='Связка', required=False)
 
     comment1 = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Коментарий'}), required=False)
-    exchange1 = forms.ModelChoiceField(queryset=Exchanges.objects.all(), empty_label='Биржа', required=False)
+    exchange1 = forms.ModelChoiceField(queryset=Exchanges.objects.filter(on=True), empty_label='Биржа', required=False)
     price1 = forms.IntegerField(widget=forms.widgets.TextInput(attrs={'placeholder': 'Цена', 'type': 'number',
                                                                       'oninput': 'onChange__form();'}), required=False)
     quantity1 = forms.IntegerField(widget=forms.widgets.TextInput(attrs={'placeholder': 'Кол-во', 'type': 'number',
@@ -26,7 +26,7 @@ class OrdersForm(forms.Form):
     mail1 = forms.ModelChoiceField(queryset=MailType.objects.all(), empty_label='Тип почты', required=False)
     number1 = forms.ModelChoiceField(queryset=TypeOfNumber.objects.all(), empty_label='Тип номера', required=False)
     emulator1 = forms.ModelChoiceField(queryset=Emulator.objects.all(), empty_label='Эмулятор', required=False)
-    geo1 = forms.ModelMultipleChoiceField(queryset=Geo.objects.all(), widget=CustomSelect, required=False)
+    geo1 = forms.ModelMultipleChoiceField(queryset=Geo.objects.all(), required=False)
     resident1 = forms.ModelChoiceField(queryset=Geo.objects.all(), empty_label='Резидент', required=False)
 
     comment2 = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Коментарий'}), required=False)

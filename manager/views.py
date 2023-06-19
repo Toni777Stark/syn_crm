@@ -24,7 +24,12 @@ def index(request):
                 exchange1 = form.cleaned_data['exchange1']
                 price1 = form.cleaned_data['price1']
                 quantity1 = form.cleaned_data['quantity1']
-                geo1 = form.cleaned_data['geo1']
+                # geo1 = form.cleaned_data['geo1']
+                geo1_values = form.cleaned_data.get('geo1')
+                if geo1_values:
+                    for value in geo1_values:
+                        print(value)
+
                 resident1 = form.cleaned_data['resident1']
                 mail_type1 = form.cleaned_data['mail1']
                 type_of_number1 = form.cleaned_data['number1']
@@ -33,7 +38,7 @@ def index(request):
                 #                     geo_id=geo1, resident=resident1, mail_type=mail_type1, type_of_number=type_of_number1,
                 #                     emulator=emulator1)
                 # product1.save()
-                print(manager, client, comment1, geo1, resident1)
+                print(manager, client, comment1, resident1)
         else:
             error = 'Не верно заполнил'
             print(error)

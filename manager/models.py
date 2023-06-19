@@ -16,7 +16,7 @@ class Geo(models.Model):
 
 
 class MailType(models.Model):
-    # Гео
+    # Тип почты
     name = models.CharField('Тип почты', max_length=250)
 
     def __str__(self):
@@ -28,7 +28,7 @@ class MailType(models.Model):
 
 
 class TypeOfNumber(models.Model):
-    # Гео
+    # Тип номера
     name = models.CharField('Тип номера', max_length=250)
 
     def __str__(self):
@@ -40,7 +40,7 @@ class TypeOfNumber(models.Model):
 
 
 class Emulator(models.Model):
-    # Гео
+    # Эмулятор
     name = models.CharField('Эмулятор', max_length=250)
 
     def __str__(self):
@@ -49,6 +49,7 @@ class Emulator(models.Model):
     class Meta:
         verbose_name = "Эмулятор"
         verbose_name_plural = "Эмуляторы"
+
 
 class Exchanges(models.Model):
     # Биржы
@@ -109,7 +110,7 @@ class Products(models.Model):
     price = models.IntegerField('Цена')
     quantity = models.IntegerField('Количество')
     geo_id = models.CharField('Гео', max_length=250)
-    resident = models.ForeignKey(Geo, verbose_name='Резидент', on_delete=models.PROTECT, related_name='residents')
+    resident = models.CharField('Резидент', max_length=250)
     mail_type = models.CharField('Тип почты', max_length=250)
     type_of_number = models.CharField('Тип номера', max_length=250)
     emulator = models.CharField('Эмулятор', max_length=250)

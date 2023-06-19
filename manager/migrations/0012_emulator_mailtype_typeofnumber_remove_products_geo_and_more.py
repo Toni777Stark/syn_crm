@@ -44,10 +44,6 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Тип номеров',
             },
         ),
-        migrations.RemoveField(
-            model_name='products',
-            name='geo',
-        ),
         migrations.AddField(
             model_name='products',
             name='geo_id',

@@ -50,6 +50,10 @@ function onChange__form() {
     const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row  
 
     form_summa_vivod.innerHTML= form__summa;
+
+    const summField = document.querySelector('#summ');
+    summField.value = form__summa;
+
     $('.form-body-block-input').on('input', $('.form-body-row'), function () {
         onChange__form
     });

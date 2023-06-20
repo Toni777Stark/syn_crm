@@ -7,17 +7,17 @@ from django.db.utils import IntegrityError
 
 def index(request):
     error = ''
+    user = request.user
     if request.method == 'POST':
         if 'form_orders' in request.POST:
-            form = OrdersForm(request.POST, initial={'user': request.user})
+            form = OrdersForm(request.POST, user=user)
             if form.is_valid():
-                manager = request.user
+                manager = user
                 client = form.cleaned_data['client']
                 summ = request.POST.get('summ')
                 deadline = form.cleaned_data['deadline']
                 priority = form.cleaned_data['priority']
                 bundle = form.cleaned_data['bundle']
-                print(client, priority)
                 order = Orders(manager=manager, client=client, summ=summ, deadline=deadline, priority=priority,
                                bundle=bundle, order_type="Дежурному отгрузить со склада")
                 order.save()
@@ -71,7 +71,6 @@ def index(request):
                     client.save()
                 except IntegrityError:
                     error = 'Клиент с таким TG уже существует.'
-    user = request.user
     orders = Orders.objects.filter(manager=user).order_by('-id')
     geos = Geo.objects.all()
     exchanges = Exchanges.objects.all()

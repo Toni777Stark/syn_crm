@@ -3,9 +3,13 @@ from django import forms
 
 
 class OrdersForm(forms.Form):
-    def __init__(self, user, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.generate_fields(user)
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)  # Извлекаем пользователя из аргументов, если передан
+
+        super(OrdersForm, self).__init__(*args, **kwargs)
+
+        if user:
+            self.generate_fields(user)
 
     def generate_fields(self, user):
         # Генерация полей для каждой группы комментария, обмена, цены, количества и т.д.

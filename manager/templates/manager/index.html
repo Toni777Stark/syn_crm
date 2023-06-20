@@ -389,9 +389,11 @@
 
         <div class="block-new-birzha">
             <h3>Новая биржа</h2>
-            <form action="#" class="form-new-birzha">
-                <input type="text" placeholder="Название биржы">
-                <button class="btn btn-primary">Добавить биржу</button>
+            <form class="form-new-birzha" method="post">
+                {% csrf_token %}
+                {{ form_exchanges.name }}
+                {{ form_exchanges.type }}
+                <button class="btn btn-primary" name="form_exchanges">Добавить биржу</button>
             </form>
         </div>
     </div>

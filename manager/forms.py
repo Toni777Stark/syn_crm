@@ -18,7 +18,7 @@ class OrdersForm(forms.Form):
                 widget=forms.TextInput(attrs={'placeholder': 'Комментарий'}), required=False
             )
             self.fields[f'exchange{i}'] = forms.ModelChoiceField(
-                queryset=Exchanges.objects.filter(on=True), empty_label='Биржа', required=False
+                queryset=Exchanges.objects.filter(on=True).order_by('-id'), empty_label='Биржа', required=False
             )
             self.fields[f'price{i}'] = forms.IntegerField(
                 widget=forms.widgets.TextInput(attrs={'placeholder': 'Цена', 'type': 'number',
@@ -67,3 +67,8 @@ class ClientsForm(forms.Form):
                                widget=forms.Select, required=False)
     lang = forms.ChoiceField(choices=[('', 'Язык общения'), ('1', 'Рус'), ('2', 'Укр'), ('3', 'Англ')],
                              widget=forms.Select, required=False)
+
+
+class ExchangesForm(forms.Form):
+    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Название'}), required=False)
+    type = forms.ChoiceField(choices=[('', 'Тип'), ('EU', 'EU'), ('UA', 'UA')])

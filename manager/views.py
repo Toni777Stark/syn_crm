@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Orders, Geo, Exchanges, Clients, Products
-from .forms import OrdersForm, ClientsForm
+from .forms import OrdersForm, ClientsForm, ExchangesForm
 from django.core.paginator import Paginator
 from django.db.utils import IntegrityError
 
@@ -62,7 +62,6 @@ def index(request):
             if form.is_valid():
                 try:
                     manager = request.user
-                    print(manager)
                     name = form.cleaned_data['name']
                     tg = request.POST.get('tg')
                     status = form.cleaned_data['status']
@@ -71,12 +70,23 @@ def index(request):
                     client.save()
                 except IntegrityError:
                     error = 'Клиент с таким TG уже существует.'
+        elif 'form_exchanges' in request.POST:
+            form = ExchangesForm(request.POST)
+            if form.is_valid():
+                try:
+                    name = form.cleaned_data['name']
+                    exchange_type = form.cleaned_data['type']
+                    exchange = Exchanges(name=name, exchange_type=exchange_type, on='1')
+                    exchange.save()
+                except IntegrityError:
+                    error = 'Такая биржа уже есть'
     orders = Orders.objects.filter(manager=user).order_by('-id')
     geos = Geo.objects.all()
     exchanges = Exchanges.objects.all()
     clients = Clients.objects.all()
     form = OrdersForm(user=user)
     form_client = ClientsForm()
+    form_exchanges = ExchangesForm()
     paginator = Paginator(orders, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -87,6 +97,7 @@ def index(request):
         'clients': clients,
         'form': form,
         'form_client': form_client,
+        'form_exchanges': form_exchanges,
         'page_obj': page_obj,
         'page_max_page': paginator.num_pages,
         'error': error,

@@ -117,6 +117,7 @@ def info_order(request):
 
     orders_data = []
     for order in orders:
+        bundle_text = 'Связка' if order.bundle == 1 else 'Не связка'
         order_data = {
             'id': order.id,
             'date': order.date,
@@ -124,6 +125,8 @@ def info_order(request):
             'client': order.client.name,  # Используем поле name модели Client
             'summ': order.summ,
             'status': order.status,
+            'bundle': bundle_text,
+            'order_type': order.order_type,
         }
         orders_data.append(order_data)
 

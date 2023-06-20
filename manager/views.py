@@ -3,6 +3,9 @@ from .models import Orders, Geo, Exchanges, Clients, Products
 from .forms import OrdersForm, ClientsForm, ExchangesForm
 from django.core.paginator import Paginator
 from django.db.utils import IntegrityError
+from django.http import JsonResponse
+import json
+from django.core import serializers
 
 
 def index(request):
@@ -87,7 +90,7 @@ def index(request):
     form = OrdersForm(user=user)
     form_client = ClientsForm()
     form_exchanges = ExchangesForm()
-    paginator = Paginator(orders, 10)
+    paginator = Paginator(orders, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     data = {
@@ -103,6 +106,50 @@ def index(request):
         'error': error,
     }
     return render(request, 'manager/index.html', data)
+
+
+def info_order(request):
+    data = json.loads(request.body)
+    order_id = data.get('orderId')
+
+    orders = Orders.objects.filter(id=order_id).select_related('client')
+    products = Products.objects.filter(order__id=order_id).select_related('exchange')
+
+    orders_data = []
+    for order in orders:
+        order_data = {
+            'id': order.id,
+            'date': order.date,
+            'deadline': order.deadline,
+            'client': order.client.name,  # Используем поле name модели Client
+            'summ': order.summ,
+            'status': order.status,
+        }
+        orders_data.append(order_data)
+
+    products_data = []
+    for product in products:
+        product_data = {
+            'id': product.id,
+            'order': product.order_id,
+            'comment': product.comment,
+            'exchange': product.exchange.name,  # Используем поле name модели Exchange
+            'price': product.price,
+            'quantity': product.quantity,
+            'geo_id': product.geo_id,
+            'resident': product.resident,
+            'mail_type': product.mail_type,
+            'type_of_number': product.type_of_number,
+            'emulator': product.emulator,
+        }
+        products_data.append(product_data)
+
+    response = {
+        'orders': orders_data,
+        'products': products_data
+    }
+
+    return JsonResponse(response)
 
 
 def refusals(request):

@@ -167,20 +167,12 @@ input::-webkit-datetime-edit {
     flex-direction: column;
 }
 .btn-add-zakaz-lower {
-    user-select: none;
-    color: transparent;
-    transition: .7s;
-    margin-top: -2.5em;
-}
-.btn-add-zakaz-lower.active {
+	display: block;
     color: rgb(26, 149, 26);
-    margin-top: -1em;
-    transition: .7s;
+	margin-top: -1em;
 }
-.btn-add-zakaz-lower.active.error {
+.btn-add-zakaz-lower.error {
     color: rgb(211, 8, 8);
-    margin-top: -1em;
-    transition: .7s;
 }
 .form-body-label-btn {
     color: var(--main-color);
@@ -283,12 +275,12 @@ option[value="none"] {
 }
 .form-table {
     display: flex;
+	flex-direction: column;
     width: 100%;
     grid-gap: 5px;
 }
 .form-table div {
     display: flex;
-    flex-direction: column;
     width: 100%;
     grid-gap: 5px;
     justify-content: flex-start;
@@ -318,7 +310,6 @@ option[value="none"] {
 
 
 /* valid */
-
 .select2-container--default .select2-selection--single.prompt,
 .select2-container--default .select2-selection--multiple.prompt,
 .prompt {

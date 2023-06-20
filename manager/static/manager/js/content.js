@@ -8,6 +8,14 @@ $(".tovar-geo select").attr({
 const addclient = document.getElementById("pop-add-client")
 const addbirzh = document.getElementById("pop-add-birzh")
 
+$('.pop-window').click(function(e) {
+	if (e.target !== this) {
+		return;
+	}
+	addclient_close()
+	addbirzh_close()
+});
+
 function addclient_show() {
     addbirzh.classList.remove('active')
     addclient.classList.add('active')

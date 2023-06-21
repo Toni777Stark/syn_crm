@@ -340,5 +340,6 @@ function orderInfo(orderId) {
 	};
 
 	var data = JSON.stringify({ orderId: orderId });
+	console.log(data)
 	xhr.send(data);
 }

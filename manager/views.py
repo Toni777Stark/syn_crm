@@ -110,7 +110,7 @@ def index(request):
 def info_order(request):
     data = json.loads(request.body)
     order_id = data.get('orderId')
-
+    print(order_id)
     orders = Orders.objects.filter(id=order_id).select_related('client')
     products = Products.objects.filter(order__id=order_id).select_related('exchange')
 
@@ -131,6 +131,12 @@ def info_order(request):
 
     products_data = []
     for product in products:
+        geo_ids = []  # Создаем пустой список для geo_ids
+        geos = product.geo_id.all()
+        for geo in geos:
+            geo_ids.append(geo.name)  # Добавляем название страны в список geo_ids
+        geo_ids_str = ', '.join(geo_ids)  # Преобразуем список в строку, объединяя значения через запятую и пробел
+
         product_data = {
             'id': product.id,
             'order': product.order_id,
@@ -138,7 +144,7 @@ def info_order(request):
             'exchange': product.exchange.name,  # Используем поле name модели Exchange
             'price': product.price,
             'quantity': product.quantity,
-            'geo_id': product.geo_id,
+            'geo_id': geo_ids_str,
             'resident': product.resident,
             'mail_type': product.mail_type,
             'type_of_number': product.type_of_number,
@@ -168,6 +174,21 @@ def save_data(request):
     if field_id == 'client':
         client_instance = Clients.objects.get(id=field_value)
         setattr(autosave, field_id, client_instance)
+    elif field_id == 'exchange1':
+        exchange1 = Exchanges.objects.get(id=field_value)
+        setattr(autosave, field_id, exchange1)
+    elif field_id == 'exchange2':
+        exchange1 = Exchanges.objects.get(id=field_value)
+        setattr(autosave, field_id, exchange1)
+    elif field_id == 'exchange3':
+        exchange1 = Exchanges.objects.get(id=field_value)
+        setattr(autosave, field_id, exchange1)
+    elif field_id == 'exchange4':
+        exchange1 = Exchanges.objects.get(id=field_value)
+        setattr(autosave, field_id, exchange1)
+    elif field_id == 'exchange5':
+        exchange1 = Exchanges.objects.get(id=field_value)
+        setattr(autosave, field_id, exchange1)
     elif field_id == 'geo1':
         geo_instances = Geo.objects.filter(id__in=field_value)
         autosave.geo_id1.set(geo_instances)

@@ -383,6 +383,23 @@
         </div>
     </div>
 </div>
+<div id="pop-edit-client" class="pop-window">
+    <div class="pop-container">
+        <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="editclient_close()"></i>
+
+        <div class="block-edit-client">
+            <h3>Редактировать клиента</h2>
+            <form class="form-edit-client" method="post">
+                {% csrf_token %}
+                {{ form_client.name }}
+                {{ form_client.tg }}
+                {{ form_client.status }}
+                {{ form_client.lang }}
+                <button class="btn btn-primary" name="form_client">Сохранить</button>
+            </form>
+        </div>
+    </div>
+</div>
 <div id="pop-add-birzh" class="pop-window">
     <div class="pop-container">
         <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="addbirzh_close()"></i>

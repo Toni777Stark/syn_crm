@@ -54,13 +54,13 @@
 }
 
 /* main-form-block */
-.form-new-client, .form-new-birzha {
+.form-new-client, .form-new-birzha, .form-edit-client {
     display: flex;
     flex-direction: column;
     margin-top: 1.5em;
     grid-gap: 10px;
 }
-.block-new-client, .block-new-birzha {
+.block-new-client, .block-new-birzha, .block-edit-client {
     padding: 1em 4em 3em 3em;
 }
 

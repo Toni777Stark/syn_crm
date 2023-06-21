@@ -56,23 +56,24 @@ class OrdersForm(forms.Form):
         )
         self.fields['bundle'] = forms.BooleanField(label='Связка')
         autosave = AutoSave.objects.filter(manager=user).first()
-        for i in range(1, 6):
-            self.fields[f'comment{i}'].initial = getattr(autosave, f'comment{i}', '')
-            self.fields[f'exchange{i}'].initial = getattr(autosave, f'exchange{i}', None)
-            self.fields[f'price{i}'].initial = getattr(autosave, f'price{i}', 0)
-            self.fields[f'quantity{i}'].initial = getattr(autosave, f'quantity{i}', 0)
-            self.fields[f'mail{i}'].initial = getattr(autosave, f'mail{i}', None)
-            self.fields[f'number{i}'].initial = getattr(autosave, f'number{i}', None)
-            self.fields[f'emulator{i}'].initial = getattr(autosave, f'emulator{i}', None)
-            geo_ids = getattr(autosave, f'geo{i}', [])
-            geos = Geo.objects.filter(id__in=geo_ids)
-            print(geos)
-            self.fields[f'geo{i}'].initial = list(geos)
-            self.fields[f'resident{i}'].initial = getattr(autosave, f'resident{i}', None)
+        if autosave:
+            for i in range(1, 6):
+                self.fields[f'comment{i}'].initial = getattr(autosave, f'comment{i}', '')
+                self.fields[f'exchange{i}'].initial = getattr(autosave, f'exchange{i}', None)
+                self.fields[f'price{i}'].initial = getattr(autosave, f'price{i}', 0)
+                self.fields[f'quantity{i}'].initial = getattr(autosave, f'quantity{i}', 0)
+                self.fields[f'mail{i}'].initial = getattr(autosave, f'mail{i}', None)
+                self.fields[f'number{i}'].initial = getattr(autosave, f'number{i}', None)
+                self.fields[f'emulator{i}'].initial = getattr(autosave, f'emulator{i}', None)
+                geo_ids = getattr(autosave, f'geo{i}', [])
+                geos = Geo.objects.filter(id__in=geo_ids)
+                print(geos)
+                self.fields[f'geo{i}'].initial = list(geos)
+                self.fields[f'resident{i}'].initial = getattr(autosave, f'resident{i}', None)
 
-        self.fields['client'].initial = autosave.client if autosave.client else None
-        self.fields['deadline'].initial = autosave.deadline.strftime('%Y-%m-%d') if autosave.deadline else None
-        self.fields['priority'].initial = str(autosave.priority) if autosave.priority else ''
+            self.fields['client'].initial = autosave.client if autosave.client else None
+            self.fields['deadline'].initial = autosave.deadline.strftime('%Y-%m-%d') if autosave.deadline else None
+            self.fields['priority'].initial = str(autosave.priority) if autosave.priority else ''
 
 
 class ClientsForm(forms.Form):

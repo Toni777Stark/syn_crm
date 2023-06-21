@@ -3,7 +3,7 @@ from .models import Orders, Geo, Exchanges, Clients, Products
 from .forms import OrdersForm, ClientsForm, ExchangesForm
 from django.core.paginator import Paginator
 from django.db.utils import IntegrityError
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 from django.core import serializers
 
@@ -153,6 +153,22 @@ def info_order(request):
     }
 
     return JsonResponse(response)
+
+
+def save_data(request):
+    data = json.loads(request.body)
+    # Получение данных из POST-запроса
+    field_id = data.get('fieldId')
+    field_value = data.get('fieldValue')
+    print(field_id, field_value)
+    if isinstance(field_value, list):  # Проверяем, является ли значение списком
+        field_value = ', '.join(field_value)  # Преобразуем список в строку, разделяя значения запятыми
+    print(field_id, field_value)
+    response_data = {
+        'status': 'success',
+        'message': 'Data saved successfully.'
+    }
+    return JsonResponse(response_data)
 
 
 def refusals(request):

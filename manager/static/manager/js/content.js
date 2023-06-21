@@ -50,9 +50,9 @@ function onChange__form() {
     const kolvo_1_row = document.querySelector('#form-body-1-row .kolvo input');
     const summa_1_row = document.querySelector('#form-body-1-row .summa input');
     const kolvo_2_row = document.querySelector('#form-body-2-row .kolvo input');
-    const summa_2_row = document.querySelector('#form-body-2-row .summa input'); 
+    const summa_2_row = document.querySelector('#form-body-2-row .summa input');
     const kolvo_3_row = document.querySelector('#form-body-3-row .kolvo input');
-    const summa_3_row = document.querySelector('#form-body-3-row .summa input'); 
+    const summa_3_row = document.querySelector('#form-body-3-row .summa input');
     const kolvo_4_row = document.querySelector('#form-body-4-row .kolvo input');
     const summa_4_row = document.querySelector('#form-body-4-row .summa input');
     const kolvo_5_row = document.querySelector('#form-body-5-row .kolvo input');
@@ -64,7 +64,7 @@ function onChange__form() {
     const kolvo_summa_4_row = kolvo_4_row.value * summa_4_row.value
     const kolvo_summa_5_row = kolvo_5_row.value * summa_5_row.value
 
-    const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row  
+    const form__summa = kolvo_summa_1_row + kolvo_summa_2_row + kolvo_summa_3_row + kolvo_summa_4_row + kolvo_summa_5_row
 
     form_summa_vivod.innerHTML= form__summa;
 
@@ -214,14 +214,9 @@ $('.form-table-name h5').on('click', function(){
         $('.form-table-name h5 i').removeClass('active');
         $(this).find("i").addClass('active');
     }
-});
+})
 
-
-
-
-
-
-// AJAX
+// Куки
 function getCookie(name) {
 	var cookieValue = null;
 	if (document.cookie && document.cookie !== '') {
@@ -236,6 +231,81 @@ function getCookie(name) {
 	}
 	return cookieValue;
 }
+
+//Сохранение страницы менеджера
+$(document).ready(function() {
+      var form = $('#save_form');
+
+      // Обработчик события change для input
+      form.on('change', 'input', function(event) {
+        var field = $(this);
+        var fieldId = field.attr('name');
+        var fieldValue = field.val();
+
+        console.log(fieldId);
+        console.log(fieldValue);
+
+        var data = {
+          fieldId: fieldId,
+          fieldValue: fieldValue
+        };
+
+        // Отправка данных формы через AJAX
+        $.ajax({
+          url: '/save-data/',
+          type: 'POST',
+          dataType: 'json',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          headers: {
+            'X-CSRFToken': getCookie('csrftoken')
+          },
+          success: function(response) {
+            // Обработка успешного ответа сервера
+          },
+          error: function(xhr, textStatus, error) {
+            // Обработка ошибки
+          }
+        });
+      });
+
+      // Обработчик события change для select (включая Select2)
+      form.on('change', 'select', function(event) {
+        var field = $(this);
+        var fieldId = field.attr('name');
+        var fieldValue = field.val();
+
+        console.log(fieldId);
+        console.log(fieldValue);
+
+        var data = {
+          fieldId: fieldId,
+          fieldValue: fieldValue
+        };
+        console.log(data)
+        // Отправка данных формы через AJAX
+        $.ajax({
+          url: '/save-data/',
+          type: 'POST',
+          dataType: 'json',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          headers: {
+            'X-CSRFToken': getCookie('csrftoken')
+          },
+          success: function(response) {
+            console.log('ok')
+            // Обработка успешного ответа сервера
+          },
+          error: function(xhr, textStatus, error) {
+            console.log('error')
+            // Обработка ошибки
+          }
+        });
+      });
+    });
+
+//Информация о заказе
 function orderInfo(orderId) {
 	var csrftoken = getCookie('csrftoken');
 	var xhr = new XMLHttpRequest();

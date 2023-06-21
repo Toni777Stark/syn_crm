@@ -1,11 +1,10 @@
 from django.shortcuts import render
-from .models import Orders, Geo, Exchanges, Clients, Products
+from .models import Orders, Geo, Exchanges, Clients, Products, AutoSave
 from .forms import OrdersForm, ClientsForm, ExchangesForm
 from django.core.paginator import Paginator
 from django.db.utils import IntegrityError
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 import json
-from django.core import serializers
 
 
 def index(request):
@@ -161,14 +160,35 @@ def save_data(request):
     field_id = data.get('fieldId')
     field_value = data.get('fieldValue')
     print(field_id, field_value)
-    if isinstance(field_value, list):  # Проверяем, является ли значение списком
-        field_value = ', '.join(field_value)  # Преобразуем список в строку, разделяя значения запятыми
-    print(field_id, field_value)
-    response_data = {
-        'status': 'success',
-        'message': 'Data saved successfully.'
-    }
-    return JsonResponse(response_data)
+    # Проверка, существует ли запись AutoSave для данного manager
+    manager_id = request.user.id
+    autosave, created = AutoSave.objects.get_or_create(manager_id=manager_id)
+
+    # Обновление значения поля в AutoSave
+    if field_id == 'client':
+        client_instance = Clients.objects.get(id=field_value)
+        setattr(autosave, field_id, client_instance)
+    elif field_id == 'geo1':
+        geo_instances = Geo.objects.filter(id__in=field_value)
+        autosave.geo_id1.set(geo_instances)
+    elif field_id == 'geo2':
+        geo_instances = Geo.objects.filter(id__in=field_value)
+        autosave.geo_id2.set(geo_instances)
+    elif field_id == 'geo3':
+        geo_instances = Geo.objects.filter(id__in=field_value)
+        autosave.geo_id3.set(geo_instances)
+    elif field_id == 'geo4':
+        geo_instances = Geo.objects.filter(id__in=field_value)
+        autosave.geo_id4.set(geo_instances)
+    elif field_id == 'geo5':
+        geo_instances = Geo.objects.filter(id__in=field_value)
+        autosave.geo_id5.set(geo_instances)
+    else:
+        setattr(autosave, field_id, field_value)
+    autosave.save()
+
+    # Возвращение ответа
+    return JsonResponse({'success': True})
 
 
 def refusals(request):

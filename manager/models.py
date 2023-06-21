@@ -109,7 +109,7 @@ class Products(models.Model):
                                  null=True, blank=True)
     price = models.IntegerField('Цена')
     quantity = models.IntegerField('Количество')
-    geo_id = models.CharField('Гео', max_length=250)
+    geo_id = models.ManyToManyField(Geo, verbose_name='Гео', blank=True)
     resident = models.CharField('Резидент', max_length=250)
     mail_type = models.CharField('Тип почты', max_length=250)
     type_of_number = models.CharField('Тип номера', max_length=250)
@@ -121,3 +121,69 @@ class Products(models.Model):
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
+
+
+class AutoSave(models.Model):
+    # Автосохранение полей
+    manager = models.ForeignKey(User, on_delete=models.PROTECT)
+    client = models.ForeignKey(Clients, on_delete=models.PROTECT, null=True, blank=True)
+    deadline = models.DateTimeField('Срок заказа', null=True, blank=True)
+    priority = models.IntegerField('Приоритет', null=True, blank=True)
+    bundle = models.BooleanField('Связка', default=False, null=True, blank=True)
+    comment1 = models.CharField('Коментарий', max_length=250, null=True, blank=True)
+    exchange1 = models.ForeignKey(Exchanges, verbose_name='Биржа', on_delete=models.PROTECT,
+                                 null=True, blank=True, related_name='autosave_exchange1')
+    price1 = models.IntegerField('Цена', null=True, blank=True)
+    quantity1 = models.IntegerField('Количество', null=True, blank=True)
+    geo_id1 = models.ManyToManyField(Geo, related_name='autosave_geo1', verbose_name='Гео', blank=True)
+    resident1 = models.CharField('Резидент', max_length=250, null=True, blank=True)
+    mail1 = models.CharField('Тип почты', max_length=250, null=True, blank=True)
+    number1 = models.CharField('Тип номера', max_length=250, null=True, blank=True)
+    emulator1 = models.CharField('Эмулятор', max_length=250, null=True, blank=True)
+    comment2 = models.CharField('Коментарий', max_length=250, null=True, blank=True)
+    exchange2 = models.ForeignKey(Exchanges, verbose_name='Биржа', on_delete=models.PROTECT,
+                                 null=True, blank=True, related_name='autosave_exchange2')
+    price2 = models.IntegerField('Цена', null=True, blank=True)
+    quantity2 = models.IntegerField('Количество', null=True, blank=True)
+    geo_id2 = models.ManyToManyField(Geo, related_name='autosave_geo2', verbose_name='Гео', blank=True)
+    resident2 = models.CharField('Резидент', max_length=250, null=True, blank=True)
+    mail2 = models.CharField('Тип почты', max_length=250, null=True, blank=True)
+    number2 = models.CharField('Тип номера', max_length=250, null=True, blank=True)
+    emulator2 = models.CharField('Эмулятор', max_length=250, null=True, blank=True)
+    comment3 = models.CharField('Коментарий', max_length=250, null=True, blank=True)
+    exchange3 = models.ForeignKey(Exchanges, verbose_name='Биржа', on_delete=models.PROTECT,
+                                 null=True, blank=True, related_name='autosave_exchange3')
+    price3 = models.IntegerField('Цена', null=True, blank=True)
+    quantity3 = models.IntegerField('Количество', null=True, blank=True)
+    geo_id3 = models.ManyToManyField(Geo, related_name='autosave_geo3', verbose_name='Гео', blank=True)
+    resident3 = models.CharField('Резидент', max_length=250, null=True, blank=True)
+    mail3 = models.CharField('Тип почты', max_length=250, null=True, blank=True)
+    number3 = models.CharField('Тип номера', max_length=250, null=True, blank=True)
+    emulator3 = models.CharField('Эмулятор', max_length=250, null=True, blank=True)
+    comment4 = models.CharField('Коментарий', max_length=250, null=True, blank=True)
+    exchange4 = models.ForeignKey(Exchanges, verbose_name='Биржа', on_delete=models.PROTECT,
+                                 null=True, blank=True, related_name='autosave_exchange4')
+    price4 = models.IntegerField('Цена', null=True, blank=True)
+    quantity4 = models.IntegerField('Количество', null=True, blank=True)
+    geo_id4 = models.ManyToManyField(Geo, related_name='autosave_geo4', verbose_name='Гео', blank=True)
+    resident4 = models.CharField('Резидент', max_length=250, null=True, blank=True)
+    mail4 = models.CharField('Тип почты', max_length=250, null=True, blank=True)
+    number4 = models.CharField('Тип номера', max_length=250, null=True, blank=True)
+    emulator4 = models.CharField('Эмулятор', max_length=250, null=True, blank=True)
+    comment5 = models.CharField('Коментарий', max_length=250, null=True, blank=True)
+    exchange5 = models.ForeignKey(Exchanges, verbose_name='Биржа', on_delete=models.PROTECT,
+                                 null=True, blank=True, related_name='autosave_exchange5')
+    price5 = models.IntegerField('Цена', null=True, blank=True)
+    quantity5 = models.IntegerField('Количество', null=True, blank=True)
+    geo_id5 = models.ManyToManyField(Geo, related_name='autosave_geo5', verbose_name='Гео', blank=True)
+    resident5 = models.CharField('Резидент', max_length=250, null=True, blank=True)
+    mail5 = models.CharField('Тип почты', max_length=250, null=True, blank=True)
+    number5 = models.CharField('Тип номера', max_length=250, null=True, blank=True)
+    emulator5 = models.CharField('Эмулятор', max_length=250, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.manager)
+
+    class Meta:
+        verbose_name = "Сохраненная информация"
+        verbose_name_plural = "Сохраненная информация"

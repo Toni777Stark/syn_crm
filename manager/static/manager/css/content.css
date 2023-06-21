@@ -284,6 +284,11 @@ option[value="none"] {
     width: 100%;
     grid-gap: 5px;
     justify-content: flex-start;
+	text-decoration: none;
+	cursor: pointer;
+}
+.form-table div:hover {
+	background: yellow;
 }
 .form-table div h5 {
     margin: 0;

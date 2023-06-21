@@ -66,9 +66,8 @@
 
 
 /* input */
-.form-new-client input, .form-new-birzha input {
+.form-new-client input, .form-edit-client input, .form-new-birzha input {
     padding-left: .7em;
-    width: var(--input-left-bar-input-width);
 }
 
 /* btn */

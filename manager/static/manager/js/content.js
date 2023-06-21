@@ -5,8 +5,6 @@ $(".tovar-geo select").attr({
 })
 //$(".birzha-name select option:first-child").attr("value", "none")
 
-const addclient = document.getElementById("pop-add-client")
-const addbirzh = document.getElementById("pop-add-birzh")
 
 $('.pop-window').click(function(e) {
 	if (e.target !== this) {
@@ -14,26 +12,37 @@ $('.pop-window').click(function(e) {
 	}
 	addclient_close()
 	addbirzh_close()
+	editclient_close()
 });
 
 function addclient_show() {
-    addbirzh.classList.remove('active')
-    addclient.classList.add('active')
-    body.classList.add('none-scroll')
+    $("#pop-add-birzh").removeClass('active')
+    $("#pop-add-client").addClass('active')
+    $("body").addClass('none-scroll')
 }
 function addclient_close() {
-    addclient.classList.remove('active')
-    body.classList.remove('none-scroll')
+    $("#pop-add-client").removeClass('active')
+    $("body").removeClass('none-scroll')
+}
+
+function editclient_show() {
+    $("#pop-add-birzh, #pop-add-client").removeClass('active')
+    $("#pop-edit-client").addClass('active')
+    $("body").addClass('none-scroll')
+}
+function editclient_close() {
+    $("#pop-edit-client").removeClass('active')
+    $("body").removeClass('none-scroll')
 }
 
 function addbirzh_show() {
-    addbirzh.classList.add('active')
-    addclient.classList.remove('active')
-    body.classList.add('none-scroll')
+    $("#pop-add-birzh").addClass('active')
+    $("#pop-add-client").removeClass('active')
+    $("body").addClass('none-scroll')
 }
 function addbirzh_close() {
-    addbirzh.classList.remove('active')
-    body.classList.remove('none-scroll')
+    $("#pop-add-birzh").removeClass('active')
+    $("body").removeClass('none-scroll')
 }
 /* summa */
 function onChange__form() {
@@ -188,7 +197,16 @@ function form_body_clone(form_body_row_append, form_body_row_copy) {
     onChange__form()
 }
 
+$("#id_client option:first-child").attr('value', 'none')
+$('#id_client').on('select2:select', $('.form-body-row') , function (e) {
+    if (e.params.data.id != "none") {
+		$('.form-body-add-zakaz .form-body-block-input .pop-window-open-btn').removeClass('fa-plus').addClass('fa-pencil').attr('onclick', 'editclient_show()')
+	} else if (e.params.data.id == "none") {
+		$('.form-body-add-zakaz .form-body-block-input .pop-window-open-btn').removeClass('fa-pencil').addClass('fa-plus').attr('onclick', 'addclient_show()')
+	}
+});
 
+// Sorting
 $('.form-table-name h5').on('click', function(){
     if ($(this).find('i').is('.active')) {
         $(this).find("i").removeClass('active');
@@ -197,3 +215,50 @@ $('.form-table-name h5').on('click', function(){
         $(this).find("i").addClass('active');
     }
 });
+
+
+
+
+
+
+// AJAX
+function getCookie(name) {
+	var cookieValue = null;
+	if (document.cookie && document.cookie !== '') {
+		var cookies = document.cookie.split(';');
+		for (var i = 0; i < cookies.length; i++) {
+			var cookie = cookies[i].trim();
+			if (cookie.substring(0, name.length + 1) === (name + '=')) {
+				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+				break;
+			}
+		}
+	}
+	return cookieValue;
+}
+function orderInfo(orderId) {
+	var csrftoken = getCookie('csrftoken');
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', '/info_order/', true);
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.setRequestHeader('X-CSRFToken', csrftoken);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			var response = JSON.parse(xhr.responseText);
+			var orders = response.orders;
+			var products = response.products;
+
+			// Обработка данных заказа
+			var orderData = orders[0];
+			console.log(orderData)
+
+			// Обработка данных товаров
+			for (i=0; i<products.length; i++){
+				console.log(products[i])
+			}
+		}
+	};
+
+	var data = JSON.stringify({ orderId: orderId });
+	xhr.send(data);
+}

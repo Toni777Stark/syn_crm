@@ -7,8 +7,8 @@
 
 <!-- manager styles -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="{% static 'manager/css/content.css' %}">
 <link rel="stylesheet" href="{% static 'manager/css/pop-window.css' %}">
+<link rel="stylesheet" href="{% static 'manager/css/content.css' %}">
 {% endblock %}
 
 
@@ -383,6 +383,23 @@
         </div>
     </div>
 </div>
+<div id="pop-edit-client" class="pop-window">
+    <div class="pop-container">
+        <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="editclient_close()"></i>
+
+        <div class="block-new-client">
+            <h3>Редактирование клиента</h2>
+            <form id="form-edit-client" class="form-new-client" method="post">
+                {% csrf_token %}
+                {{ form_client.name }}
+                {{ form_client.tg }}
+                {{ form_client.status }}
+                {{ form_client.lang }}
+                <button class="btn btn-primary" name="form_client">Сохранить</button>
+            </form>
+        </div>
+    </div>
+</div>
 <div id="pop-add-birzh" class="pop-window">
     <div class="pop-container">
         <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="addbirzh_close()"></i>
@@ -399,56 +416,12 @@
     </div>
 </div>
 <div id="result-container"></div>
-<script>
-    function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-    function orderInfo(orderId) {
-        var csrftoken = getCookie('csrftoken');
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/info_order/', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.setRequestHeader('X-CSRFToken', csrftoken);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                var orders = response.orders;
-                var products = response.products;
-
-                // Обработка данных заказа
-                var orderData = orders[0];
-                console.log(orderData)
-
-                // Обработка данных товаров
-                for (i=0; i<products.length; i++){
-                    console.log(products[i].exchange)
-                }
-            }
-        };
-
-        var data = JSON.stringify({ orderId: orderId });
-        xhr.send(data);
-    }
-
-</script>
 {% endblock %}
 
 
 <!-- main scripts-block -->
 {% block main-scripts %}
-<script src="{% static 'manager/js/content.js' %}" type="text/javascript"></script>
-
+<script src="{% static 'manager/js/content.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/ru.js" defer></script>
 {% endblock %}

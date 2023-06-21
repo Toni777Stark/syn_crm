@@ -5,6 +5,15 @@ $(".tovar-geo select").attr({
 })
 //$(".birzha-name select option:first-child").attr("value", "none")
 
+$('.form-table div').click(function() {
+	$("#left-bar").addClass("active")
+});
+$('.left-bar-close-btn').click(function() {
+	$("#left-bar").removeClass("active")
+});
+
+
+
 
 $('.pop-window').click(function(e) {
 	if (e.target !== this) {
@@ -215,6 +224,8 @@ $('.form-table-name h5').on('click', function(){
         $(this).find("i").addClass('active');
     }
 })
+
+
 
 // Куки
 function getCookie(name) {

@@ -215,7 +215,13 @@ $('#id_client').on('select2:select', $('.form-body-row') , function (e) {
 // Sorting
 $('.form-table-name h5').on('click', function(){
     if ($(this).find('i').is('.active')) {
-        $(this).find("i").removeClass('active');
+        if ($(this).find('i').is('.fa-angle-down')) {
+            $(this).find('i').removeClass('fa-angle-down')
+            $(this).find('i').addClass('fa-angle-up')
+        } else {
+            $(this).find('i').addClass('fa-angle-down');
+            $('.form-table-name h5 i').removeClass('fa-angle-up active');
+        }
     } else {
         $('.form-table-name h5 i').removeClass('active');
         $(this).find("i").addClass('active');

@@ -345,6 +345,7 @@ option[value="none"] {
 	overflow: auto;
 	transition: .8s;
 	user-select: none;
+    resize: horizontal;
 }
 #left-bar.active {
 	right: 0px;

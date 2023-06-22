@@ -56,4 +56,7 @@
     .form-table div h5 {
         font-size: 10px;
     }
+	#left-bar {
+		width: 100vw;
+	}
 }

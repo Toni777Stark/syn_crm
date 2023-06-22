@@ -330,36 +330,48 @@ option[value="none"] {
 
 
 #left-bar {
-	display: none;
+	display: flex;
 	padding: 1.5em;
+	padding-bottom: 3em;
 	flex-direction: column;
 	width: 390px;
 	height: 100vh;
 	position: fixed;
-	right: 0;
+	right: -100%;
 	background: white;
 	border-left: 2px solid var(--whitegray-color);
-	
-	grid-gap: 20px;
+	grid-gap: 5px;
+	line-height: 0;
+	overflow: auto;
+	transition: .8s;
+	user-select: none;
 }
 #left-bar.active {
-	display: flex;
+	right: 0px;
+	transition: .8s;
 }
 .left-bar-close-btn {
-	font-size: 25px;
+	font-size: 20px;
 	cursor: pointer;
-	margin: -0.5em;
-	margin-bottom: 1em;
+	padding: .5em;
+	margin-bottom: .5em;
+	margin-left: -1em;
+	margin-top: -1em;
 }
 .info-block {
 	display: flex;
 	flex-direction: column;
+}
+.info-block h4 {
+	margin: .7em 0;
+	margin-left: -5px;
 }
 .info-block h5 {
 	display: flex;
 	flex-direction: column;
 	line-height: 0px;
 	margin-top: 15px;
+	margin-left: 4px;
 }
 .info-block h6 {
 	margin-left: 10px;

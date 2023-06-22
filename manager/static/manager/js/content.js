@@ -12,9 +12,6 @@ $('.left-bar-close-btn').click(function() {
 	$("#left-bar").removeClass("active")
 });
 
-
-
-
 $('.pop-window').click(function(e) {
 	if (e.target !== this) {
 		return;
@@ -330,11 +327,31 @@ function orderInfo(orderId) {
 
 			// Обработка данных заказа
 			var orderData = orders[0];
-			console.log(orderData)
+			// Товар
+			$("#leftbar-id").text(orderData.id)
+			$("#leftbar-date").text(orderData.date)
+			$("#leftbar-deadline").text(orderData.deadline)
+			$("#leftbar-client").text(orderData.client)
+			$("#leftbar-summ").text(orderData.summ)
+			$("#leftbar-order-type").text(orderData.order_type)
+			$("#leftbar-status").text(orderData.status)
+			$("#leftbar-exchange").text(orderData.exchange)
+			$("#leftbar-bundle").text(orderData.bundle)
+			//console.log(orderData)
 
 			// Обработка данных товаров
 			for (i=0; i<products.length; i++){
-				console.log(products[i])
+				//console.log(products[i])
+				// Заказ
+				$("#leftbar-exchange").text(products[i].exchange)
+				$("#leftbar-price").text(products[i].price)
+				$("#leftbar-quantity").text(products[i].quantity)
+				$("#leftbar-comment").text(products[i].comment)
+				$("#leftbar-mailtype").text(products[i].mail_type)
+				$("#leftbar-type-number").text(products[i].type_of_number)
+				$("#leftbar-emulator").text(products[i].emulator)
+				$("#leftbar-resident").text(products[i].resident)
+				$("#leftbar-geo").text(products[i].geo_id)
 			}
 		}
 	};

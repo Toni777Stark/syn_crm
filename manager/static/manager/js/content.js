@@ -86,15 +86,15 @@ function onChange__form() {
 $(document).ready(function () {
     $('select').select2({
         language: "ru",
-        required: 'false'
     });
-
+    
     $('.tovar-geo select').select2({
         placeholder: 'ГЕО',
         closeOnSelect: false,
         language: "ru",
         required: 'false',
     })
+
 });
 
 /* Связка */
@@ -105,14 +105,14 @@ label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.togg
 $('.form-body-block-input').on('select2:unselect', $('.form-body-row') , function () {
     if ($(".select2-selection__rendered .select2-selection__choice").length == 0 ) {
         if ($(".form-body-row").siblings().find('.done').length > 1) {
-            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).siblings().find('input, .select2-selection').addClass('prompt');
             $(this).find('.select2-selection').removeClass('done');
         } else {
             $(this).siblings().find('input, .select2-selection').removeClass('done prompt')
             $(this).find('.select2-selection').removeClass('done prompt');
         }
     } else {
-        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).siblings().find('input, .select2-selection').addClass('prompt');
         $(this).find('.select2-selection').addClass('done');
     }
 });
@@ -120,14 +120,14 @@ $('.form-body-block-input').on('select2:unselect', $('.form-body-row') , functio
 $('.form-body-block-input').on('select2:select', $('.form-body-row') , function (e) {
     if (e.params.data.id == "none") {
         if ($(".form-body-row").siblings().find('.done').length > 1) {
-            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).siblings().find('input, .select2-selection').addClass('prompt');
             $(this).find('.select2-selection').removeClass('done');
         } else {
             $(this).siblings().find('input, .select2-selection').removeClass('prompt')
             $(this).find('.select2-selection').removeClass('done prompt');
         }
     } else {
-        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).siblings().find('input, .select2-selection').addClass('prompt');
         $(this).find('.select2-selection').addClass('done');
     }
 });
@@ -136,14 +136,14 @@ $('.form-body-block-input').on('select2:select', $('.form-body-row') , function 
 $('.form-body-block-input').on('input', $('.form-body-row'), function () {
     if ($(this).find('input').val() == "") {
         if ($(".form-body-row").siblings().find('.done').length > 1) {
-            $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+            $(this).siblings().find('input, .select2-selection').addClass('prompt');
             $(this).find('input').removeClass('done');
         } else {
             $(this).siblings().find('input, .select2-selection').removeClass('prompt')
             $(this).find('input').removeClass('done prompt');
         }
     } else {
-        $(this).siblings().find('input, .select2-selection').addClass('prompt').attr('required', '');
+        $(this).siblings().find('input, .select2-selection').addClass('prompt');
         $(this).find('input').addClass('done');
     }
 });
@@ -275,10 +275,10 @@ $(document).ready(function() {
             'X-CSRFToken': getCookie('csrftoken')
           },
           success: function(response) {
-            // Обработка успешного ответа сервера
+            //$('.btn-add-zakaz-lower').removeClass('error').fadeIn().text('Успешно!').delay( 2000 ).fadeOut()
           },
           error: function(xhr, textStatus, error) {
-            // Обработка ошибки
+            //$('.btn-add-zakaz-lower').addClass('error').fadeIn().text(error).delay( 2000 ).fadeOut()
           }
         });
       });
@@ -312,7 +312,6 @@ $(document).ready(function() {
           },
           error: function(xhr, textStatus, error) {
             console.log('error')
-            // Обработка ошибки
           }
         });
       });
@@ -366,3 +365,16 @@ function orderInfo(orderId) {
 	console.log(data)
 	xhr.send(data);
 }
+
+// Пример:
+// $("#form-body-1-row .birzha-name .select2-selection__rendered")
+$(".birzha-name .select2-selection__rendered").attr("title")
+$(".summa input").val()
+$(".kolvo input").val()
+$(".comment input").val()
+$(".type-email .select2-selection__rendered").attr("title")
+$(".type-number .select2-selection__rendered").attr("title")
+$(".tovar-emulator .select2-selection__rendered").attr("title")
+$(".tovar-rezident .select2-selection__rendered").attr("title")
+$(".tovar-rezident .select2-selection__rendered").attr("title")
+$(".tovar-geo .select2-selection__choice")

@@ -58,6 +58,7 @@ def index(request):
                             type_of_number=type_of_number,
                             emulator=emulator
                         )
+                        print(product)
                         product.save()
         elif 'form_client' in request.POST:
             form = ClientsForm(request.POST)
@@ -204,6 +205,8 @@ def save_data(request):
     elif field_id == 'geo5':
         geo_instances = Geo.objects.filter(id__in=field_value)
         autosave.geo_id5.set(geo_instances)
+    elif field_id == 'bundle':
+        pass
     else:
         setattr(autosave, field_id, field_value)
     autosave.save()

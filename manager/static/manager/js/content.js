@@ -107,6 +107,8 @@ label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.togg
 
 
 $('.tovar-geo').on('select2:select select2:unselect', function () {
+    // Поиск значения tovar-geo
+    // alert($(".tovar-geo .select2-selection__choice").text())
     if ($(this).find(".select2-selection__choice").length == 0 ) {
         if ($(this).parent().find('.done').length > 1) {
             alert("hah>1")
@@ -439,4 +441,3 @@ $(".type-email .select2-selection__rendered").attr("title")
 $(".type-number .select2-selection__rendered").attr("title")
 $(".tovar-emulator .select2-selection__rendered").attr("title")
 $(".tovar-rezident .select2-selection__rendered").attr("title")
-$(".tovar-rezident .select2-selection__rendered").text()

@@ -49,7 +49,11 @@
 
 
 
-
+    .form-list-zakazi-block {
+        width: 95vw;
+        margin-left: -2em;
+        padding: 1em;
+    }
     .form-table-name h5 {
         font-size: 12px;
     }
@@ -58,5 +62,7 @@
     }
 	#left-bar {
 		width: 100vw;
+        padding: 1.5em;
+        padding-bottom: 3em;
 	}
 }

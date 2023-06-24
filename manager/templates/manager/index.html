@@ -47,7 +47,7 @@
 {% csrf_token %}
     <div class="form-body-add-zakaz">
         <h2 class="name-block-input">Новый заказ</h2>
-        <div class="form-body-row">
+        <div class="form-body-row" id="client-body-row">
 
             <div class="form-body-block-input birzha-name pidel-input">
                 {{form.client}}
@@ -360,51 +360,48 @@
 {% block left-bar %}
 <i class="fa fa-arrow-right left-bar-close-btn"></i>
 <h3 class="info-block-name">Информация</h3>
-<div class="info-block">
-	<h4>Заказ:</h4>
-	<h5 class="info-text">
-	Номер заказа:
-	<h6 id="leftbar-id">1</h6>
-	</h5>
-	
-	<h5 class="info-text">
-	Дата:
-	<h6 id="leftbar-date">14 июня 2022 г. 1:43</h6>
-	</h5>
-	
-	<h5 class="info-text">
-	Срок:
-	<h6 id="leftbar-deadline">14 июня 2022 г. 18:00</h6>
-	</h5>
-		
-	<h5 class="info-text">
-	Клиент:
-	<h6 id="leftbar-client">@client</h6>
-	</h5>
-	
-	<h5 class="info-text">
-	Сумма:
-	<h6 id="leftbar-summ">0,00</h6>
-	</h5>
-	
-	<h5 class="info-text">
-	Тип заказа:
-	<h6 id="leftbar-order-type">none</h6>
-	</h5>
-	
-	<h5 class="info-text">
-	Статус:
-	<h6 id="leftbar-status">none</h6>
-	</h5>
-	
-	<h5 class="info-text">
-	Связка:
-	<h6 id="leftbar-bundle">True/False</h6>
-	</h5>
+    <div class="info-block">
+        <h4>Заказ</h4>
+        <div class="info">
+            <h5 class="info-name">Номер заказа:</h5>
+            <h6 id="leftbar-id">1</h6>
+        </div>
 
-	<div id="products-container"></div>
+        <div class="info">
+            <h5 class="info-name">Дата:</h5>
+            <h6 id="leftbar-date"></h6>
+        </div>
 
-	
+        <div class="info">
+            <h5 class="info-name">Срок:</h5>
+            <h6 id="leftbar-deadline"></h6>
+        </div>
+            
+        <div class="info">
+            <h5 class="info-name">Клиент:</h5>
+            <h6 id="leftbar-client"></h6>
+        </div>
+                    
+        <div class="info">
+            <h5 class="info-name">Сумма:</h5>
+            <h6 id="leftbar-summ"></h6>
+        </div>
+              
+        <div class="info">
+            <h5 class="info-name">Тип заказа:</h5>
+            <h6 id="leftbar-order-type"></h6>
+        </div>
+         
+        <div class="info">
+            <h5 class="info-name">Статус:</h5>
+            <h6 id="leftbar-status"></h6>
+        </div>
+        
+        <div class="info">
+            <h5 class="info-name">Связка:</h5>
+            <h6 id="leftbar-bundle"></h6>
+        </div>
+<div id="products-container"></div>
 </div> 
 {% endblock %}
 

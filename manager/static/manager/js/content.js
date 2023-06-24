@@ -3,7 +3,12 @@ $(".tovar-geo select").attr({
     'multiple': '',
     'data-maximum-selection-length': '2'
 })
-//$(".birzha-name select option:first-child").attr("value", "none")
+
+$("#form-body-1-row div select, #form-body-1-row div input, #client-body-row div select, #client-body-row div input").attr('required','')
+
+
+
+
 
 $('.form-table div').click(function() {
 	$("#left-bar").addClass("active")
@@ -92,7 +97,6 @@ $(document).ready(function () {
         placeholder: 'ГЕО',
         closeOnSelect: false,
         language: "ru",
-        required: 'false',
     })
 
 });
@@ -102,49 +106,47 @@ const label_toggle_btn = document.getElementById("form-body-label-btn");
 label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.toggle("active"));
 
 
-$('.form-body-block-input').on('select2:unselect', $('.form-body-row') , function () {
-    if ($(".select2-selection__rendered .select2-selection__choice").length == 0 ) {
-        if ($(".form-body-row").siblings().find('.done').length > 1) {
-            $(this).siblings().find('input, .select2-selection').addClass('prompt');
-            $(this).find('.select2-selection').removeClass('done');
+$('.tovar-geo').on('select2:select select2:unselect', function () {
+    if ($(this).find(".select2-selection__choice").length == 0 ) {
+        if ($(this).parent().find('.done').length > 1) {
+            alert("hah>1")
         } else {
-            $(this).siblings().find('input, .select2-selection').removeClass('done prompt')
-            $(this).find('.select2-selection').removeClass('done prompt');
+            $(this).parent().find('input, .select2-selection').removeClass('prompt')
+            $(this).find('.select2-selection').removeClass("done prompt")
         }
     } else {
-        $(this).siblings().find('input, .select2-selection').addClass('prompt');
-        $(this).find('.select2-selection').addClass('done');
+        $(this).parent().find('input, .select2-selection').addClass('prompt') // К остальным добавляем красный цвет
+        $(this).find('.select2-selection').addClass('done') // К этому добавляем зеленый цвет
     }
 });
 
-$('.form-body-block-input').on('select2:select', $('.form-body-row') , function (e) {
-    if (e.params.data.id == "none") {
-        if ($(".form-body-row").siblings().find('.done').length > 1) {
-            $(this).siblings().find('input, .select2-selection').addClass('prompt');
-            $(this).find('.select2-selection').removeClass('done');
-        } else {
-            $(this).siblings().find('input, .select2-selection').removeClass('prompt')
-            $(this).find('.select2-selection').removeClass('done prompt');
+$('.kolvo, .summa, .comment').on('input', function () {
+    if ($(this).find('input').val() == "") { // Если значение инпута пустое то
+        if ($(this).parent().find('.done').length > 1) { // Проверяем есть ли еще выделенные селекты, инпуты
+            $(this).parent().find('input, .select2-selection').addClass('prompt') 
+            $(this).find('input').removeClass('done') // Удаляем класс done
+        } else { // Если нету то снимаем выделение на всем form-body-row
+            $(this).parent().find('input, .select2-selection').removeClass('prompt')
+            $(this).find('input').removeClass('done prompt')
         }
-    } else {
-        $(this).siblings().find('input, .select2-selection').addClass('prompt');
-        $(this).find('.select2-selection').addClass('done');
+    } else { // Если пользователь хоть что то написал то:
+        $(this).parent().find('input, .select2-selection').addClass('prompt') // К остальным добавляем красный цвет
+        $(this).find('input').addClass('done') // К этому добавляем зеленый цвет
     }
 });
 
-
-$('.form-body-block-input').on('input', $('.form-body-row'), function () {
-    if ($(this).find('input').val() == "") {
-        if ($(".form-body-row").siblings().find('.done').length > 1) {
-            $(this).siblings().find('input, .select2-selection').addClass('prompt');
-            $(this).find('input').removeClass('done');
-        } else {
-            $(this).siblings().find('input, .select2-selection').removeClass('prompt')
-            $(this).find('input').removeClass('done prompt');
+$('.birzha-name, .type-email, .type-number, .tovar-rezident, .tovar-emulator').on('select2:select select2:unselect', function (e) {
+    if (e.params.data.id == "none" || e.params.data.id == "") { // Если значение селекта = None
+        if ($(this).parent().find('.done').length > 1) { // Проверяем есть ли еще выделенные селекты, инпуты
+            $(this).parent().find('input, .select2-selection').addClass('prompt') 
+            $(this).find('.select2-selection').removeClass('done') // Удаляем класс done
+        } else { // Если нет то снимаем выделение на всем form-body-row
+            $(this).parent().find('input, .select2-selection').removeClass('prompt')
+            $(this).find('.select2-selection').removeClass('done prompt')
         }
     } else {
-        $(this).siblings().find('input, .select2-selection').addClass('prompt');
-        $(this).find('input').addClass('done');
+        $(this).parent().find('input, .select2-selection').addClass('prompt') // К остальным добавляем красный цвет
+        $(this).find('.select2-selection').addClass('done') // К этому добавляем зеленый цвет
     }
 });
 
@@ -256,13 +258,16 @@ $(document).ready(function() {
         var field = $(this);
         var fieldId = field.attr('name');
         var fieldValue = field.val();
+        var fieldClass = field.attr("class")
 
-        console.log(fieldId);
-        console.log(fieldValue);
+        console.log("Input Id - ",fieldId);
+        console.log("Input Value - ",fieldValue);
+        console.log("Input Class - ",fieldClass)
 
         var data = {
           fieldId: fieldId,
-          fieldValue: fieldValue
+          fieldValue: fieldValue,
+          fieldClass: fieldClass
         };
 
         // Отправка данных формы через AJAX
@@ -289,12 +294,15 @@ $(document).ready(function() {
         var field = $(this);
         var fieldId = field.attr('name');
         var fieldValue = field.val();
+        var fieldClass = field.parent().find(".select2-selection").attr("class")
 
-        console.log(field);
+        console.log("Select field - ",field);
+        console.log("Select class - ",fieldClass);
 
         var data = {
           fieldId: fieldId,
-          fieldValue: fieldValue
+          fieldValue: fieldValue,
+          fieldClass: fieldClass
         };
         console.log(data)
         // Отправка данных формы через AJAX
@@ -352,48 +360,66 @@ function orderInfo(orderId) {
             for (var i = 0; i < products.length; i++) {
                 var product = products[i];
 
-                var productInfo = $("<div>").addClass("product-info");
+                var productBlock = $("<div>").addClass("product-block");
+                var productElBlock1 = $("<div>").addClass("product-element-block");
+                var productElBlock2 = $("<div>").addClass("product-element-block");
+                var productElBlock3 = $("<div>").addClass("product-element-block");
+                var productElBlock4 = $("<div>").addClass("product-element-block");
+                var productElBlock5 = $("<div>").addClass("product-element-block");
+                var productElBlock6 = $("<div>").addClass("product-element-block");
+                var productElBlock7 = $("<div>").addClass("product-element-block");
+                var productElBlock8 = $("<div>").addClass("product-element-block");
+                var productElBlock9 = $("<div>").addClass("product-element-block");
 
-                var name = $("<h5>").text("Товар " + (i+1))
-                productInfo.append(name);
+                var name = $("<h4>").text("Товар " + (i+1))
+                productBlock.append(name);
 
-                var exchange = $("<h5>").addClass("info-text").text("Биржа:");
+                var exchange = $("<h5>").addClass("product-name").text("Биржа:");
                 var exchangeValue = $("<h6>").text(product.exchange);
-                productInfo.append(exchange, exchangeValue);
+                productElBlock1.append(exchange, exchangeValue);
 
-                var price = $("<h5>").addClass("info-text").text("Цена:");
+                var price = $("<h5>").addClass("product-name").text("Цена:");
                 var priceValue = $("<h6>").text(product.price);
-                productInfo.append(price, priceValue);
+                productElBlock2.append(price, priceValue);
 
-                var quantity = $("<h5>").addClass("info-text").text("Кол-во:");
+                var quantity = $("<h5>").addClass("product-name").text("Кол-во:");
                 var quantityValue = $("<h6>").text(product.quantity);
-                productInfo.append(quantity, quantityValue);
+                productElBlock3.append(quantity, quantityValue);
 
-                var comment = $("<h5>").addClass("info-text").text("Комментарий:");
+                var comment = $("<h5>").addClass("product-name").text("Комментарий:");
                 var commentValue = $("<h6>").text(product.comment);
-                productInfo.append(comment, commentValue);
+                productElBlock4.append(comment, commentValue);
 
-                var mailType = $("<h5>").addClass("info-text").text("Тип почты:");
+                var mailType = $("<h5>").addClass("product-name").text("Тип почты:");
                 var mailTypeValue = $("<h6>").text(product.mail_type);
-                productInfo.append(mailType, mailTypeValue);
+                productElBlock5.append(mailType, mailTypeValue);
 
-                var typeOfNumber = $("<h5>").addClass("info-text").text("Тип номера:");
+                var typeOfNumber = $("<h5>").addClass("product-name").text("Тип номера:");
                 var typeOfNumberValue = $("<h6>").text(product.type_of_number);
-                productInfo.append(typeOfNumber, typeOfNumberValue);
+                productElBlock6.append(typeOfNumber, typeOfNumberValue);
 
-                var emulator = $("<h5>").addClass("info-text").text("Эмулятор:");
+                var emulator = $("<h5>").addClass("product-name").text("Эмулятор:");
                 var emulatorValue = $("<h6>").text(product.emulator);
-                productInfo.append(emulator, emulatorValue);
+                productElBlock7.append(emulator, emulatorValue);
 
-                var resident = $("<h5>").addClass("info-text").text("Резидент:");
+                var resident = $("<h5>").addClass("product-name").text("Резидент:");
                 var residentValue = $("<h6>").text(product.resident);
-                productInfo.append(resident, residentValue);
+                productElBlock8.append(resident, residentValue);
 
-                var geo = $("<h5>").addClass("info-text").text("ГЕО:");
+                var geo = $("<h5>").addClass("product-name").text("ГЕО:");
                 var geoValue = $("<h6>").text(product.geo_id);
-                productInfo.append(geo, geoValue);
+                productElBlock9.append(geo, geoValue);
 
-                productsContainer.append(productInfo);
+                productBlock.append(productElBlock1)
+                productBlock.append(productElBlock2)
+                productBlock.append(productElBlock3)
+                productBlock.append(productElBlock4)
+                productBlock.append(productElBlock5)
+                productBlock.append(productElBlock6)
+                productBlock.append(productElBlock7)
+                productBlock.append(productElBlock8)
+                productBlock.append(productElBlock9)
+                productsContainer.append(productBlock);
 			}
 		}
 	};

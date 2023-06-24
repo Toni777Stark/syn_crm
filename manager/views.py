@@ -170,45 +170,48 @@ def save_data(request):
     # Проверка, существует ли запись AutoSave для данного manager
     manager_id = request.user.id
     autosave, created = AutoSave.objects.get_or_create(manager_id=manager_id)
-
-    # Обновление значения поля в AutoSave
-    if field_id == 'client':
-        client_instance = Clients.objects.get(id=field_value)
-        setattr(autosave, field_id, client_instance)
-    elif field_id == 'exchange1':
-        exchange1 = Exchanges.objects.get(id=field_value)
-        setattr(autosave, field_id, exchange1)
-    elif field_id == 'exchange2':
-        exchange1 = Exchanges.objects.get(id=field_value)
-        setattr(autosave, field_id, exchange1)
-    elif field_id == 'exchange3':
-        exchange1 = Exchanges.objects.get(id=field_value)
-        setattr(autosave, field_id, exchange1)
-    elif field_id == 'exchange4':
-        exchange1 = Exchanges.objects.get(id=field_value)
-        setattr(autosave, field_id, exchange1)
-    elif field_id == 'exchange5':
-        exchange1 = Exchanges.objects.get(id=field_value)
-        setattr(autosave, field_id, exchange1)
-    elif field_id == 'geo1':
-        geo_instances = Geo.objects.filter(id__in=field_value)
-        autosave.geo_id1.set(geo_instances)
-    elif field_id == 'geo2':
-        geo_instances = Geo.objects.filter(id__in=field_value)
-        autosave.geo_id2.set(geo_instances)
-    elif field_id == 'geo3':
-        geo_instances = Geo.objects.filter(id__in=field_value)
-        autosave.geo_id3.set(geo_instances)
-    elif field_id == 'geo4':
-        geo_instances = Geo.objects.filter(id__in=field_value)
-        autosave.geo_id4.set(geo_instances)
-    elif field_id == 'geo5':
-        geo_instances = Geo.objects.filter(id__in=field_value)
-        autosave.geo_id5.set(geo_instances)
-    elif field_id == 'bundle':
-        pass
+    if not field_value:
+        print(1)
+        setattr(autosave, field_id, None)
     else:
-        setattr(autosave, field_id, field_value)
+        # Обновление значения поля в AutoSave
+        if field_id == 'client':
+            client_instance = Clients.objects.get(id=field_value)
+            setattr(autosave, field_id, client_instance)
+        elif field_id == 'exchange1':
+            exchange1 = Exchanges.objects.get(id=field_value)
+            setattr(autosave, field_id, exchange1)
+        elif field_id == 'exchange2':
+            exchange1 = Exchanges.objects.get(id=field_value)
+            setattr(autosave, field_id, exchange1)
+        elif field_id == 'exchange3':
+            exchange1 = Exchanges.objects.get(id=field_value)
+            setattr(autosave, field_id, exchange1)
+        elif field_id == 'exchange4':
+            exchange1 = Exchanges.objects.get(id=field_value)
+            setattr(autosave, field_id, exchange1)
+        elif field_id == 'exchange5':
+            exchange1 = Exchanges.objects.get(id=field_value)
+            setattr(autosave, field_id, exchange1)
+        elif field_id == 'geo1':
+            geo_instances = Geo.objects.filter(id__in=field_value)
+            autosave.geo_id1.set(geo_instances)
+        elif field_id == 'geo2':
+            geo_instances = Geo.objects.filter(id__in=field_value)
+            autosave.geo_id2.set(geo_instances)
+        elif field_id == 'geo3':
+            geo_instances = Geo.objects.filter(id__in=field_value)
+            autosave.geo_id3.set(geo_instances)
+        elif field_id == 'geo4':
+            geo_instances = Geo.objects.filter(id__in=field_value)
+            autosave.geo_id4.set(geo_instances)
+        elif field_id == 'geo5':
+            geo_instances = Geo.objects.filter(id__in=field_value)
+            autosave.geo_id5.set(geo_instances)
+        elif field_id == 'bundle':
+            pass
+        else:
+            setattr(autosave, field_id, field_value)
     autosave.save()
 
     # Возвращение ответа

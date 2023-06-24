@@ -67,7 +67,6 @@ class OrdersForm(forms.Form):
                 self.fields[f'emulator{i}'].initial = getattr(autosave, f'emulator{i}', None)
                 geo_ids = getattr(autosave, f'geo{i}', [])
                 geos = Geo.objects.filter(id__in=geo_ids)
-                print(geos)
                 self.fields[f'geo{i}'].initial = list(geos)
                 self.fields[f'resident{i}'].initial = getattr(autosave, f'resident{i}', None)
 

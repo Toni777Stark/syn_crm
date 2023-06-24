@@ -149,6 +149,7 @@ $('.form-body-block-input').on('input', $('.form-body-row'), function () {
 });
 
 function form_body_clone(form_body_row_append, form_body_row_copy) {
+    console.log(form_body_row_append)
     /* REMOVE */
     $(form_body_row_append).find(".select2-selection__rendered, input").remove()
     /* CLONE */
@@ -329,7 +330,7 @@ function orderInfo(orderId) {
 			var response = JSON.parse(xhr.responseText);
 			var orders = response.orders;
 			var products = response.products;
-
+            console.log(products)
 			// Обработка данных заказа
 			var orderData = orders[0];
 			// Товар
@@ -345,18 +346,54 @@ function orderInfo(orderId) {
 			//console.log(orderData)
 
 			// Обработка данных товаров
-			for (i=0; i<products.length; i++){
-				//console.log(products[i])
-				// Заказ
-				$("#leftbar-exchange").text(products[i].exchange)
-				$("#leftbar-price").text(products[i].price)
-				$("#leftbar-quantity").text(products[i].quantity)
-				$("#leftbar-comment").text(products[i].comment)
-				$("#leftbar-mailtype").text(products[i].mail_type)
-				$("#leftbar-type-number").text(products[i].type_of_number)
-				$("#leftbar-emulator").text(products[i].emulator)
-				$("#leftbar-resident").text(products[i].resident)
-				$("#leftbar-geo").text(products[i].geo_id)
+			var productsContainer = $("#products-container");
+            productsContainer.empty(); // Очистка контейнера товаров перед заполнением
+
+            for (var i = 0; i < products.length; i++) {
+                var product = products[i];
+
+                var productInfo = $("<div>").addClass("product-info");
+
+                var name = $("<h5>").text("Товар " + (i+1))
+                productInfo.append(name);
+
+                var exchange = $("<h5>").addClass("info-text").text("Биржа:");
+                var exchangeValue = $("<h6>").text(product.exchange);
+                productInfo.append(exchange, exchangeValue);
+
+                var price = $("<h5>").addClass("info-text").text("Цена:");
+                var priceValue = $("<h6>").text(product.price);
+                productInfo.append(price, priceValue);
+
+                var quantity = $("<h5>").addClass("info-text").text("Кол-во:");
+                var quantityValue = $("<h6>").text(product.quantity);
+                productInfo.append(quantity, quantityValue);
+
+                var comment = $("<h5>").addClass("info-text").text("Комментарий:");
+                var commentValue = $("<h6>").text(product.comment);
+                productInfo.append(comment, commentValue);
+
+                var mailType = $("<h5>").addClass("info-text").text("Тип почты:");
+                var mailTypeValue = $("<h6>").text(product.mail_type);
+                productInfo.append(mailType, mailTypeValue);
+
+                var typeOfNumber = $("<h5>").addClass("info-text").text("Тип номера:");
+                var typeOfNumberValue = $("<h6>").text(product.type_of_number);
+                productInfo.append(typeOfNumber, typeOfNumberValue);
+
+                var emulator = $("<h5>").addClass("info-text").text("Эмулятор:");
+                var emulatorValue = $("<h6>").text(product.emulator);
+                productInfo.append(emulator, emulatorValue);
+
+                var resident = $("<h5>").addClass("info-text").text("Резидент:");
+                var residentValue = $("<h6>").text(product.resident);
+                productInfo.append(resident, residentValue);
+
+                var geo = $("<h5>").addClass("info-text").text("ГЕО:");
+                var geoValue = $("<h6>").text(product.geo_id);
+                productInfo.append(geo, geoValue);
+
+                productsContainer.append(productInfo);
 			}
 		}
 	};

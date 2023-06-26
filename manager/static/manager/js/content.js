@@ -103,12 +103,18 @@ label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.togg
 function form_body_clone(form_body_row_append, form_body_row_copy) {
     console.log(form_body_row_append)
     /* REMOVE */
-    $(form_body_row_append).find(".select2-selection__rendered, input").remove()
+    $(form_body_row_append).find(".select2-selection__rendered").remove()
+    $(form_body_row_append).find(".comment input, .summa input, .kolvo input").val("")
     /* CLONE */
     $(form_body_row_copy).find(".birzha-name .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .birzha-name .select2-selection`)
-    $(form_body_row_copy).find(".summa input").clone().appendTo(`${form_body_row_append} .summa`)
-    $(form_body_row_copy).find(".kolvo input").clone().appendTo(`${form_body_row_append} .kolvo`)
-    $(form_body_row_copy).find(".comment input").clone().appendTo(`${form_body_row_append} .comment`)
+    
+    var summa_value = $(form_body_row_copy).find(".summa input").val()
+    var kolvo_value = $(form_body_row_copy).find(".kolvo input").val()
+    var comment_value = $(form_body_row_copy).find(".comment input").val()
+    $(form_body_row_append).find(".summa input").val(summa_value)
+    $(form_body_row_append).find(".kolvo input").val(kolvo_value)
+    $(form_body_row_append).find(".comment input").val(comment_value)
+
     $(form_body_row_copy).find(".type-email .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .type-email .select2-selection`)
     $(form_body_row_copy).find(".type-number .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .type-number .select2-selection`)
     $(form_body_row_copy).find(".tovar-emulator .select2-selection__rendered").clone().appendTo(`${form_body_row_append} .tovar-emulator .select2-selection`)
@@ -121,6 +127,24 @@ function form_body_clone(form_body_row_append, form_body_row_copy) {
     }
     if ($(form_body_row_copy).find(".birzha-name .select2-selection").is('.prompt')) {
         $(form_body_row_append).find(".birzha-name .select2-selection").addClass("prompt")
+    }
+    if ($(form_body_row_copy).find(".summa input").is('.done')) {
+        $(form_body_row_append).find(".summa input").addClass("done")
+    }
+    if ($(form_body_row_copy).find(".summa input").is('.prompt')) {
+        $(form_body_row_append).find(".summa input").addClass("prompt")
+    }
+    if ($(form_body_row_copy).find(".kolvo input").is('.done')) {
+        $(form_body_row_append).find(".kolvo input").addClass("done")
+    }
+    if ($(form_body_row_copy).find(".kolvo input").is('.prompt')) {
+        $(form_body_row_append).find(".kolvo input").addClass("prompt")
+    }
+    if ($(form_body_row_copy).find(".comment input").is('.done')) {
+        $(form_body_row_append).find(".comment input").addClass("done")
+    }
+    if ($(form_body_row_copy).find(".comment input").is('.prompt')) {
+        $(form_body_row_append).find(".comment input").addClass("prompt")
     }
     if ($(form_body_row_copy).find(".type-email .select2-selection").is('.done')) {
         $(form_body_row_append).find(".type-email .select2-selection").addClass("done")
@@ -479,7 +503,7 @@ $('.birzha-name, .type-email, .type-number, .tovar-rezident, .tovar-emulator, .c
 // INPUT
 function input_validate_save(validate_input, validate_row) {
     if ($(`${validate_row} ${validate_input} input`).val() != "") {
-        $(`${validate_row} ${validate_input} input`).addClass("done")
+        $(`${validate_row} ${validate_input} input`).addClass("done prompt")
     } else {
         $(`${validate_row} ${validate_input} input`).addClass("prompt")
     }

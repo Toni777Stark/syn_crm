@@ -430,7 +430,7 @@ function validate_form(form_row_number) {
 }
 function check_validation() {
     $( `.form-body-row .form-body-block-input` ).each(function() {
-        if($(this).find(".select2-selection, input").val() != "") {
+        if($(this).find("select, input").val() != "") {
             validate_form($(this).parent().attr("data-number-row"))
         }
     })    

@@ -101,7 +101,6 @@ label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.togg
 
 
 function form_body_clone(form_body_row_append, form_body_row_copy) {
-    console.log(form_body_row_append)
     /* REMOVE */
     $(form_body_row_append).find(".select2-selection__rendered").remove()
     $(form_body_row_append).find(".comment input, .summa input, .kolvo input").val("")
@@ -178,6 +177,7 @@ function form_body_clone(form_body_row_append, form_body_row_copy) {
     }
 
     onChange__form()
+    validate_form($(form_body_row_append).attr("data-number-row"))
 }
 
 
@@ -418,109 +418,31 @@ $(".type-number .select2-selection__rendered").attr("title")
 $(".tovar-emulator .select2-selection__rendered").attr("title")
 $(".tovar-rezident .select2-selection__rendered").attr("title")
 
+function validate_form(form_row_number) {
+    $( `#form-body-${form_row_number}-row .form-body-block-input` ).each(function() {
+        if ($(this).find("input, select").val() != "" || $(this).find(".select2-selection__choice").length != 0 ) {
+            $(this).find(".select2-selection, input").addClass("done")
+        } else {
+            $(this).find(".select2-selection, input").addClass("prompt")
+            $(this).find(".select2-selection, input").removeClass("done")
+        }
+    });
+}
+function check_validation() {
+    $( `.form-body-row .form-body-block-input` ).each(function() {
+        if($(this).find(".select2-selection, input").val() != "") {
+            validate_form($(this).parent().attr("data-number-row"))
+        }
+    })    
+}
+/* Запуск валидации и функций при загрузке страницы */
 $(document).ready(function () {
     form_client_icon_toggle()
     onChange__form()
+    validate_form(0)
+    validate_form(1)
+    check_validation()
 });
-
-
-
-
-/* Запуск валидации при загрузке страницы */
-$(document).ready(function () {
-    select_validate_save(".client-name", "#client-body-row")
-    input_validate_save(".deadline", "#client-body-row")
-    select_validate_save(".priority", "#client-body-row")
-    
-    body_row_num = 1
-    for (let body_row_lenght of Array(body_row_num).keys()) {
-        body_row_lenght++
-        form_body_validate_row(body_row_lenght)
-    }
+$("select, input").on('select2:select select2:unselect input', function () {
+    validate_form($(this).parent().parent().attr("data-number-row"))
 });
-
-
-/* Валидация */
-function form_body_validate_row(body_row_lenght) {
-    select_validate_save(".birzha-name", `#form-body-${body_row_lenght}-row`)
-    input_validate_save(".summa", `#form-body-${body_row_lenght}-row`)
-    input_validate_save(".kolvo", `#form-body-${body_row_lenght}-row`)
-    input_validate_save(".comment", `#form-body-${body_row_lenght}-row`)
-    select_validate_save(".type-email", `#form-body-${body_row_lenght}-row`)
-    select_validate_save(".type-number", `#form-body-${body_row_lenght}-row`)
-    select_validate_save(".tovar-emulator", `#form-body-${body_row_lenght}-row`)
-    select_validate_save(".tovar-rezident", `#form-body-${body_row_lenght}-row`)
-    multiple_select_validate_save(".tovar-geo", `#form-body-${body_row_lenght}-row`)
-}
-
-$(".tovar-geo").on('select2:select select2:unselect', function () {
-    // Поиск значения tovar-geo
-    // alert($(".tovar-geo .select2-selection__choice").text())
-    if ($(this).find(".select2-selection__choice").length == 0 ) {
-        if ($(this).parent(".form-body-row").find(".done").length > 1) {
-            $(this).find('.select2-selection, input').addClass("prompt")
-            $(this).find('.select2-selection, input').removeClass("done")
-        } else {
-            $(this).find('.select2-selection, input').removeClass('done prompt')
-            $(this).parent(".form-body-row").find(".select2-selection, input").removeClass("done prompt")
-        }
-    } else {
-        $(this).parent(".form-body-row").find(".select2-selection, input").addClass("prompt")
-        $(this).find('.select2-selection').addClass('done') // К этому добавляем зеленый цвет
-    }
-});
-
-$('.kolvo, .summa, .comment, .deadline').on('input', function () {
-    if ($(this).find('input').val() == "") { // Если значение инпута пустое то
-        if ($(this).parent(".form-body-row").find(".done").length > 1) {
-            $(this).find('.select2-selection, input').addClass("prompt")
-            $(this).find('.select2-selection, input').removeClass("done")
-        } else {
-            $(this).find('.select2-selection, input').removeClass('done prompt')
-            $(this).parent(".form-body-row").find(".select2-selection, input").removeClass("done prompt")
-        }
-    } else { // Если пользователь хоть что то написал то:
-        $(this).parent(".form-body-row").find(".select2-selection, input").addClass("prompt")
-        $(this).find('input').addClass('done') // К этому добавляем зеленый цвет
-    }
-});
-
-$('.birzha-name, .type-email, .type-number, .tovar-rezident, .tovar-emulator, .client-name, .priority').on('select2:select select2:unselect', function (e) {
-    if (e.params.data.id == "none" || e.params.data.id == "") { // Если значение селекта = None
-        if ($(this).parent(".form-body-row").find(".done").length > 1) {
-            $(this).find('.select2-selection, input').addClass("prompt")
-            $(this).find('.select2-selection, input').removeClass("done")
-        } else {
-            $(this).find('.select2-selection, input').removeClass('done prompt')
-            $(this).parent(".form-body-row").find(".select2-selection, input").removeClass("done prompt")
-        }
-    } else {
-        $(this).parent(".form-body-row").find(".select2-selection, input").addClass("prompt")
-        $(this).find('.select2-selection').addClass('done') // К этому добавляем зеленый цвет
-    }
-});
-
-// INPUT
-function input_validate_save(validate_input, validate_row) {
-    if ($(`${validate_row} ${validate_input} input`).val() != "") {
-        $(`${validate_row} ${validate_input} input`).addClass("done prompt")
-    } else {
-        $(`${validate_row} ${validate_input} input`).addClass("prompt")
-    }
-}
-// SELECT
-function select_validate_save(validate_select, validate_row) {
-    if ($(`${validate_row} ${validate_select} select`).val() != "") {
-        $(`${validate_row} ${validate_select} .select2-selection`).addClass("done")
-    } else {
-        $(`${validate_row} ${validate_select} .select2-selection`).addClass("prompt")
-    }
-}
-// GEOS
-function multiple_select_validate_save(validate_select, validate_row) {
-    if ($(`${validate_row} ${validate_select} .select2-selection__choice`).length > 0) {
-        $(`${validate_row} ${validate_select} .select2-selection`).addClass("done")
-    } else {
-        $(`${validate_row} ${validate_select} .select2-selection`).addClass("prompt")
-    }
-}

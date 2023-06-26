@@ -47,18 +47,18 @@
 {% csrf_token %}
     <div class="form-body-add-zakaz">
         <h2 class="name-block-input">Новый заказ</h2>
-        <div class="form-body-row" id="client-body-row">
+        <div class="form-body-row" id="client-body-row" data-number-row="0">
 
-            <div class="form-body-block-input birzha-name pidel-input">
+            <div class="form-body-block-input client-name pidel-input">
                 {{form.client}}
                 <span class="pop-window-open-btn fa fa-plus" onclick="addclient_show()"></span>
             </div>
             
-            <div class="form-body-block-input">
+            <div class="form-body-block-input deadline">
                 {{form.deadline}}
             </div>
 
-            <div class="form-body-block-input">
+            <div class="form-body-block-input priority">
                 {{form.priority}}
             </div>
 
@@ -68,7 +68,7 @@
     <div class="form-body-add-tovar">
         <h2 class="name-block-input" style="margin-top: 1em;">Товар</h2>
         <div class="form-body-row-block">
-            <div class="form-body-row" id="form-body-1-row">
+            <div class="form-body-row" id="form-body-1-row" data-number-row="1">
                 <h5>#1</h5>
                 <span data-name="add-btn" class="pop-window-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
                 <div class="form-body-block-input birzha-name">
@@ -110,7 +110,7 @@
 
             </div>
 
-            <div class="form-body-row" id="form-body-2-row">
+            <div class="form-body-row" id="form-body-2-row" data-number-row="2">
                 <h5>#2</h5>
                 <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-2-row', '#form-body-1-row')"></i>
                 <div class="form-body-block-input birzha-name">
@@ -151,7 +151,7 @@
                 </div>
             </div>
 
-            <div class="form-body-row" id="form-body-3-row">
+            <div class="form-body-row" id="form-body-3-row" data-number-row="3">
                 <h5>#3</h5>
                 <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-3-row', '#form-body-2-row')"></i>
                 <div class="form-body-block-input birzha-name">
@@ -192,7 +192,7 @@
                 </div>
             </div>
 
-            <div class="form-body-row" id="form-body-4-row">
+            <div class="form-body-row" id="form-body-4-row" data-number-row="4">
                 <h5>#4</h5>
                 <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-4-row', '#form-body-3-row')"></i>
                 <div class="form-body-block-input birzha-name">
@@ -233,7 +233,7 @@
                 </div>
             </div>
 
-            <div class="form-body-row" id="form-body-5-row">
+            <div class="form-body-row" id="form-body-5-row" data-number-row="5">
                 <h5>#5</h5>
                 <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-5-row', '#form-body-4-row')"></i>
                 <div class="form-body-block-input birzha-name">

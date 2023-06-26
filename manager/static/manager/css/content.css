@@ -318,13 +318,13 @@ option[value="none"] {
 .select2-container--default .select2-selection--single.prompt,
 .select2-container--default .select2-selection--multiple.prompt,
 .prompt {
-    border: 0.3px solid rgb(246, 148, 148);
+    border: 3px solid rgb(246, 148, 148);
 }
 
 .select2-container--default .select2-selection--single.done,
 .select2-container--default .select2-selection--multiple.done,
 .done {
-    border: 0.3px solid rgba(64, 120, 50, 0.575);
+    border: 3px solid rgba(64, 120, 50, 0.575);
 }
 
 

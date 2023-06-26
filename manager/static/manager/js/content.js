@@ -3,7 +3,6 @@ $(".tovar-geo select").attr({
     'multiple': '',
     'data-maximum-selection-length': '2'
 })
-
 $("#form-body-1-row div select, #form-body-1-row div input, #client-body-row div select, #client-body-row div input").attr('required','')
 
 
@@ -81,12 +80,7 @@ function onChange__form() {
 
     const summField = document.querySelector('#summ');
     summField.value = form__summa;
-
-    $('.form-body-block-input').on('input', $('.form-body-row'), function () {
-        onChange__form
-    });
 }
-
 /* select2 */
 $(document).ready(function () {
     $('select').select2({
@@ -105,52 +99,6 @@ $(document).ready(function () {
 const label_toggle_btn = document.getElementById("form-body-label-btn");
 label_toggle_btn.addEventListener("click", () => label_toggle_btn.classList.toggle("active"));
 
-
-$('.tovar-geo').on('select2:select select2:unselect', function () {
-    // Поиск значения tovar-geo
-    // alert($(".tovar-geo .select2-selection__choice").text())
-    if ($(this).find(".select2-selection__choice").length == 0 ) {
-        if ($(this).parent().find('.done').length > 1) {
-            alert("hah>1")
-        } else {
-            $(this).parent().find('input, .select2-selection').removeClass('prompt')
-            $(this).find('.select2-selection').removeClass("done prompt")
-        }
-    } else {
-        $(this).parent().find('input, .select2-selection').addClass('prompt') // К остальным добавляем красный цвет
-        $(this).find('.select2-selection').addClass('done') // К этому добавляем зеленый цвет
-    }
-});
-
-$('.kolvo, .summa, .comment').on('input', function () {
-    if ($(this).find('input').val() == "") { // Если значение инпута пустое то
-        if ($(this).parent().find('.done').length > 1) { // Проверяем есть ли еще выделенные селекты, инпуты
-            $(this).parent().find('input, .select2-selection').addClass('prompt') 
-            $(this).find('input').removeClass('done') // Удаляем класс done
-        } else { // Если нету то снимаем выделение на всем form-body-row
-            $(this).parent().find('input, .select2-selection').removeClass('prompt')
-            $(this).find('input').removeClass('done prompt')
-        }
-    } else { // Если пользователь хоть что то написал то:
-        $(this).parent().find('input, .select2-selection').addClass('prompt') // К остальным добавляем красный цвет
-        $(this).find('input').addClass('done') // К этому добавляем зеленый цвет
-    }
-});
-
-$('.birzha-name, .type-email, .type-number, .tovar-rezident, .tovar-emulator').on('select2:select select2:unselect', function (e) {
-    if (e.params.data.id == "none" || e.params.data.id == "") { // Если значение селекта = None
-        if ($(this).parent().find('.done').length > 1) { // Проверяем есть ли еще выделенные селекты, инпуты
-            $(this).parent().find('input, .select2-selection').addClass('prompt') 
-            $(this).find('.select2-selection').removeClass('done') // Удаляем класс done
-        } else { // Если нет то снимаем выделение на всем form-body-row
-            $(this).parent().find('input, .select2-selection').removeClass('prompt')
-            $(this).find('.select2-selection').removeClass('done prompt')
-        }
-    } else {
-        $(this).parent().find('input, .select2-selection').addClass('prompt') // К остальным добавляем красный цвет
-        $(this).find('.select2-selection').addClass('done') // К этому добавляем зеленый цвет
-    }
-});
 
 function form_body_clone(form_body_row_append, form_body_row_copy) {
     console.log(form_body_row_append)
@@ -208,14 +156,18 @@ function form_body_clone(form_body_row_append, form_body_row_copy) {
     onChange__form()
 }
 
-$("#id_client option:first-child").attr('value', 'none')
-$('#id_client').on('select2:select', $('.form-body-row') , function (e) {
-    if (e.params.data.id != "none") {
+
+function form_client_icon_toggle() {
+    if ($("#id_client option:selected").val() != "") {
 		$('.form-body-add-zakaz .form-body-block-input .pop-window-open-btn').removeClass('fa-plus').addClass('fa-pencil').attr('onclick', 'editclient_show()')
-	} else if (e.params.data.id == "none") {
+	} else if ($("#id_client option:selected").val() == "") {
 		$('.form-body-add-zakaz .form-body-block-input .pop-window-open-btn').removeClass('fa-pencil').addClass('fa-plus').attr('onclick', 'addclient_show()')
 	}
-});
+    $('#id_client').on('select2:select', function () {
+        form_client_icon_toggle()
+    });
+}
+
 
 // Sorting
 $('.form-table-name h5').on('click', function(){
@@ -441,3 +393,110 @@ $(".type-email .select2-selection__rendered").attr("title")
 $(".type-number .select2-selection__rendered").attr("title")
 $(".tovar-emulator .select2-selection__rendered").attr("title")
 $(".tovar-rezident .select2-selection__rendered").attr("title")
+
+$(document).ready(function () {
+    form_client_icon_toggle()
+    onChange__form()
+});
+
+
+
+
+/* Запуск валидации при загрузке страницы */
+$(document).ready(function () {
+    select_validate_save(".client-name", "#client-body-row")
+    input_validate_save(".deadline", "#client-body-row")
+    select_validate_save(".priority", "#client-body-row")
+    
+    body_row_num = 1
+    for (let body_row_lenght of Array(body_row_num).keys()) {
+        body_row_lenght++
+        form_body_validate_row(body_row_lenght)
+    }
+});
+
+
+/* Валидация */
+function form_body_validate_row(body_row_lenght) {
+    select_validate_save(".birzha-name", `#form-body-${body_row_lenght}-row`)
+    input_validate_save(".summa", `#form-body-${body_row_lenght}-row`)
+    input_validate_save(".kolvo", `#form-body-${body_row_lenght}-row`)
+    input_validate_save(".comment", `#form-body-${body_row_lenght}-row`)
+    select_validate_save(".type-email", `#form-body-${body_row_lenght}-row`)
+    select_validate_save(".type-number", `#form-body-${body_row_lenght}-row`)
+    select_validate_save(".tovar-emulator", `#form-body-${body_row_lenght}-row`)
+    select_validate_save(".tovar-rezident", `#form-body-${body_row_lenght}-row`)
+    multiple_select_validate_save(".tovar-geo", `#form-body-${body_row_lenght}-row`)
+}
+
+$(".tovar-geo").on('select2:select select2:unselect', function () {
+    // Поиск значения tovar-geo
+    // alert($(".tovar-geo .select2-selection__choice").text())
+    if ($(this).find(".select2-selection__choice").length == 0 ) {
+        if ($(this).parent(".form-body-row").find(".done").length > 1) {
+            $(this).find('.select2-selection, input').addClass("prompt")
+            $(this).find('.select2-selection, input').removeClass("done")
+        } else {
+            $(this).find('.select2-selection, input').removeClass('done prompt')
+            $(this).parent(".form-body-row").find(".select2-selection, input").removeClass("done prompt")
+        }
+    } else {
+        $(this).parent(".form-body-row").find(".select2-selection, input").addClass("prompt")
+        $(this).find('.select2-selection').addClass('done') // К этому добавляем зеленый цвет
+    }
+});
+
+$('.kolvo, .summa, .comment, .deadline').on('input', function () {
+    if ($(this).find('input').val() == "") { // Если значение инпута пустое то
+        if ($(this).parent(".form-body-row").find(".done").length > 1) {
+            $(this).find('.select2-selection, input').addClass("prompt")
+            $(this).find('.select2-selection, input').removeClass("done")
+        } else {
+            $(this).find('.select2-selection, input').removeClass('done prompt')
+            $(this).parent(".form-body-row").find(".select2-selection, input").removeClass("done prompt")
+        }
+    } else { // Если пользователь хоть что то написал то:
+        $(this).parent(".form-body-row").find(".select2-selection, input").addClass("prompt")
+        $(this).find('input').addClass('done') // К этому добавляем зеленый цвет
+    }
+});
+
+$('.birzha-name, .type-email, .type-number, .tovar-rezident, .tovar-emulator, .client-name, .priority').on('select2:select select2:unselect', function (e) {
+    if (e.params.data.id == "none" || e.params.data.id == "") { // Если значение селекта = None
+        if ($(this).parent(".form-body-row").find(".done").length > 1) {
+            $(this).find('.select2-selection, input').addClass("prompt")
+            $(this).find('.select2-selection, input').removeClass("done")
+        } else {
+            $(this).find('.select2-selection, input').removeClass('done prompt')
+            $(this).parent(".form-body-row").find(".select2-selection, input").removeClass("done prompt")
+        }
+    } else {
+        $(this).parent(".form-body-row").find(".select2-selection, input").addClass("prompt")
+        $(this).find('.select2-selection').addClass('done') // К этому добавляем зеленый цвет
+    }
+});
+
+// INPUT
+function input_validate_save(validate_input, validate_row) {
+    if ($(`${validate_row} ${validate_input} input`).val() != "") {
+        $(`${validate_row} ${validate_input} input`).addClass("done")
+    } else {
+        $(`${validate_row} ${validate_input} input`).addClass("prompt")
+    }
+}
+// SELECT
+function select_validate_save(validate_select, validate_row) {
+    if ($(`${validate_row} ${validate_select} select`).val() != "") {
+        $(`${validate_row} ${validate_select} .select2-selection`).addClass("done")
+    } else {
+        $(`${validate_row} ${validate_select} .select2-selection`).addClass("prompt")
+    }
+}
+// GEOS
+function multiple_select_validate_save(validate_select, validate_row) {
+    if ($(`${validate_row} ${validate_select} .select2-selection__choice`).length > 0) {
+        $(`${validate_row} ${validate_select} .select2-selection`).addClass("done")
+    } else {
+        $(`${validate_row} ${validate_select} .select2-selection`).addClass("prompt")
+    }
+}

@@ -6,7 +6,21 @@ $(".tovar-geo select").attr({
 $("#form-body-1-row div select, #form-body-1-row div input, #client-body-row div select, #client-body-row div input").attr('required','')
 
 
-
+// Куки
+function getCookie(name) {
+	var cookieValue = null;
+	if (document.cookie && document.cookie !== '') {
+		var cookies = document.cookie.split(';');
+		for (var i = 0; i < cookies.length; i++) {
+			var cookie = cookies[i].trim();
+			if (cookie.substring(0, name.length + 1) === (name + '=')) {
+				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+				break;
+			}
+		}
+	}
+	return cookieValue;
+}
 
 
 $('.form-table div').click(function() {
@@ -36,9 +50,44 @@ function addclient_close() {
 }
 
 function editclient_show() {
-    $("#pop-add-birzh, #pop-add-client").removeClass('active')
-    $("#pop-edit-client").addClass('active')
-    $("body").addClass('none-scroll')
+	var csrftoken = getCookie('csrftoken');
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', '/edit-client/', true);
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.setRequestHeader('X-CSRFToken', csrftoken);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                var formHtml = response.form_html;
+                var formData = response.formData;
+                $("#pop-add-birzh, #pop-add-client").removeClass('active');
+                $("#pop-edit-client").addClass('active');
+                $("body").addClass('none-scroll');
+                console.log(formData)
+                var form = document.getElementById('edit-client-form');
+                var nameInput = form.querySelector('#id_name');
+                var tgInput = form.querySelector('#id_tg');
+                var statusInput = form.querySelector('#id_status');
+                var langInput = form.querySelector('#id_lang');
+
+                // Вставка значений в поля формы
+                nameInput.value = formData.name;
+                tgInput.value = formData.tg;
+                statusInput.value = formData.status;
+                langInput.value = formData.lang;
+            } else {
+                // Обработка ошибок, если необходимо
+            }
+        }
+    }
+    const selectElement = document.getElementById('id_client');
+    const selectedValue = selectElement.value;
+    console.log(selectedValue);
+
+	var data = JSON.stringify({ client: selectedValue });
+	console.log(data)
+	xhr.send(data);
 }
 function editclient_close() {
     $("#pop-edit-client").removeClass('active')
@@ -209,23 +258,6 @@ $('.form-table-name h5').on('click', function(){
     }
 })
 
-
-
-// Куки
-function getCookie(name) {
-	var cookieValue = null;
-	if (document.cookie && document.cookie !== '') {
-		var cookies = document.cookie.split(';');
-		for (var i = 0; i < cookies.length; i++) {
-			var cookie = cookies[i].trim();
-			if (cookie.substring(0, name.length + 1) === (name + '=')) {
-				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-				break;
-			}
-		}
-	}
-	return cookieValue;
-}
 
 //Сохранение страницы менеджера
 $(document).ready(function() {

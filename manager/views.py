@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.forms import model_to_dict
+from django.shortcuts import render, get_object_or_404
 from .models import Orders, Geo, Exchanges, Clients, Products, AutoSave
 from .forms import OrdersForm, ClientsForm, ExchangesForm
 from django.core.paginator import Paginator
@@ -35,12 +36,12 @@ def index(request):
                     emulator_key = 'emulator{}'.format(i)
 
                     if form.cleaned_data[exchange_key] is not None:
+                        print(1)
                         comment = form.cleaned_data[comment_key]
                         exchange = form.cleaned_data[exchange_key]
                         price = form.cleaned_data[price_key]
                         quantity = form.cleaned_data[quantity_key]
                         geo_values = form.cleaned_data.get(geo_key)
-                        geo = ', '.join(str(value) for value in geo_values) if geo_values else None
                         resident = form.cleaned_data[resident_key]
                         mail_type = form.cleaned_data[mail_type_key]
                         type_of_number = form.cleaned_data[number_key]
@@ -52,14 +53,15 @@ def index(request):
                             exchange=exchange,
                             price=price,
                             quantity=quantity,
-                            geo_id=geo,
                             resident=resident,
                             mail_type=mail_type,
                             type_of_number=type_of_number,
                             emulator=emulator
                         )
-                        print(product)
                         product.save()
+                        if geo_values:
+                            product.geo_id.set(geo_values)
+                AutoSave.objects.filter(manager=user).delete()
         elif 'form_client' in request.POST:
             form = ClientsForm(request.POST)
             if form.is_valid():
@@ -111,7 +113,7 @@ def index(request):
 def info_order(request):
     data = json.loads(request.body)
     order_id = data.get('orderId')
-    print(order_id)
+    # print(order_id)
     orders = Orders.objects.filter(id=order_id).select_related('client')
     products = Products.objects.filter(order__id=order_id).select_related('exchange')
 
@@ -166,12 +168,11 @@ def save_data(request):
     # Получение данных из POST-запроса
     field_id = data.get('fieldId')
     field_value = data.get('fieldValue')
-    print(field_id, field_value)
+    # print(field_id, field_value)
     # Проверка, существует ли запись AutoSave для данного manager
     manager_id = request.user.id
     autosave, created = AutoSave.objects.get_or_create(manager_id=manager_id)
     if not field_value:
-        print(1)
         setattr(autosave, field_id, None)
     else:
         # Обновление значения поля в AutoSave
@@ -216,6 +217,20 @@ def save_data(request):
 
     # Возвращение ответа
     return JsonResponse({'success': True})
+
+
+def edit_client(request):
+    data = json.loads(request.body)
+    client_id = data.get('client')
+    client = get_object_or_404(Clients, id=client_id)
+    initial_data = {
+        'name': client.name,
+        'tg': client.tg,
+        'status': client.status,
+        'lang': client.language,
+    }
+
+    return JsonResponse({'success': True, 'formData': initial_data})
 
 
 def refusals(request):

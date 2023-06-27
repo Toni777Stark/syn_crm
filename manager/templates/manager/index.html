@@ -412,7 +412,7 @@
         <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="addclient_close()"></i>
 
         <div class="block-new-client">
-            <h3>Новый клиент</h2>
+            <h3>Новый клиент</h3>
             <form class="form-new-client" method="post">
                 {% csrf_token %}
                 {{ form_client.name }}
@@ -427,16 +427,15 @@
 <div id="pop-edit-client" class="pop-window">
     <div class="pop-container">
         <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="editclient_close()"></i>
-
-        <div class="block-edit-client">
-            <h3>Редактировать</h2>
-            <form class="form-edit-client" method="post">
+        <div class="block-edit-client" id="form-container">
+            <h3>Редактировать</h3>
+            <form class="form-new-client" id="edit-client-form" method="post">
                 {% csrf_token %}
                 {{ form_client.name }}
                 {{ form_client.tg }}
                 {{ form_client.status }}
                 {{ form_client.lang }}
-                <button class="btn btn-primary" name="form_client">Сохранить</button>
+                <button class="btn btn-primary" name="form_client">Изменить клиента</button>
             </form>
         </div>
     </div>

@@ -455,13 +455,8 @@ function validate_form(form_row_number) {
         if ($(this).find("input, select").val() != "" || $(this).find(".select2-selection__choice").length != 0 ) {
             $(this).find(".select2-selection, input").addClass("done")
         } else {
-            if ($(this).parent().find(".done").length > 0) {
-                $(this).find(".select2-selection, input").addClass("prompt")
-                $(this).find(".select2-selection, input").removeClass("done")
-            } else {
-                $(this).find(".select2-selection, input").removeClass("prompt")
-                $(this).find(".select2-selection, input").removeClass("done")
-            }
+            $(this).find(".select2-selection, input").addClass("prompt")
+            $(this).find(".select2-selection, input").removeClass("done")
         }
     });
 }

@@ -1,0 +1,72 @@
+
+@media (max-width: 530px) {
+    .dropbtn {
+        margin-right: 0.5em;
+    }
+
+
+    .side-bar {
+        position: fixed;
+        z-index: -1;
+        width: 100vw;
+        max-width: unset;
+        left: 0;
+    }
+    .side-bar.active {
+        left: -100vw;
+    }
+
+    .side-bar-block-link {
+        
+        padding-right: 2em;
+    }
+
+    .content-block {
+        z-index: -2;
+
+        position: absolute;
+        right: -100vw;
+        width: 100vw;
+        padding: 2.5em;
+    }
+    .content-block.active-content-block {
+        right: 0;
+    }
+
+
+    .form-body-add-tovar .form-body-block-input:nth-child(2),
+    .form-body-add-tovar .form-body-block-input:nth-child(3) 
+    {
+        width: 100%;
+    }
+
+
+    .form-body-add-tovar .form-body-row-block .form-body-row .form-body-block-input,
+    .form-body-add-zakaz .form-body-block-input 
+    {
+        width: 100%;
+    }
+
+
+
+    .form-list-zakazi-block {
+        width: 95vw;
+        margin-left: -2em;
+        padding: 1em;
+    }
+    .form-table-name h5 {
+        font-size: 16px;
+    }
+    .form-table div h5 {
+        font-size: 12px;
+    }
+	#left-bar {
+		width: 100vw;
+        padding: 1.5em;
+        padding-bottom: 3em;
+	}
+}
+
+@media (max-width: 1462px) {
+    /**/
+}

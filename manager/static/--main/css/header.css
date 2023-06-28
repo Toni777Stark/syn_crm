@@ -1,0 +1,109 @@
+#header {
+    background-color: rgb(33, 38, 41);
+    display: flex;
+    position: fixed;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    padding: 0.5em;
+    z-index: 2;
+}
+
+
+#openSide_bar {
+    display: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding-right: 1em;
+    transition: .2s;
+}
+#openSide_bar.active {
+    display: inline-block;
+    color: white;
+}
+
+
+#closeSide_bar {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+#closeSide_bar.active {
+  display: none;
+}
+
+/* Лого юзера */
+.header-user-icon {
+    width: 16px;
+    height: 16px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin: 0 0 5px 5px 
+}
+.header-user-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+/* Кнопка выпадающего списка */
+.dropbtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff00;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
+  margin-right: 0.5em;
+  width: 120px;
+  height: 30px;
+  align-items: center;
+  user-select: none;
+}
+.dropbtn h5 {
+  margin: 0;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #ffffff37;
+  transition: .3s;
+}
+
+/* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.user-tools {
+  position: relative;
+  display: inline-block;
+  float: left;
+}
+
+/* Выпадающее содержимое (скрыто по умолчанию) */
+.dropdown-content {
+  display: none;
+  background-color: #8a8a8a;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  position: absolute;
+  z-index: 5;
+}
+/* Ссылки внутри выпадающего списка */
+.dropdown-content a, .dropdown-content .header-admin-btn button {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  border: 0;
+  outline: 0;
+  background-color: #ffffff37;
+  width: 100px;
+  padding: 10px 0;
+  right: 0px;
+  margin: 6px;
+}
+/* Показать выпадающее меню (используйте JS, чтобы добавить этот класс .dropdown-content содержимого, когда пользователь нажимает на кнопку выпадающего списка) */
+.show {display:block;}

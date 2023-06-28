@@ -1,8 +1,8 @@
-{% extends 'main.html' %}
+{% extends '--main/main.html' %}
 {% load static %}
 
 <!-- head block -->
-{% block title %}Отказы{% endblock %}
+{% block title %}Отказы {% endblock %}
 {% block main-styles %}
 <!-- standart-styles -->
 <link rel="stylesheet" href="{% static 'refusals/css/main.css' %}">
@@ -40,15 +40,25 @@
 
 <!-- main content-block -->
 {% block main-content %}
-    <div class="up-checkbox-container">
-        <h2 class="name-checkbox">Было на утро</h2>
+    <div class="up-container">
+        <div class="checkbox-block">
+            <h2 class="head-name checkbox-name">Было на утро</h2>
 
-        <label class="checkbox-label">
-            <input type="checkbox">
-            <span class="checkbox-switch"></span>
-        </label>
+            <label class="checkbox-label">
+                <input type="checkbox">
+                <span class="checkbox-switch"></span>
+            </label>
 
-        <h2 class="name-checkbox">На сейчас <p>По плану утра</p></h2>
+            <h2 class="head-name checkbox-name">На сейчас <p>По плану утра</p></h2>
+        </div>
+        
+        <div class="zoom-level-block">
+            <h2 class="head-name zoom-level-name">Масштаб</h2>
+
+            <div class="zoom-level">
+                <input type="text">
+            </div>
+        </div>
     </div>
 
     <div class="region-block">

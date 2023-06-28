@@ -3,25 +3,30 @@
 }
 
 /* up checkbox */
-.up-checkbox-container {
+.up-container {
     width: 100%;
     background-color: rgb(56, 68, 64);
     display: flex;
     align-items: center;
+    grid-gap: 200px;
     padding: 1em 2em;
+}
+
+.checkbox-block {
+    display: flex;
+    align-items: center;
     grid-gap: 20px;
 }
-.name-checkbox {
+.head-name {
     color: rgb(212, 212, 212);
     font-size: 25px;
     margin: 0;
 }
-.name-checkbox p {
+.head-name p {
     font-size: 15px;
     line-height: 10px;
     margin-bottom: 0.5em;
 }
-
 .checkbox-label {
 	display: inline-block;    
 	height: 28px;    
@@ -96,6 +101,29 @@
 }
 
 
+/* zoom level */
+.zoom-level-block {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+}
+.zoom-level {
+    display: flex;
+    align-items: center;
+    grid-gap: 5px;
+}
+
+.zoom-level input {
+    height: 50px;
+    width: 100px;
+    background-color: transparent;
+    padding: 0 1.2em;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    outline: 0;
+    border: 3px solid rgb(9, 17, 13);
+}
 
 /* region block */
 .region-block {

@@ -478,3 +478,16 @@ $(document).ready(function () {
 $("select, input").on('select2:select select2:unselect input', function () {
     validate_form($(this).parent().parent().attr("data-number-row"))
 });
+
+$("select, input").on('select2:select select2:unselect input', function () {
+    if($(this).val() == "") {
+        var check_valid_row = $(this).parent().parent() //.attr("data-number-row")
+        if (check_valid_row.attr("data-number-row") == 1 || check_valid_row.attr("data-number-row") == 0) {
+            return
+        } else {
+            if ($(this).parent().parent().find(".done").length < 1 ) {
+                $(this).parent().parent().find("input, .select2-selection").removeClass("done prompt")
+            }
+        }
+    }
+});

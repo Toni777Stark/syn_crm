@@ -79,3 +79,15 @@ $(function() {
 		}
 	});
 })
+
+
+function open_notification() {
+	$(".notifications-container").addClass("active")
+}
+function close_notification() {
+	$(".notifications-container").removeClass("active")
+}
+
+$(".notificate-close").on('click', function () {
+	$(this).parent().remove()
+})

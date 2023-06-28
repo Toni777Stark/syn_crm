@@ -173,10 +173,18 @@
     grid-gap: 15px;
 }
 .manager-name {
+    user-select: none;
+    cursor: pointer;
     font-size: 30px;
     color: rgb(77, 77, 77);
     text-align: center;
 }
+.manager-percentage {
+    color:rgb(0, 127, 201);
+    margin-top: -1.2em;
+    text-align: center;
+}
+
 
 
 .list-group {
@@ -205,4 +213,47 @@ ul.list-group li.list-group-item {
 .drop:active {
     transform: scale(1.0);
     transition: .2s;
+}
+
+
+.orders-list-block {
+    display: flex;
+    grid-gap: 50px;
+    padding: 0 2em;
+}
+.orders-block-name {
+    width: 100%;
+    background: linear-gradient(to left, #7700ff 1%, #00c3ff 50%, #00ffd5 100%);
+    display: flex;
+    justify-content: center;
+    padding: 1em 0;
+    margin-bottom: 3em;
+}
+.orders-name {
+    font-size: 30px;
+    color: white;
+}
+
+
+.notifications-container {
+    background-color: rgb(216, 216, 216);
+    padding: 1em;
+    position: absolute;
+    bottom: 1em;
+    left: 0;
+}
+.notification {
+    background-color: white;
+}
+.notificate-text {
+    padding: 0.3em;
+    padding-top: 1em;
+    color: rgb(61, 61, 61);
+    font-size: 15px;
+}
+.notificate-close {
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: 1em;
 }

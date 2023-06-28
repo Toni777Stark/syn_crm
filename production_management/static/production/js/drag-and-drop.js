@@ -1,4 +1,4 @@
-const main = document.querySelector(".region-block");
+const main = document.querySelector("body");
 
 
 main.addEventListener("dragenter", (e) => {

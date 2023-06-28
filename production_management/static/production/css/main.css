@@ -130,8 +130,7 @@
     display: flex;
     padding: 0 2em;
     grid-gap: 50px;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    overflow-x: auto;
     width: 100%;
 }
 .region {
@@ -187,18 +186,18 @@
 
 
 
-.list-group {
+.exchange-group {
     min-height: 100px;
     grid-gap: 20px;
     width: 150px;
     padding-bottom: 3em;
 }
-ul.list-group li.list-group-item {
+div.exchange-group .exchange-group-item {
     transition: .5s;
     border: 1px solid black;
     padding: 0;
 }
-.list-group-item img {
+.exchange-group-item img {
     width: 100%;
     height: 100%;
 }

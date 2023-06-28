@@ -10,11 +10,12 @@ $(".zoom-level input").on('change', function () {
 
 
 function zoom(input_value) {
-	$("html").css({
+	$("#content-block").css({
 		"zoom": input_value
 	})
 }
-
+// Zoom
+zoom("50%")
 
 $(window).keyup(function(e){
 	var target = $('.checkbox-label input:focus');

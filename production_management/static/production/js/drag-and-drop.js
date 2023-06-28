@@ -2,7 +2,7 @@ const main = document.querySelector("body");
 
 
 main.addEventListener("dragenter", (e) => {
-  if (e.target.classList.contains("list-group")) {
+  if (e.target.classList.contains("exchange-group")) {
     e.target.classList.add("drop");
   }
 });
@@ -14,7 +14,7 @@ main.addEventListener("dragleave", (e) => {
 });
 
 main.addEventListener("dragstart", (e) => {
-  if (e.target.classList.contains("list-group-item")) {
+  if (e.target.classList.contains("exchange-group-item")) {
     e.dataTransfer.setData("text/plain", e.target.dataset.id);
   }
 });
@@ -36,7 +36,7 @@ main.addEventListener("drop", (e) => {
     return;
   }
 
-  if (elemBelow.classList.contains("list-group-item")) {
+  if (elemBelow.classList.contains("exchange-group-item")) {
     const center =
       elemBelow.getBoundingClientRect().y +
       elemBelow.getBoundingClientRect().height / 2;
@@ -53,7 +53,7 @@ main.addEventListener("drop", (e) => {
     todo.className = elemBelow.className;
   }
 
-  if (e.target.classList.contains("list-group")) {
+  if (e.target.classList.contains("exchange-group")) {
     e.target.append(todo);
 
     if (e.target.classList.contains("drop")) {

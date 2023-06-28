@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     grid-gap: 200px;
-    padding: 1em 2em;
+    padding: .75em 2em;
 }
 
 .checkbox-block {
@@ -19,11 +19,11 @@
 }
 .head-name {
     color: rgb(212, 212, 212);
-    font-size: 25px;
+    font-size: 20px;
     margin: 0;
 }
 .head-name p {
-    font-size: 15px;
+    font-size: 12.5px;
     line-height: 10px;
     margin-bottom: 0.5em;
 }
@@ -114,7 +114,7 @@
 }
 
 .zoom-level input {
-    height: 50px;
+    height: 40px;
     width: 100px;
     background-color: transparent;
     padding: 0 1.2em;
@@ -164,7 +164,7 @@
 /* manager block */
 .manager-block {
     display: flex;
-    grid-gap: 75px;
+    grid-gap: 25px;
 }
 .manager-block .manager {
     display: flex;
@@ -174,7 +174,7 @@
 .manager-name {
     user-select: none;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 25px;
     color: rgb(77, 77, 77);
     text-align: center;
 }
@@ -187,12 +187,15 @@
 
 
 .exchange-group {
+    display: flex;
+    flex-direction: column;
     min-height: 100px;
     grid-gap: 20px;
     width: 150px;
     padding-bottom: 3em;
 }
 div.exchange-group .exchange-group-item {
+    cursor: pointer;
     transition: .5s;
     border: 1px solid black;
     padding: 0;

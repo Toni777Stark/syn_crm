@@ -15,7 +15,7 @@ function zoom(input_value) {
 	})
 }
 // Zoom
-zoom("50%")
+zoom("100%")
 
 $(window).keyup(function(e){
 	var target = $('.checkbox-label input:focus');
@@ -57,7 +57,7 @@ function remove_manager_close() {
 
 $(function() {
 	$.contextMenu({
-		selector: '.manager-name',
+		selector: '.manager-name, .exchange-group-item',
 		items: {
 			view: {
 				name: "Посмотреть",

@@ -238,8 +238,8 @@ div.exchange-group .exchange-group-item {
 
 
 .notifications-container {
-    width: 235px;
     display: none;
+    width: 235px;
     background-color: rgb(216, 216, 216);
     padding: 1em;
     padding-top: 1.5em;

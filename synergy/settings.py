@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'manager',
+    'production_management',
+    'production',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

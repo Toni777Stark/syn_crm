@@ -72,9 +72,19 @@ def index(request):
                     status = form.cleaned_data['status']
                     lang = form.cleaned_data['lang']
                     client = Clients(name=name, tg=tg, language=lang, status=status, manager=manager)
+                    print(client)
                     client.save()
                 except IntegrityError:
                     error = 'Клиент с таким TG уже существует.'
+        elif 'form_edit_client' in request.POST:
+            form = ClientsForm(request.POST)
+            if form.is_valid():
+                name = form.cleaned_data['name']
+                client = get_object_or_404(Clients, name=name)
+                client.tg = request.POST.get('tg')
+                client.status = form.cleaned_data['status']
+                client.language = form.cleaned_data['lang']
+                client.save()
         elif 'form_exchanges' in request.POST:
             form = ExchangesForm(request.POST)
             if form.is_valid():

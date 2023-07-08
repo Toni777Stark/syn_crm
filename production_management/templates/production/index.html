@@ -11,14 +11,11 @@
 
 <!-- side bar -->
 {% block main-sidebar %}
+{% load group_tags %}
+{% if user|user_in_group:'Менеджеры' %}
 <li class="nav-item">
     <a href="{% url 'home' %}" class="nav-link" aria-current="page">
         <i class="fa fa-calendar"></i><h5>Заказы</h5>
-    </a>
-</li>
-<li class="nav-item active">
-    <a href="{% url 'refusals' %}" class="nav-link">
-        <i class="fa fa-calendar"></i><h5>Отказы</h5>
     </a>
 </li>
 <li class="nav-item">
@@ -36,6 +33,15 @@
         <i class="fa fa-gauge-high"></i><h5>Дашбоард</h5>
     </a>
 </li>
+{% endif %}
+{% if user|user_in_group:'Руководитель производства' %}
+<li class="nav-item">
+    <a href="{% url 'pm_works' %}" class="nav-link">
+        <i class="fa fa-user-circle"></i><h5>Рабочий процесс</h5>
+    </a>
+</li>
+{% endif %}
+<p></p>
 {% endblock %}
 
 <!-- main content-block -->

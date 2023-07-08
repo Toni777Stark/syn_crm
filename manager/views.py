@@ -6,8 +6,14 @@ from django.core.paginator import Paginator
 from django.db.utils import IntegrityError
 from django.http import JsonResponse
 import json
+from django.contrib.auth.decorators import user_passes_test
 
 
+def group_check(user):
+    return user.groups.filter(name='Менеджеры').exists()
+
+
+@user_passes_test(group_check, login_url='/')
 def index(request):
     error = ''
     user = request.user
@@ -120,6 +126,7 @@ def index(request):
     return render(request, 'manager/index.html', data)
 
 
+@user_passes_test(group_check, login_url='/')
 def info_order(request):
     data = json.loads(request.body)
     order_id = data.get('orderId')
@@ -173,6 +180,7 @@ def info_order(request):
     return JsonResponse(response)
 
 
+@user_passes_test(group_check, login_url='/')
 def save_data(request):
     data = json.loads(request.body)
     # Получение данных из POST-запроса
@@ -229,6 +237,7 @@ def save_data(request):
     return JsonResponse({'success': True})
 
 
+@user_passes_test(group_check, login_url='/')
 def edit_client(request):
     data = json.loads(request.body)
     client_id = data.get('client')
@@ -243,10 +252,12 @@ def edit_client(request):
     return JsonResponse({'success': True, 'formData': initial_data})
 
 
+@user_passes_test(group_check, login_url='/')
 def refusals(request):
     return render(request, 'refusals/index.html')
 
 
+@user_passes_test(group_check, login_url='/')
 def refunds(request):
     error = ''
     user = request.user
@@ -348,8 +359,11 @@ def refunds(request):
     return render(request, 'refunds/index.html', data)
 
 
+@user_passes_test(group_check, login_url='/')
 def clients(request):
     return render(request, 'clients/index.html')
 
+
+@user_passes_test(group_check, login_url='/')
 def dashboard(request):
     return render(request, 'dashboard/index.html')

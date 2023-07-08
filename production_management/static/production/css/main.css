@@ -290,3 +290,10 @@ div.exchange-group .exchange-group-item {
     border-top: 1px solid white;
     border-radius: 5px;
 }
+
+#formPopup {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}

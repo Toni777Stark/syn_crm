@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50, unique=True, verbose_name='Название')),
-                ('exchange_type', models.CharField(max_length=50, verbose_name='Статус')),
+                ('exchange_type', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='exchange_type', to='manager.exchangetype')),
                 ('on', models.BooleanField(default=True, verbose_name='Вкл')),
             ],
         ),

@@ -52,7 +52,7 @@ function addclient_close() {
 function editclient_show() {
 	var csrftoken = getCookie('csrftoken');
 	var xhr = new XMLHttpRequest();
-	xhr.open('POST', '/edit-client/', true);
+	xhr.open('POST', 'men/edit-client/', true);
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.setRequestHeader('X-CSRFToken', csrftoken);
 	xhr.onreadystatechange = function() {
@@ -282,7 +282,7 @@ $(document).ready(function() {
 
         // Отправка данных формы через AJAX
         $.ajax({
-          url: '/save-data/',
+          url: 'men/save-data/',
           type: 'POST',
           dataType: 'json',
           data: JSON.stringify(data),
@@ -317,7 +317,7 @@ $(document).ready(function() {
         console.log(data)
         // Отправка данных формы через AJAX
         $.ajax({
-          url: '/save-data/',
+          url: 'men/save-data/',
           type: 'POST',
           dataType: 'json',
           data: JSON.stringify(data),
@@ -340,7 +340,7 @@ $(document).ready(function() {
 function orderInfo(orderId) {
 	var csrftoken = getCookie('csrftoken');
 	var xhr = new XMLHttpRequest();
-	xhr.open('POST', '/info_order/', true);
+	xhr.open('POST', 'men/info_order/', true);
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.setRequestHeader('X-CSRFToken', csrftoken);
 	xhr.onreadystatechange = function() {

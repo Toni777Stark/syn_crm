@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from PIL import Image
 
 
 class Geo(models.Model):
@@ -51,10 +50,21 @@ class Emulator(models.Model):
         verbose_name_plural = "Эмуляторы"
 
 
+class ExchangeType(models.Model):
+    name = models.CharField('Название', max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Тип бирж"
+        verbose_name_plural = "Тип биржи"
+
+
 class Exchanges(models.Model):
     # Биржы
     name = models.CharField('Название', max_length=50, unique=True)
-    exchange_type = models.CharField('Статус', max_length=50)
+    exchange_type = models.ForeignKey(ExchangeType, on_delete=models.PROTECT, related_name='exchange_type')
     on = models.BooleanField('Вкл', default=1)
 
     def __str__(self):

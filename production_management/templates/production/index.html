@@ -62,141 +62,113 @@
     </div>
 
     <div class="region-block">
-        
-        <div class="region region-eu">
+
+        {% for direction in directions %}
+        <div class="region region-eu" id="{{direction.id_name}}">
 
             <div class="region-name">
-                <h1>89%</h1>
-                <h1>EU</h1>
+                <h2>{{direction.name}}</h2>
             </div>
 
             <div class="manager-block">
-                <div class="manager">
-                    <h2 class="manager-name">Ирина</h2>
-                    <h4 class="manager-percentage">117%</h4>
+                {% for reg in direction.reg_directions.all %}
+                <div class="manager" id="{{reg.id}}">
+                    <h2 class="manager-name">{{reg}}</h2>
                     <div class="exchange-group">
-                      <div class="exchange-group-item" data-id="1" draggable="true">
-                        <img src="{% static 'production/img/binance-logo.png' %}" draggable="false" alt="">
-                      </div>
-                      <div class="exchange-group-item" data-id="2" draggable="true">
-                        <img src="{% static 'production/img/binance-logo.png' %}" draggable="false" alt="">
-                      </div>
-                      <div class="exchange-group-item" data-id="3" draggable="true">
-                        <img src="{% static 'production/img/binance-logo.png' %}" draggable="false" alt="">
-                      </div>
-                      <div class="exchange-group-item" data-id="4" draggable="true">
-                        <img src="{% static 'production/img/binance-logo.png' %}" draggable="false" alt="">
-                      </div>
-                      <div class="exchange-group-item" data-id="5" draggable="true">
-                        <img src="{% static 'production/img/revolut-logo.png' %}" draggable="false" alt="">
-                      </div>
-                      <div class="exchange-group-item" data-id="6" draggable="true">
-                        <img src="{% static 'production/img/revolut-logo.png' %}" draggable="false" alt="">
-                      </div>
-                      <div class="exchange-group-item" data-id="7" draggable="true">
-                        <img src="{% static 'production/img/wise-logo.png' %}" draggable="false" alt="">
-                      </div>
-                      <div class="exchange-group-item" data-id="8" draggable="true">
-                        <img src="{% static 'production/img/wise-logo.png' %}" draggable="false" alt="">
-                      </div>
+                        {% for task in tasks %}
+                        {% if task.reg == reg.reg %}
+                        <div class="exchange-group-item" oncontextmenu="openForm(event, {{ task.quantity }})"
+                             data-id="{{task.id}}" draggable="true">
+                            <p>Номер заказа: {{ task.product.order }}</p>
+                            <p>Биржа: {{ task.product.exchange }} {{ task.product.exchange.exchange_type }}</p>
+                            <p>Количество: {{ task.quantity }}</p>
+                            <p>Количество сделанных: {{ task.ready }}</p>
+                            <p>Статус: {{ task.status }}</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
-              
-                <div class="manager">
-                    <h2 class="manager-name">Дмитрий</h2>
-                    <h4 class="manager-percentage">97%</h4>
-                    <div class="exchange-group"></div>
-                </div>
-              
-                <div class="manager">
-                    <h2 class="manager-name">Геннадий</h2>
-                    <h4 class="manager-percentage">92%</h4>
-                    <div class="exchange-group"></div>
-                </div>
-              
-                <div class="manager">
-                    <h2 class="manager-name">Максим</h2>
-                    <h4 class="manager-percentage">86%</h4>
-                    <div class="exchange-group"></div>
-                </div>
+                {% endfor %}
             </div>
         </div>
+        {% endfor %}
 
-                
+
         <div class="region region-ru">
 
             <div class="region-name">
-                <h1>75%</h1>
-                <h1>RU</h1>
+                <h1></h1>
+                <h1>Регистраторы</h1>
             </div>
 
             <div class="manager-block">
                 <div class="manager">
-                    <h2 class="manager-name">Ирина</h2>
-                    <h4 class="manager-percentage">95%</h4>
-                    <div class="exchange-group"></div>
-                </div>
-                <div class="manager">
-                    <h2 class="manager-name">Генадий</h2>
-                    <h4 class="manager-percentage">75%</h4>
-                    <div class="exchange-group"></div>
-                </div>
-                <div class="manager">
-                    <h2 class="manager-name">Дима</h2>
-                    <h4 class="manager-percentage">55%</h4>
-                    <div class="exchange-group"></div>
-                </div>
-                <div class="manager">
-                    <h2 class="manager-name">Антон</h2>
-                    <h4 class="manager-percentage">25%</h4>
-                    <div class="exchange-group"></div>
+                    {% for reg in reg_new %}
+                    <div id={{ reg.id }}>
+                        Имя: {{ reg.username }}
+                        ID: {{ reg.id }}
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 
     <div class="new-orders">
-            <div class="orders-block-name">
-                <h5 class="orders-name">НОВЫЕ ЗАКАЗЫ</h5>
+        <div class="orders-block-name">
+            <h5 class="orders-name">НОВЫЕ ЗАКАЗЫ</h5>
+        </div>
+        <div class="orders-list-block">
+            {% for exchange_type in exchange_types %}
+            <div class="exchange-group" data-id="{{exchange_type.id}}" >
+            <p>{{ exchange_type }}</p>
+                {% for product in processed_orders %}
+                    {% if exchange_type == product.exchange.exchange_type %}
+                    <div class="exchange-group-item" draggable="true" data-id="{{product.id}}">
+                        {{ product }}
+                        {{ product.remainder }}
+                        {{ product.exchange }}
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
-            <div class="orders-list-block">
-                <div class="exchange-group">
-                    <div class="exchange-group-item" data-id="9" draggable="true">
-                    <img src="{% static 'production/img/binance-logo.png' %}" draggable="false" alt="">
-                    </div>
-                    <div class="exchange-group-item" data-id="10" draggable="true">
-                    <img src="{% static 'production/img/binance-logo.png' %}" draggable="false" alt="">
-                    </div>
-                    <div class="exchange-group-item" data-id="11" draggable="true">
-                    <img src="{% static 'production/img/binance-logo.png' %}" draggable="false" alt="">
-                    </div>
-                    <div class="exchange-group-item" data-id="12" draggable="true">
-                    <img src="{% static 'production/img/binance-logo.png' %}" draggable="false" alt="">
-                    </div>
-                </div>
-                <div class="exchange-group">
-                    <div class="exchange-group-item" data-id="13" draggable="true">
-                    <img src="{% static 'production/img/wise-logo.png' %}" draggable="false" alt="">
-                    </div>
-                    <div class="exchange-group-item" data-id="14" draggable="true">
-                    <img src="{% static 'production/img/wise-logo.png' %}" draggable="false" alt="">
-                    </div>
-                    <div class="exchange-group-item" data-id="15" draggable="true">
-                    <img src="{% static 'production/img/wise-logo.png' %}" draggable="false" alt="">
-                    </div>
-                </div>
-                <div class="exchange-group">
-                    <div class="exchange-group-item" data-id="16" draggable="true">
-                    <img src="{% static 'production/img/revolut-logo.png' %}" draggable="false" alt="">
-                    </div>
-                    <div class="exchange-group-item" data-id="17" draggable="true">
-                    <img src="{% static 'production/img/revolut-logo.png' %}" draggable="false" alt="">
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
+<div id="formPopup">
+  <form>
+    <label for="dropdown1">Кому?</label><br>
+    <select id="dropdown1">
+      <option value="option1">Опция 1</option>
+      <option value="option2">Опция 2</option>
+      <option value="option3">Опция 3</option>
+    </select><br>
+
+    <label for="slider">Сколько?</label><br>
+    <input type="range" id="slider" name="slider" min="0" max="3" value="3"><br>
+    <span id="sliderValue">3</span><br>
+
+    <label for="dropdown2">Порядок:</label><br>
+    <select id="dropdown2">
+      <option value="option1">1</option>
+      <option value="option2">2</option>
+      <option value="option3">3</option>
+    </select><br>
+
+    <button type="submit">Отправить</button>
+  </form>
 </div>
+
+<script>
+
+  const slider = document.getElementById('slider');
+  const sliderValue = document.getElementById('sliderValue');
+
+  slider.addEventListener('input', function() {
+    sliderValue.textContent = slider.value;
+  });
+</script>
 {% endblock %}
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Geo, Exchanges, Clients, Orders, Products, MailType, TypeOfNumber, Emulator, AutoSave
+from .models import Geo, Exchanges, Clients, Orders, Products, MailType, TypeOfNumber, Emulator, AutoSave, ExchangeType
 
 
 admin.site.register(Geo)
@@ -11,3 +11,4 @@ admin.site.register(MailType)
 admin.site.register(TypeOfNumber)
 admin.site.register(Emulator)
 admin.site.register(AutoSave)
+admin.site.register(ExchangeType)

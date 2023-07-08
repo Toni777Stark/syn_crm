@@ -44,9 +44,9 @@
             <div class="dropdown-content" id="myDropdown">
                     <form class="header-admin-btn" method="post" action="{% url 'admin:index' %}">
                         {% csrf_token %}
-                        <button type="submit">Вернуться</button>
+                        <button type="submit">Профиль</button>
                     </form>
-                    <form class="header-admin-btn" method="post" action="{% url 'admin:logout' %}">
+                    <form class="header-admin-btn" method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
                         <button type="submit">Выйти</button>
                     </form>

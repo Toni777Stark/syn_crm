@@ -1,4 +1,4 @@
-from .models import Clients, Exchanges, Geo, TypeOfNumber, MailType, Emulator, AutoSave
+from .models import Clients, Exchanges, Geo, TypeOfNumber, MailType, Emulator, AutoSave, ExchangeType
 from django import forms
 
 
@@ -89,4 +89,4 @@ class ClientsForm(forms.Form):
 
 class ExchangesForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Название'}))
-    type = forms.ChoiceField(choices=[('', 'Тип'), ('EU', 'EU'), ('UA', 'UA')])
+    type = forms.ModelChoiceField(queryset=ExchangeType.objects.all(), empty_label='Тип биржи', required=False)

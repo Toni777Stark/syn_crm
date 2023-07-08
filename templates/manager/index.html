@@ -1,0 +1,475 @@
+{% extends '--main/main.html' %}
+{% load static %}
+
+<!-- head block -->
+{% block title %}Заказы {% endblock %}
+{% block main-styles %}
+
+<!-- manager styles -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'manager/css/content.css' %}">
+<link rel="stylesheet" href="{% static 'manager/css/pop-window.css' %}">
+{% endblock %}
+
+
+<!-- side bar -->
+<!-- side bar -->
+{% block main-sidebar %}
+{% load group_tags %}
+{% if user|user_in_group:'Менеджеры' %}
+<li class="nav-item">
+    <a href="{% url 'home' %}" class="nav-link" aria-current="page">
+        <i class="fa fa-calendar"></i><h5>Заказы</h5>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{% url 'refunds' %}" class="nav-link">
+        <i class="fa fa-calendar"></i><h5>Возвраты</h5>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{% url 'clients' %}" class="nav-link">
+        <i class="fa fa-user-circle"></i><h5>Клиенты</h5>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{% url 'dashboard' %}" class="nav-link">
+        <i class="fa fa-gauge-high"></i><h5>Дашбоард</h5>
+    </a>
+</li>
+{% endif %}
+{% if user|user_in_group:'Руководитель производства' %}
+<li class="nav-item">
+    <a href="{% url 'pm_works' %}" class="nav-link">
+        <i class="fa fa-user-circle"></i><h5>Рабочий процесс</h5>
+    </a>
+</li>
+{% else %}
+{% endif %}
+<p></p>
+{% endblock %}
+
+<!-- main content-block -->
+{% block main-content %}
+<form class="form-body" method="post" id="save_form">
+{% csrf_token %}
+    <div class="form-body-add-zakaz">
+        <h2 class="name-block-input">Новый заказ</h2>
+        <div class="form-body-row" id="form-body-0-row" data-number-row="0">
+
+            <div class="form-body-block-input client-name pidel-input">
+                {{form.client}}
+                <span class="pop-window-open-btn fa fa-plus" onclick="addclient_show()"></span>
+            </div>
+            
+            <div class="form-body-block-input deadline">
+                {{form.deadline}}
+            </div>
+
+            <div class="form-body-block-input priority">
+                {{form.priority}}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-body-add-tovar">
+        <h2 class="name-block-input" style="margin-top: 1em;">Товар</h2>
+        <div class="form-body-row-block">
+            <div class="form-body-row" id="form-body-1-row" data-number-row="1">
+                <h5>#1</h5>
+                <span data-name="add-btn" class="pop-window-open-btn fa fa-plus" onclick="addbirzh_show()"></span>
+                <div class="form-body-block-input birzha-name">
+                    {{form.exchange1}}
+                </div>
+
+                <div class="form-body-block-input summa">
+                    {{form.price1}}
+                </div>
+
+
+                <div class="form-body-block-input kolvo">
+                    {{form.quantity1}}
+                </div>
+
+                <div class="form-body-block-input comment">
+                    {{form.comment1}}
+                </div>
+
+                <div class="form-body-block-input type-email">
+                    {{ form.mail1 }}
+                </div>
+
+                <div class="form-body-block-input type-number">
+                    {{ form.number1 }}
+                </div>
+
+                <div class="form-body-block-input tovar-emulator">
+                    {{ form.emulator1 }}
+                </div>
+
+                <div class="form-body-block-input tovar-rezident">
+                    {{ form.resident1 }}
+                </div>
+
+                <div class="form-body-block-input tovar-geo">
+                    {{ form.geo1 }}
+                </div>
+
+            </div>
+
+            <div class="form-body-row" id="form-body-2-row" data-number-row="2">
+                <h5>#2</h5>
+                <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-2-row', '#form-body-1-row')"></i>
+                <div class="form-body-block-input birzha-name">
+                    {{form.exchange2}}
+                </div>
+
+                <div class="form-body-block-input summa">
+                    {{form.price2}}
+                </div>
+
+
+                <div class="form-body-block-input kolvo">
+                    {{form.quantity2}}
+                </div>
+
+                <div class="form-body-block-input comment">
+                    {{form.comment2}}
+                </div>
+
+                <div class="form-body-block-input type-email">
+                    {{ form.mail2 }}
+                </div>
+
+                <div class="form-body-block-input type-number">
+                    {{ form.number2 }}
+                </div>
+
+                <div class="form-body-block-input tovar-emulator">
+                    {{ form.emulator2 }}
+                </div>
+
+                <div class="form-body-block-input tovar-rezident">
+                    {{ form.resident2 }}
+                </div>
+
+                <div class="form-body-block-input tovar-geo">
+                    {{ form.geo2 }}
+                </div>
+            </div>
+
+            <div class="form-body-row" id="form-body-3-row" data-number-row="3">
+                <h5>#3</h5>
+                <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-3-row', '#form-body-2-row')"></i>
+                <div class="form-body-block-input birzha-name">
+                    {{form.exchange3}}
+                </div>
+
+                <div class="form-body-block-input summa">
+                    {{form.price3}}
+                </div>
+
+
+                <div class="form-body-block-input kolvo">
+                    {{form.quantity3}}
+                </div>
+
+                <div class="form-body-block-input comment">
+                    {{form.comment3}}
+                </div>
+
+                <div class="form-body-block-input type-email">
+                    {{ form.mail3 }}
+                </div>
+
+                <div class="form-body-block-input type-number">
+                    {{ form.number3 }}
+                </div>
+
+                <div class="form-body-block-input tovar-emulator">
+                    {{ form.emulator3 }}
+                </div>
+
+                <div class="form-body-block-input tovar-rezident">
+                    {{ form.resident3 }}
+                </div>
+
+                <div class="form-body-block-input tovar-geo">
+                    {{ form.geo3 }}
+                </div>
+            </div>
+
+            <div class="form-body-row" id="form-body-4-row" data-number-row="4">
+                <h5>#4</h5>
+                <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-4-row', '#form-body-3-row')"></i>
+                <div class="form-body-block-input birzha-name">
+                    {{form.exchange4}}
+                </div>
+
+                <div class="form-body-block-input summa">
+                    {{form.price4}}
+                </div>
+
+
+                <div class="form-body-block-input kolvo">
+                    {{form.quantity4}}
+                </div>
+
+                <div class="form-body-block-input comment">
+                    {{form.comment4}}
+                </div>
+
+                <div class="form-body-block-input type-email">
+                    {{ form.mail4 }}
+                </div>
+
+                <div class="form-body-block-input type-number">
+                    {{ form.number4 }}
+                </div>
+
+                <div class="form-body-block-input tovar-emulator">
+                    {{ form.emulator4 }}
+                </div>
+
+                <div class="form-body-block-input tovar-rezident">
+                    {{ form.resident4 }}
+                </div>
+
+                <div class="form-body-block-input tovar-geo">
+                    {{ form.geo4 }}
+                </div>
+            </div>
+
+            <div class="form-body-row" id="form-body-5-row" data-number-row="5">
+                <h5>#5</h5>
+                <i class="form-body-copy-icon fa fa-clone" aria-hidden="true" onclick="form_body_clone('#form-body-5-row', '#form-body-4-row')"></i>
+                <div class="form-body-block-input birzha-name">
+                    {{form.exchange5}}
+                </div>
+
+                <div class="form-body-block-input summa">
+                    {{form.price5}}
+                </div>
+
+
+                <div class="form-body-block-input kolvo">
+                    {{form.quantity5}}
+                </div>
+
+                <div class="form-body-block-input comment">
+                    {{form.comment5}}
+                </div>
+
+                <div class="form-body-block-input type-email">
+                    {{ form.mail5 }}
+                </div>
+
+                <div class="form-body-block-input type-number">
+                    {{ form.number5 }}
+                </div>
+
+                <div class="form-body-block-input tovar-emulator">
+                    {{ form.emulator5 }}
+                </div>
+
+                <div class="form-body-block-input tovar-rezident">
+                    {{ form.resident5 }}
+                </div>
+
+                <div class="form-body-block-input tovar-geo">
+                    {{ form.geo5 }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="body-form-block-btn mt-4">
+
+        <div class="body-form-block-summa mb-2">
+            <h4>Общая сумма: <span id="form_summa_vivod">0</span>$</h4>
+            <input type="hidden" id="summ" name="summ" value="">
+        </div>
+        
+        <div class="df">
+            <button class="btn btn-primary btn-add-zakaz" name="form_orders">Добавить заказ</button>
+            {{ form.bundle }}
+            <label for="{{ form.bundle.id_for_label }}" class="form-body-label-btn noselect" id="form-body-label-btn">
+                {{ form.bundle.label }}</label>
+        </div>
+
+        <h6 class="btn-add-zakaz-lower"></h6>
+
+    </div>
+
+</form>
+
+
+    <hr>
+    <div class="form-list-zakazi-block">
+
+        <h3 class="form-list-zakazi-name mb-3">Мои заказы</h3>
+
+        <div class="form-list-zakazi">
+            <div class="form-table-name mb-2">
+                <h5>Номер заказа<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Дата<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Срок<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Клиент<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Сумма<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+                <h5>Статус<i class="fa fa-angle-down" aria-hidden="true"></i></h5>
+            </div>
+
+
+            <!-- Вот сюда надо данные из бд -->
+            <div class="form-table">
+                {% for order in page_obj %}
+                    <div onclick="orderInfo('{{ order.id }}')">
+                        <h5>{{ order.id }}</h5>
+                        <h5>{{ order.date }}</h5>
+                        <h5>{{ order.deadline }}</h5>
+                        <h5>{{ order.client }}</h5>
+                        <h5>{{ order.summ }}</h5>
+                        <h5>{{ order.status }}</h5>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+
+
+        <div class="form-list-btn mt-5">
+			{% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">
+				<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</a>
+			{% endif %}
+
+			
+            <h5 class="form-list-page-number">
+                Страница
+                <span id="table-page-number">{{ page_obj.number }}</span>
+                Из
+                <span id="table-full-page">{{ page_max_page }}</span>
+            </h5>
+
+            
+			{% if page_obj.has_next %}
+			 <a href="?page={{ page_obj.next_page_number }}">
+				<i class="fa fa-angle-right"  aria-hidden="true"></i>
+			</a>
+			{% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block left-bar %}
+<i class="fa fa-arrow-right left-bar-close-btn"></i>
+<h4 class="info-block-name">Информация</h4>
+    <div class="info-block">
+        <h5>Заказ</h5>
+        <div class="info">
+            <h5 class="info-name">Номер заказа:</h5>
+            <h6 id="leftbar-id">1</h6>
+        </div>
+
+        <div class="info">
+            <h5 class="info-name">Дата:</h5>
+            <h6 id="leftbar-date"></h6>
+        </div>
+
+        <div class="info">
+            <h5 class="info-name">Срок:</h5>
+            <h6 id="leftbar-deadline"></h6>
+        </div>
+            
+        <div class="info">
+            <h5 class="info-name">Клиент:</h5>
+            <h6 id="leftbar-client"></h6>
+        </div>
+                    
+        <div class="info">
+            <h5 class="info-name">Сумма:</h5>
+            <h6 id="leftbar-summ"></h6>
+        </div>
+              
+        <div class="info">
+            <h5 class="info-name">Тип заказа:</h5>
+            <h6 id="leftbar-order-type"></h6>
+        </div>
+         
+        <div class="info">
+            <h5 class="info-name">Статус:</h5>
+            <h6 id="leftbar-status"></h6>
+        </div>
+        
+        <div class="info">
+            <h5 class="info-name">Связка:</h5>
+            <h6 id="leftbar-bundle"></h6>
+        </div>
+<div id="products-container"></div>
+</div> 
+{% endblock %}
+
+<!-- main pop-window-block -->
+{% block main-pop-window %}
+<div id="pop-add-client" class="pop-window">
+    <div class="pop-container">
+        <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="addclient_close()"></i>
+
+        <div class="block-new-client">
+            <h3>Новый клиент</h3>
+            <form class="form-new-client" method="post">
+                {% csrf_token %}
+                {{ form_client.name }}
+                {{ form_client.tg }}
+                {{ form_client.status }}
+                {{ form_client.lang }}
+                <button class="btn btn-primary" name="form_client">Добавить клиента</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="pop-edit-client" class="pop-window">
+    <div class="pop-container">
+        <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="editclient_close()"></i>
+        <div class="block-edit-client" id="form-container">
+            <h3>Редактировать</h3>
+            <form class="form-new-client" id="edit-client-form" method="post">
+                {% csrf_token %}
+                {{ form_client.name }}
+                {{ form_client.tg }}
+                {{ form_client.status }}
+                {{ form_client.lang }}
+                <button class="btn btn-primary" name="form_edit_client">Изменить клиента</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="pop-add-birzh" class="pop-window">
+    <div class="pop-container">
+        <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="addbirzh_close()"></i>
+
+        <div class="block-new-birzha">
+            <h3>Новая биржа</h2>
+            <form class="form-new-birzha" method="post">
+                {% csrf_token %}
+                {{ form_exchanges.name }}
+                {{ form_exchanges.type }}
+                <button class="btn btn-primary" name="form_exchanges">Добавить биржу</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- main scripts-block -->
+{% block main-scripts %}
+<script src="{% static 'manager/js/content.js' %}" type="text/javascript"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/ru.js" defer></script>
+{% endblock %}

@@ -439,24 +439,15 @@ function orderInfo(orderId) {
 	xhr.send(data);
 }
 
-// Пример:
-// $("#form-body-1-row .birzha-name .select2-selection__rendered")
-$(".birzha-name .select2-selection__rendered").attr("title")
-$(".summa input").val()
-$(".kolvo input").val()
-$(".comment input").val()
-$(".type-email .select2-selection__rendered").attr("title")
-$(".type-number .select2-selection__rendered").attr("title")
-$(".tovar-emulator .select2-selection__rendered").attr("title")
-$(".tovar-rezident .select2-selection__rendered").attr("title")
-
 function validate_form(form_row_number) {
     $( `#form-body-${form_row_number}-row .form-body-block-input` ).each(function() {
         if ($(this).find("input, select").val() != "" || $(this).find(".select2-selection__choice").length != 0 ) {
             $(this).find(".select2-selection, input").addClass("done")
+            $(this).find("select, input[type!=search]").attr("required", "")
         } else {
             $(this).find(".select2-selection, input").addClass("prompt")
             $(this).find(".select2-selection, input").removeClass("done")
+            $(this).find("select, input[type!=search]").attr("required", "")
         }
     });
 }

@@ -299,3 +299,15 @@
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
 }
+
+/* scroll bar */
+
+.region-block::-webkit-scrollbar {
+    height: 10px;
+    margin-right: 5em;
+}
+.region-block::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    width: 5px;
+    border-radius: 50px;
+}

@@ -394,3 +394,13 @@ select.select2-hidden-accessible {
     height: 20px !important;
     width: 150px !important;
 }
+
+#left-bar::-webkit-scrollbar {
+    width: 10px;
+    margin-right: 5em;
+}
+#left-bar::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    width: 5px;
+    border-radius: 50px;
+}

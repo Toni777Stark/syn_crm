@@ -62,8 +62,38 @@
                     </a>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
-                    {% block main-sidebar %}
-                    {% endblock %}
+                        {% load group_tags %}
+                        {% if user|user_in_group:'Менеджеры' %}
+                        <li class="nav-item {% if request.path == '/manager/orders' %}active{% endif %}">
+                            <a href="{% url 'home' %}" class="nav-link" aria-current="page">
+                                <i class="fa fa-calendar"></i><h5>Заказы</h5>
+                            </a>
+                        </li>
+                        <li class="nav-item {% if request.path == '/manager/refunds' %}active{% endif %}">
+                            <a href="{% url 'refunds' %}" class="nav-link">
+                                <i class="fa fa-calendar"></i><h5>Возвраты</h5>
+                            </a>
+                        </li>
+                        <li class="nav-item {% if request.path == '/manager/clients' %}active{% endif %}">
+                            <a href="{% url 'clients' %}" class="nav-link">
+                                <i class="fa fa-user-circle"></i><h5>Клиенты</h5>
+                            </a>
+                        </li>
+                        <li class="nav-item {% if request.path == '/manager/dashboard' %}active{% endif %}">
+                            <a href="{% url 'dashboard' %}" class="nav-link">
+                                <i class="fa fa-gauge-high"></i><h5>Дашбоард</h5>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if user|user_in_group:'Руководитель производства' %}
+                        <li class="nav-item {% if request.path == '/pm/works' %}active{% endif %}">
+                            <a href="{% url 'pm_works' %}" class="nav-link">
+                                <i class="fa fa-user-circle"></i><h5>Рабочий процесс</h5>
+                            </a>
+                        </li>
+                        {% else %}
+                        {% endif %}
+                        <p></p>
                     </ul>
                 </div>
                 <i class="notifications-btn-open fa fa-arrow-up" onclick="open_notification()"></i>

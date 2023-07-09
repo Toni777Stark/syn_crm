@@ -11,37 +11,6 @@
 <link rel="stylesheet" href="{% static 'manager/css/pop-window.css' %}">
 {% endblock %}
 
-
-<!-- side bar -->
-<!-- side bar -->
-{% block main-sidebar %}
-<li class="nav-item">
-    <a href="{% url 'home' %}" class="nav-link" aria-current="page">
-        <i class="fa fa-calendar"></i><h5>Заказы</h5>
-    </a>
-</li>
-<li class="nav-item">
-    <a href="{% url 'refusals' %}" class="nav-link">
-        <i class="fa fa-calendar"></i><h5>Отказы</h5>
-    </a>
-</li>
-<li class="nav-item active">
-    <a href="{% url 'refunds' %}" class="nav-link">
-        <i class="fa fa-calendar"></i><h5>Возвраты</h5>
-    </a>
-</li>
-<li class="nav-item">
-    <a href="{% url 'clients' %}" class="nav-link">
-        <i class="fa fa-user-circle"></i><h5>Клиенты</h5>
-    </a>
-</li>
-<li class="nav-item">
-    <a href="{% url 'dashboard' %}" class="nav-link">
-        <i class="fa fa-gauge-high"></i><h5>Дашбоард</h5>
-    </a>
-</li>
-{% endblock %}
-
 <!-- main content-block -->
 {% block main-content %}
 <form class="form-body" method="post" id="save_form">

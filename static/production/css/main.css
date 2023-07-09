@@ -131,7 +131,7 @@
     padding: 0 2em;
     grid-gap: 50px;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: scroll;
 }
 .region {
     display: flex;

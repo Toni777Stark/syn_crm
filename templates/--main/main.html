@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{% static '--main/css/header.css' %}">
     <link rel="stylesheet" href="{% static '--main/css/side-bar.css' %}">
     <link rel="stylesheet" href="{% static '--main/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static '--main/css/notificate.css' %}">
     {% block main-styles %}
     {% endblock %}
     <link rel="stylesheet" href="{% static '--main/css/media.css' %}">
@@ -97,11 +98,28 @@
                     </ul>
                 </div>
                 <i class="notifications-btn-open fa fa-arrow-up" onclick="open_notification()"></i>
-                {% block notifications %}
-                {% endblock %}
+                <div class="notifications-container">
+                    <i class="notifications-btn-close fa fa-arrow-down" onclick="close_notification()"></i>
+                    <h3 class="notifications-container-name">Уведомления</h3>
+                    <div class="notification">
+                        <i class="notificate-close fa fa-times"></i>
+                        <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
+                    </div>
+                    <div class="notification">
+                        <i class="notificate-close fa fa-times"></i>
+                        <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
+                    </div>
+                    <div class="notification">
+                        <i class="notificate-close fa fa-times"></i>
+                        <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
+                    </div>
+                    <div class="notification">
+                        <i class="notificate-close fa fa-times"></i>
+                        <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
+                    </div>
+                </div>
         </div>
 
-        
         <div id="content-block" class="content-block">
             {% block main-content %}
             {% endblock %}
@@ -109,11 +127,11 @@
                 <h5>@ 2023 Synergy Company</h5>
             </footer>
         </div>
-		<div id="left-bar">
-			{% block left-bar %}
-			{% endblock %}
-		</div>
     </div>
+
+<!-- left-bar -->
+{% block left-bar %}
+{% endblock %}
 <!-- main pop-window block-->
 {% block main-pop-window %}
 {% endblock %}

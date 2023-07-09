@@ -65,3 +65,17 @@ var width = document.documentElement.clientWidth;
 if (width <= 1600) {
   closeSide_bar()
 }
+
+
+
+
+function open_notification() {
+	$(".notifications-container").addClass("active")
+}
+function close_notification() {
+	$(".notifications-container").removeClass("active")
+}
+
+$(".notificate-close").on('click', function () {
+	$(this).parent().remove()
+})

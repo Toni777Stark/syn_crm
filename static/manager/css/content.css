@@ -334,10 +334,11 @@ option[value="none"] {
 	padding: 1.5em;
 	padding-bottom: 3em;
 	flex-direction: column;
-	height: 100vh;
+	height: calc(100vh - 30px);
     width: 400px;
 	position: fixed;
 	right: -100%;
+    bottom: 0;
 	background: white;
 	border-left: 2px solid var(--whitegray-color);
     overflow-y: auto;

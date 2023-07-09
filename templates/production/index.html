@@ -51,10 +51,10 @@
                         {% if task.reg == reg.reg %}
                         <div class="exchange-group-item" oncontextmenu="openForm(event, {{ task.quantity }})"
                              data-id="{{task.id}}" draggable="true">
-                            <p>Номер заказа: {{ task.product.order }}</p>
+                            <p>№: {{ task.product.order }}</p>
                             <p>Биржа: {{ task.product.exchange }} {{ task.product.exchange.exchange_type }}</p>
-                            <p>Количество: {{ task.quantity }}</p>
-                            <p>Количество сделанных: {{ task.ready }}</p>
+                            <p>Кол-во: {{ task.quantity }}</p>
+                            <p>Кол-во сделанных: {{ task.ready }}</p>
                             <p>Статус: {{ task.status }}</p>
                         </div>
                         {% endif %}
@@ -93,17 +93,21 @@
         </div>
         <div class="orders-list-block">
             {% for exchange_type in exchange_types %}
-            <div class="exchange-group" data-id="{{exchange_type.id}}" >
-            <p>{{ exchange_type }}</p>
-                {% for product in processed_orders %}
-                    {% if exchange_type == product.exchange.exchange_type %}
-                    <div class="exchange-group-item" draggable="true" data-id="{{product.id}}">
-                        {{ product }}
-                        {{ product.remainder }}
-                        {{ product.exchange }}
-                    </div>
-                    {% endif %}
-                {% endfor %}
+            <div class="orders-list">
+                <div class="exchange-name">
+                    <h2 class="region-name">{{ exchange_type }}</h2>
+                </div>
+                <div class="exchange-group" data-id="{{exchange_type.id}}" >
+                    {% for product in processed_orders %}
+                        {% if exchange_type == product.exchange.exchange_type %}
+                        <div class="exchange-group-item" draggable="true" data-id="{{product.id}}">
+                            {{ product }}
+                            {{ product.remainder }}
+                            {{ product.exchange }}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -179,30 +183,6 @@
         <div class="pop-window-block">
             <button class="pop-window-btn pop-window-remove-btn">Удалить</button>
         </div>
-    </div>
-</div>
-{% endblock %}
-
-<!-- block notifications -->
-{% block notifications %}
-<div class="notifications-container">
-    <i class="notifications-btn-close fa fa-arrow-down" onclick="close_notification()"></i>
-    <h3 class="notifications-container-name">Уведомления</h3>
-    <div class="notification">
-        <i class="notificate-close fa fa-times"></i>
-        <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
-    </div>
-    <div class="notification">
-        <i class="notificate-close fa fa-times"></i>
-        <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
-    </div>
-    <div class="notification">
-        <i class="notificate-close fa fa-times"></i>
-        <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
-    </div>
-    <div class="notification">
-        <i class="notificate-close fa fa-times"></i>
-        <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
     </div>
 </div>
 {% endblock %}

@@ -7,6 +7,8 @@
 <!-- standart-styles -->
 <link rel="stylesheet" href="{% static 'production/css/main.css' %}">
 <link rel="stylesheet" href="{% static 'production/css/window.css' %}">
+<link rel="stylesheet" href="{% static 'production/css/not-mobile-window.css' %}">
+<link rel="stylesheet" href="{% static 'production/css/media.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.min.css" integrity="sha512-SWjZLElR5l3FxoO9Bt9Dy3plCWlBi1Mc9/OlojDPwryZxO0ydpZgvXMLhV6jdEyULGNWjKgZWiX/AMzIvZ4JuA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock %}
 
@@ -182,6 +184,18 @@
         <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="remove_manager_close()"></i>
         <div class="pop-window-block">
             <button class="pop-window-btn pop-window-remove-btn">Удалить</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="not-mobile-window" class="">
+    <div class="not-mobile-container">
+        <!--
+        <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="remove_not_mobile_winodw()"></i>
+        -->
+        <div class="not-mobile-window-block">
+            <h3 class="not-mobile-window-name">Увы эта страница недоступна на ваших устройствах</h3>
         </div>
     </div>
 </div>

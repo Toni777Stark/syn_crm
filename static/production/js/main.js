@@ -123,3 +123,15 @@ document.addEventListener('click', function(event) {
 //		}
 //	});
 //})
+console.log($(window).width())
+if($(window).width() < 1024) {
+  $("#not-mobile-window").addClass("active")
+  $("body").addClass('none-scroll')
+}
+
+/*
+function remove_not_mobile_winodw() {
+  $("#not-mobile-window").removeClass("active")
+  $("body").removeClass('none-scroll')
+}
+*/

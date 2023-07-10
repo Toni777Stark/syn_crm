@@ -239,6 +239,33 @@
         <h4 class="notificate-text">Lorem ipsum, dolor sit amet consectetur adipisicing.</h4>
     </div>
 </div>
+<script>
+// Создание WebSocket-соединения
+const socket = new WebSocket('ws://127.0.0.1:8000/ws/some_path/');
+
+// Обработчик открытия соединения
+socket.onopen = () => {
+    console.log('WebSocket connection established.');
+};
+
+// Обработчик закрытия соединения
+socket.onclose = () => {
+    console.log('WebSocket connection closed.');
+};
+
+// Обработчик получения сообщений от сервера
+socket.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    // Обработка полученных данных
+    console.log('Received data:', data);
+};
+
+// Функция для отправки данных на сервер
+function sendToServer(data) {
+    const message = JSON.stringify(data);
+    socket.send(message);
+}
+</script>
 {% endblock %}
 
 <!-- main scripts-block -->

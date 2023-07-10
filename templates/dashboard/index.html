@@ -1,0 +1,24 @@
+{% extends '--main/main.html' %}
+{% load static %}
+
+<!-- head block -->
+{% block title %}Дашбоард {% endblock %}
+{% block main-styles %}
+<!-- standart-styles -->
+<link rel="stylesheet" href="{% static 'refusals/css/main.css' %}">
+{% endblock %}
+<!-- main content-block -->
+{% block main-content %}
+
+{% endblock %}
+
+<!-- main pop-window-block -->
+{% block main-pop-window %}
+{% endblock %}
+
+
+<!-- main scripts-block -->
+{% block main-scripts %}
+<script src="{% static 'refusals/js/main.js' %}"></script>
+<script src="{% static 'refusals/js/drag-and-drop.js' %}"></script>
+{% endblock %}

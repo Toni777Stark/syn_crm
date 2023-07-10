@@ -21,4 +21,4 @@ def login_view(request):
             error_message = 'Неправильное имя пользователя или пароль'
     else:
         error_message = ''
-    return render(request, 'login.html', {'error_message': error_message})
+    return render(request, 'auth/login.html', {'error_message': error_message})

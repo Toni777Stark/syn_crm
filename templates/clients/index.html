@@ -1,0 +1,37 @@
+{% extends '--main/main.html' %}
+{% load static %}
+
+<!-- head block -->
+{% block title %}Клиенты {% endblock %}
+{% block main-styles %}
+<!-- standart-styles -->
+<link rel="stylesheet" href="{% static 'clients/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'clients/css/media.css' %}">
+{% endblock %}
+
+<!-- main content-block -->
+{% block main-content %}
+<div class="messenger-container ui-widget-content" id="chat-form">
+    <div class="username-block">
+        <img src="{% static 'clients/icons/default.png' %}" alt="" class="username-logo">
+        <h4 class="username-name">Nickname</h4>
+    </div>
+    <div class="chat-view-block">
+
+    </div>
+    <div class="chat-send-block">
+        <input type="text" class="chat-send-input" placeholder="Напишите сообщение..." required>
+        <button class="chat-submit-msg"><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+    </div>
+</div>
+{% endblock %}
+
+<!-- main pop-window-block -->
+{% block main-pop-window %}
+{% endblock %}
+
+
+<!-- main scripts-block -->
+{% block main-scripts %}
+<script src="{% static 'clients/js/main.js' %}"></script>
+{% endblock %}

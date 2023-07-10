@@ -1,0 +1,55 @@
+
+.notifications-container {
+    display: none;
+    width: 235px;
+    background-color: rgb(216, 216, 216);
+    padding: 1em;
+    padding-top: 1.5em;
+    position: absolute;
+    z-index: 2;
+    bottom: 1em;
+    left: 0;
+}
+.notifications-container.active {
+    display: block;
+}
+.notification {
+    background-color: white;
+}
+.notificate-text {
+    padding: 0.3em;
+    padding-top: 1em;
+    color: rgb(61, 61, 61);
+    font-size: 15px;
+}
+.notificate-close {
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: 1em;
+}
+
+.notifications-btn-close {
+    cursor: pointer;
+    position: absolute;
+    top: -0.2em;
+    right: 0.5em;
+    padding: 0.35em;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    user-select: none;
+}
+.notifications-btn-open {
+    cursor: pointer;
+    position: absolute;
+    bottom: 1.8em;
+    right: 0.5em;
+    padding: 0.5em;
+    color: white;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-radius: 5px;
+}

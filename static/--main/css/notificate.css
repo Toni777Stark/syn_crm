@@ -39,6 +39,7 @@
     border-left: 1px solid black;
     border-bottom: 1px solid black;
     border-radius: 5px;
+    user-select: none;
 }
 .notifications-btn-open {
     cursor: pointer;

@@ -24,4 +24,6 @@ urlpatterns = [
     path('pm/', include('production_management.urls')),
     path('manager/', include('manager.urls')),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    
+    path('profile/', include('user_profile.urls')),
 ]

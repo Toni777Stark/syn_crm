@@ -46,6 +46,10 @@
 <!--                        {% csrf_token %}-->
 <!--                        <button type="submit">Профиль</button>-->
 <!--                    </form>-->
+                    <form class="header-admin-btn" method="post" action="{% url 'user_profile' %}">
+                        {% csrf_token %}
+                        <button type="submit">Профиль</button>
+                    </form>
                     <form class="header-admin-btn" method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
                         <button type="submit">Выйти</button>

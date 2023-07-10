@@ -1,10 +1,13 @@
 $(".zoom-level input").on('input', function () {
 	if ($(this).val().length > 2) {
+    $(this).attr("placeholder", "100%")
 		$(this).val("100")
 	}
 });
 $(".zoom-level input").on('change', function () {
-	zoom($(this).val() + "%")
+  var value_input_zoom = $(this).val() + "%"
+	$(this).attr("placeholder", value_input_zoom)
+	zoom(value_input_zoom)
 	$(this).val("")
 });
 
@@ -124,9 +127,12 @@ document.addEventListener('click', function(event) {
 //	});
 //})
 console.log($(window).width())
-if($(window).width() < 1024) {
+if($(window).width() < 531) {
   $("#not-mobile-window").addClass("active")
   $("body").addClass('none-scroll')
+} else {
+  $("#not-mobile-window").removeClass("active")
+  $("body").removeClass('none-scroll')
 }
 
 /*

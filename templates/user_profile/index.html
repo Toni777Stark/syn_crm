@@ -1,0 +1,31 @@
+{% extends '--main/main.html' %}
+{% load static %}
+
+<!-- head block -->
+{% block title %}Profile {% endblock %}
+{% block main-styles %}
+<!-- standart-styles -->
+<link rel="stylesheet" href="{% static 'user_profile/css/main.css' %}">
+{% endblock %}
+<!-- main content-block -->
+{% block main-content %}
+
+    <div class="profile-descript-block">
+        <h3>Профиль юзера</h3>
+        <div class="profile-logo">
+            <img src="http://127.0.0.1:8000/static/user_profile/users_logo/userlogo-{{user_id}}.jpg" alt="">
+        </div>
+        <div class="profile-descript">
+            <h5>Id: <span>{{user_id}}</span></h5>
+            <h5>Ник: <span>{{user_nickname}}</span></h5>
+            <h5>Статус: <span>{{user_status}}</span></h5>
+            <h5>Кол-во заказов: <span>{{user_orders}}</span></h5>
+            <h5>Кол-во сделанных: <span>{{user_completed_orders}}</span></h5>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- main scripts-block -->
+{% block main-scripts %}
+<script src="{% static 'user-profile/js/main.js' %}"></script>
+{% endblock %}

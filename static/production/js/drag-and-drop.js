@@ -18,8 +18,8 @@ $ ( ".region-block .exchange-group-item").draggable ({
       // manager id
       console.log("Менеджер айди - ", manager_id)
       // exchange pos
-      console.log("Позиция заказа по вертикали - ",exchange_position)
-      console.log("Позиция заказа по горизонтали - ",exchange_id)
+      console.log("Приоритет заказа - ",exchange_position)
+      console.log("Айди заказа - ",exchange_id)
       alert(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
     }
   },

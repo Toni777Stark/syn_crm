@@ -126,7 +126,6 @@ document.addEventListener('click', function(event) {
 //		}
 //	});
 //})
-console.log($(window).width())
 if($(window).width() < 531) {
   $("#not-mobile-window").addClass("active")
   $("body").addClass('none-scroll')

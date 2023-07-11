@@ -17,18 +17,14 @@
     <div class="up-container">
         <div class="checkbox-block">
             <h2 class="head-name checkbox-name">Было на утро</h2>
-
             <label class="checkbox-label">
                 <input type="checkbox">
                 <span class="checkbox-switch"></span>
             </label>
-
             <h2 class="head-name checkbox-name">На сейчас <p>По плану утра</p></h2>
         </div>
-        
         <div class="zoom-level-block">
             <h2 class="head-name zoom-level-name">Масштаб</h2>
-
             <div class="zoom-level">
                 <input type="text" value="" placeholder="100%">
             </div>
@@ -36,23 +32,20 @@
     </div>
 
     <div class="region-block">
-
         {% for direction in directions %}
-        <div class="region region-eu" id="{{direction.id_name}}">
-
+        <div class="region region-eu" data-id="{{direction.id_name}}">
             <div class="region-name">
                 <h2>{{direction.name}}</h2>
             </div>
-
             <div class="manager-block">
                 {% for reg in direction.reg_directions.all %}
-                <div class="manager" id="{{reg.id}}">
+                <div class="manager" data-id="{{reg.id}}">
                     <h2 class="manager-name">{{reg}}</h2>
                     <div class="exchange-group">
                         {% for task in tasks %}
                         {% if task.reg == reg.reg %}
                         <div class="exchange-group-item" oncontextmenu="openForm(event, {{ task.quantity }})"
-                             data-id="{{task.id}}" draggable="true">
+                             data-id="{{task.id}}" data-position="{{task.position}}" draggable="true">
                             <p>№: {{ task.product.order }}</p>
                             <p>Биржа: {{ task.product.exchange }} {{ task.product.exchange.exchange_type }}</p>
                             <p>Кол-во: {{ task.quantity }}</p>
@@ -76,12 +69,11 @@
                 <h1>Регистраторы</h1>
             </div>
 
-            <div class="manager-block">
-                <div class="manager">
+            <div class="regiser-user-block">
+                <div class="regiser-user">
                     {% for reg in reg_new %}
                     <div id={{ reg.id }}>
-                        Имя: {{ reg.username }}
-                        ID: {{ reg.id }}
+                        <p>Имя: {{ reg.username }}    ID: {{ reg.id }}</p>
                     </div>
                     {% endfor %}
                 </div>
@@ -103,9 +95,9 @@
                     {% for product in processed_orders %}
                         {% if exchange_type == product.exchange.exchange_type %}
                         <div class="exchange-group-item" draggable="true" data-id="{{product.id}}">
-                            {{ product }}
-                            {{ product.remainder }}
-                            {{ product.exchange }}
+                            <p>{{ product }}</p>
+                            <p>Кол-во: {{ product.remainder }}</p>
+                            <p>Биржа: {{ product.exchange }}</p>
                         </div>
                         {% endif %}
                     {% endfor %}

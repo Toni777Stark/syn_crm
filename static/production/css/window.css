@@ -53,3 +53,8 @@
     text-decoration: none;
     border-radius: 5px;
 }
+
+.pop-window-move-block #slider {
+    margin-top: 2em;
+    width: 200px;
+}

@@ -1,3 +1,12 @@
+function move_exchange_open() {
+  $("#move-exchange").addClass('active')
+  $("body").addClass('none-scroll')
+}
+function move_exchange_close() {
+  $("#move-exchange").removeClass('active')
+  $("body").removeClass('none-scroll')
+}
+
 $ ( ".region-block .exchange-group").sortable();
 $ ( ".region-block .exchange-group-item").draggable ({
   connectToSortable: ".region-block .exchange-group",
@@ -46,10 +55,11 @@ $(".region-block .manager").draggable({
   }
 });
 
-$(".orders-list .exchange-group").sortable();
+$(".orders-list .exchange-group").sortable({
+});
 $(".orders-list .exchange-group-item").draggable({
   connectToSortable: ".region-block .exchange-group",
-  zIndex: 99999,
+  zIndex: 1,
   revert: "invalid",
   revertDuration: 1,
   stop: function() {
@@ -69,6 +79,9 @@ $(".orders-list .exchange-group-item").draggable({
       console.log(exchange_position)
       console.log(exchange_id)
       alert(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
+
+      $(".pop-window .pop-window-move-block input").attr("max", $(this).find(".quantity span").text())
+      move_exchange_open()
     }
   }
 });

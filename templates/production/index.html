@@ -94,10 +94,10 @@
                 <div class="exchange-group" data-id="{{exchange_type.id}}" >
                     {% for product in processed_orders %}
                         {% if exchange_type == product.exchange.exchange_type %}
-                        <div class="exchange-group-item" draggable="true" data-id="{{product.id}}">
-                            <p>{{ product }}</p>
-                            <p>Кол-во: {{ product.remainder }}</p>
-                            <p>Биржа: {{ product.exchange }}</p>
+                        <div class="exchange-group-item" oncontextmenu="openForm(event, {{ task.quantity }})" draggable="true" data-id="{{product.id}}">
+                            <p class="product">{{ product }}</p>
+                            <p class="quantity">Кол-во: <span>{{ product.remainder }}</span></p>
+                            <p class="birzha">Биржа: <span>{{ product.exchange }}</span></p>
                         </div>
                         {% endif %}
                     {% endfor %}
@@ -106,28 +106,18 @@
             {% endfor %}
         </div>
     </div>
-<div id="formPopup">
-  <form>
-    <label for="dropdown1">Кому?</label><br>
-    <select id="dropdown1">
-      <option value="option1">Опция 1</option>
-      <option value="option2">Опция 2</option>
-      <option value="option3">Опция 3</option>
-    </select><br>
 
-    <label for="slider">Сколько?</label><br>
-    <input type="range" id="slider" name="slider" min="0" max="3" value="3"><br>
-    <span id="sliderValue">3</span><br>
-
-    <label for="dropdown2">Порядок:</label><br>
-    <select id="dropdown2">
-      <option value="option1">1</option>
-      <option value="option2">2</option>
-      <option value="option3">3</option>
-    </select><br>
-
-    <button type="submit">Отправить</button>
-  </form>
+<div id="move-exchange" class="pop-window">
+    <div class="pop-container">
+        <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="move_exchange_close()"></i>
+        <div class="pop-window-block">
+            <h2 class="pop-window-name">Сколько?</h2>
+            <div class="pop-window-move-block">
+                <input type="range" id="slider" name="slider" min="0" max="1"><br>
+                <span id="sliderValue">1</span><br>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -156,17 +146,6 @@
                 <h5 class="pop-window-top-element">Zen EU</h5>
                 <h5 class="pop-window-top-element">Nebeus EU</h5>
                 <h5 class="pop-window-top-element">Bunq EU</h5>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="move-manager" class="pop-window">
-    <div class="pop-container">
-        <i href="javascript:void(0)" class="fa fa-times pop-window-close-btn" onclick="move_manager_close()"></i>
-        <div class="pop-window-block">
-            <h2 class="pop-window-name">Менеджер: <span class="pop-window-manager">User</span></h2>
-            <div class="pop-window-move-block">
-                Переместить куда:
             </div>
         </div>
     </div>

@@ -172,14 +172,7 @@
 </div>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script>
-        $(function() {
-            const socket = new WebSocket('ws://' + window.location.host + '/ws/some_path/');
 
-            socket.onmessage = function(event) {
-                const data = JSON.parse(event.data);
-                console.log(data)
-                }
-        });
  </script>
 {% endblock %}
 <!-- main scripts-block -->

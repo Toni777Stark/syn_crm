@@ -1,3 +1,13 @@
+let socket
+$(function() {
+            socket = new WebSocket('ws://' + window.location.host + '/ws/some_path/');
+
+            socket.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                console.log(data)
+                }
+        });
+
 function move_exchange_open() {
   $("#move-exchange").addClass('active')
   $("body").addClass('none-scroll')
@@ -29,7 +39,6 @@ $ ( ".region-block .exchange-group-item").draggable ({
       // exchange pos
       console.log("Приоритет заказа - ",exchange_position)
       console.log("Айди заказа - ",exchange_id)
-      alert(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
     }
   },
 });
@@ -51,7 +60,17 @@ $(".region-block .manager").draggable({
     console.log(region_id)
     // manager id
     console.log(manager_id)
-    alert(`Менеджер №${manager_id} перенесен в регион ${region_id}`)
+
+    var data = {
+      region_id: region_id,
+      manager_id: manager_id
+    };
+
+    // Преобразование объекта в JSON-строку
+    var jsonData = JSON.stringify(data);
+
+    // Отправка JSON-строки через вебсокеты
+    socket.send(jsonData);
   }
 });
 

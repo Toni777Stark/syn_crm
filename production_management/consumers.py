@@ -12,7 +12,13 @@ class TaskConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_discard('reg_updates', self.channel_name)
 
     async def receive(self, text_data=None, bytes_data=None):
-        pass
+        # Получение JSON-строки от клиента
+        json_data = json.loads(text_data)
+
+        # Извлечение данных из JSON-строки
+        region_id = json_data.get("region_id")
+        manager_id = json_data.get("manager_id")
+        print(region_id, manager_id)
 
     async def reg_upd(self, event):
         print(event)

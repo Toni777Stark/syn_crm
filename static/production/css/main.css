@@ -128,8 +128,8 @@
 /* region block */
 .region-block {
     display: flex;
-    padding: 0 2em;
-    grid-gap: 50px;
+    padding: 2em;
+    grid-gap: 20px;
     width: 100%;
     overflow-x: scroll;
 }
@@ -163,12 +163,22 @@
 /* manager block */
 .manager-block {
     display: flex;
-    grid-gap: 25px;
+    min-height: 250px;
 }
 .manager-block .manager {
     display: flex;
     flex-direction: column;
     grid-gap: 15px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.manager.active {
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 .manager-name {
     user-select: none;
@@ -189,13 +199,15 @@
 .exchange-group {
     display: flex;
     flex-direction: column;
-    min-height: 100px;
+    align-items: center;
+    min-height: 300px;
     grid-gap: 20px;
-    width: 150px;
-    padding-bottom: 3em;
+    width: 220px;
 }
 .exchange-group-item {
+    list-style-type: none;
     cursor: pointer;
+    background-color: white;
     -webkit-box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);

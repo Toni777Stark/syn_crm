@@ -7,15 +7,14 @@ from .models import Reg
 
 @receiver(post_save, sender=Reg, weak=False)
 def item_saved(sender, instance, created, **kwargs):
-    print(f"Signal received for model {sender.__name__}. Instance: {instance}")
-    # channel_layer = get_channel_layer()
-    # if created:
-    #     action = 'created'
-    # else:
-    #     action = 'updated'
-    # async_to_sync(channel_layer.group_send)('item_updates', {
-    #     'type': 'item_changed',
-    #     'item_id': instance.pk,
-    #     'item_name': instance.name,
-    #     'action': action
-    # })
+    channel_layer = get_channel_layer()
+    if created:
+        action = 'created'
+    else:
+        action = 'updated'
+    async_to_sync(channel_layer.group_send)('reg_updates', {
+        'type': 'reg_upd',
+        'reg_id': instance.pk,
+        'direction_mane': instance.direction.id_name,
+        'action': action
+    })

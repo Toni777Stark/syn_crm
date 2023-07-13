@@ -22,14 +22,14 @@ class TaskConsumer(AsyncWebsocketConsumer):
         manager_id = json_data.get("manager_id")
         if type_upd == "reg_upd":
             await self.update_reg_direction(region_id, manager_id)
-        print(type_upd, region_id, manager_id)
 
-    async def update_reg_direction(self, region_id, manager_id):
-        direction = await sync_to_async(Directions.objects.get)(id_name=region_id)
-        reg = await sync_to_async(Reg.objects.filter(reg=manager_id).first)()
-        print(reg)
+    @sync_to_async
+    def update_reg_direction(self, region_id, manager_id):
+        direction = Directions.objects.get(id_name=region_id)
+        reg = Reg.objects.get(pk=manager_id)
         reg.direction = direction
-        await sync_to_async(reg.save)()
+        reg.save()
+
 
     async def reg_upd(self, event):
         print(event)

@@ -1,5 +1,7 @@
+let socket
+
 $(function() {
-  const socket = new WebSocket('ws://' + window.location.host + '/ws/some_path/');
+  socket = new WebSocket('ws://' + window.location.host + '/ws/some_path/');
 
   socket.onmessage = function(event) {
       const data = JSON.parse(event.data);
@@ -37,8 +39,19 @@ function sort_drag_exchange_item() {
       var manager_id = $(this).parent().parent().attr("data-id")
       var exchange_position = $(this).index()
       var exchange_id = $(this).attr("data-id")
-
-      console.log(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
+      
+      if (region_id == undefined || manager_id == undefined || exchange_id == undefined) {
+        console.log("Упсс, не туда")
+      } else {
+        // region id
+        console.log("Регион айди - ", region_id)
+        // manager id
+        console.log("Менеджер айди - ", manager_id)
+        // exchange pos
+        console.log("Приоритет заказа - ",exchange_position)
+        console.log("Айди заказа - ",exchange_id)
+        alert(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
+      }
     },
   });
 
@@ -55,18 +68,30 @@ function sort_drag_exchange_item() {
       $(this).removeClass("active")
       var region_id = $(this).parent().parent().attr("data-id")
       var manager_id = $(this).attr("data-id")
-
-      console.log(`Менеджер №${manager_id} перенесен в регион ${region_id}`)
+      // region id
+      console.log(region_id)
+      // manager id
+      console.log(manager_id)
+      let data = {
+        'type_upd': 'reg_upd',
+        'region_id': region_id,
+        'manager_id': manager_id
+      }
+      let jsonData = JSON.stringify(data)
+      socket.send(jsonData)
     }
   });
 
-    $(".orders-list .exchange-group").sortable({});
+    $(".orders-list .exchange-group").sortable({
+    });
     $(".orders-list .exchange-group-item").draggable({
+      connectToSortable: ".region-block .exchange-group",
       //'${$(this).parent().parent().attr("data-id")}'
       connectToSortable: ".region-block .exchange-group",
       zIndex: 1,
       revert: "invalid",
       revertDuration: 1,
+      stop: function( event, ui ) {
       helper: "clone",
       stop: function() {
         var region_id = $(this).parent().parent().parent().parent().attr("data-id")
@@ -82,6 +107,25 @@ function sort_drag_exchange_item() {
         
         console.log(exchange_quantity - exchange_slider_value)
         console.log(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
+
+        if (region_id == undefined || manager_id == undefined || exchange_id == undefined) {
+          console.log("Упсс, ошибочка")
+          return true;
+        } else {
+          move_exchange_open()
+
+          // region id
+          console.log(region_id)
+          // manager id
+          console.log(manager_id)
+          // exchange pos
+          console.log(exchange_position)
+          console.log(exchange_id)
+
+
+          alert(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
+          $(".pop-window .pop-window-move-block input").attr("max", $(this).find(".quantity span").text())
+        }
       },
     })
 }

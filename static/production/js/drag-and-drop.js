@@ -94,20 +94,14 @@ function sort_drag_exchange_item() {
       $(this).addClass("active")
     },
     stop: function() {
+      $(this).css({
+        "height": "unset",
+      })
       $(this).removeClass("active")
       var region_id = $(this).parent().parent().attr("data-id")
       var manager_id = $(this).attr("data-id")
-      // region id
-      console.log(region_id)
-      // manager id
-      console.log(manager_id)
-      let data = {
-        'type_upd': 'reg_upd',
-        'region_id': region_id,
-        'manager_id': manager_id
-      }
-      let jsonData = JSON.stringify(data)
-      socket.send(jsonData)
+      alert(`Регион: ${region_id}, Айди менеджера: ${manager_id}`)
+      sort_drag_exchange_item()
     }
   });
 

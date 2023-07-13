@@ -1,6 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from .models import Reg
+from .models import Reg, Directions
+from asgiref.sync import sync_to_async
 
 
 class TaskConsumer(AsyncWebsocketConsumer):
@@ -19,7 +20,16 @@ class TaskConsumer(AsyncWebsocketConsumer):
         type_upd = json_data.get("type_upd")
         region_id = json_data.get("region_id")
         manager_id = json_data.get("manager_id")
+        if type_upd == "reg_upd":
+            await self.update_reg_direction(region_id, manager_id)
         print(type_upd, region_id, manager_id)
+
+    async def update_reg_direction(self, region_id, manager_id):
+        direction = await sync_to_async(Directions.objects.get)(id_name=region_id)
+        reg = await sync_to_async(Reg.objects.filter(reg=manager_id).first)()
+        print(reg)
+        reg.direction = direction
+        await sync_to_async(reg.save)()
 
     async def reg_upd(self, event):
         print(event)

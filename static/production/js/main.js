@@ -56,3 +56,46 @@ if($(window).width() < 531) {
   $("#not-mobile-window").removeClass("active")
   $("body").removeClass('none-scroll')
 }
+
+
+
+
+
+
+
+function openForm(event, quantity) {
+  $("#formPopup #slider").attr("max", quantity)
+  event.preventDefault(); // Отменить стандартное контекстное меню
+
+  if (event.which === 3 || event.button === 2) {
+    // Проверить, что была нажата правая кнопка мыши
+    const clickX = event.pageX;
+    const clickY = event.pageY;
+    const popupWidth = formPopup.offsetWidth;
+    const popupHeight = formPopup.offsetHeight;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const left = Math.min(clickX, windowWidth - popupWidth);
+    const top = Math.min(clickY, windowHeight - popupHeight);
+
+    formPopup.style.left = `${left}px`;
+    formPopup.style.top = `${top}px`;
+    formPopup.style.display = 'block';
+
+    // Предотвращение закрытия блока при клике внутри него
+    formPopup.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  }
+}
+
+document.addEventListener('click', function(event) {
+  $("#slider").val(1)
+  $("#sliderValue").text("1")
+  const formPopup = document.getElementById('formPopup');
+  formPopup.style.display = 'none';
+});
+
+$("#slider").on("input", function() {
+  $("#formPopup #sliderValue").text($("#formPopup #slider").val())
+})

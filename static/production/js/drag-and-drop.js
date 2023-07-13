@@ -63,16 +63,24 @@ function sort_drag_exchange_item() {
     $(".orders-list .exchange-group").sortable({});
     $(".orders-list .exchange-group-item").draggable({
       //'${$(this).parent().parent().attr("data-id")}'
-      connectToSortable: ".region-block .exchange-group, .orders-list-block .orders-list[data-id=''] .exchange-group",
+      connectToSortable: ".region-block .exchange-group",
       zIndex: 1,
       revert: "invalid",
       revertDuration: 1,
+      helper: "clone",
       stop: function() {
         var region_id = $(this).parent().parent().parent().parent().attr("data-id")
         var manager_id = $(this).parent().parent().attr("data-id")
         var exchange_position = $(this).index()
         var exchange_id = $(this).attr("data-id")
-  
+
+        let exchange_quantity = $(this).find(".quantity span").text()
+        let exchange_slider_value = $("#formPopup #slider").val()
+        let exchange_full = exchange_quantity - exchange_slider_value
+
+        $(this).find(".quantity span").text(exchange_full)
+        
+        console.log(exchange_quantity - exchange_slider_value)
         console.log(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
       },
     })
@@ -81,7 +89,3 @@ function sort_drag_exchange_item() {
 
 
 sort_drag_exchange_item()
-
-
-
-

@@ -1,5 +1,7 @@
+let socket
+
 $(function() {
-  const socket = new WebSocket('ws://' + window.location.host + '/ws/some_path/');
+  socket = new WebSocket('ws://' + window.location.host + '/ws/some_path/');
 
   socket.onmessage = function(event) {
       const data = JSON.parse(event.data);
@@ -70,7 +72,13 @@ function sort_drag_exchange_item() {
       console.log(region_id)
       // manager id
       console.log(manager_id)
-      alert(`Менеджер №${manager_id} перенесен в регион ${region_id}`)
+      let data = {
+        'type_upd': 'reg_upd',
+        'region_id': region_id,
+        'manager_id': manager_id
+      }
+      let jsonData = JSON.stringify(data)
+      socket.send(jsonData)
     }
   });
 

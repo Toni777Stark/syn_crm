@@ -266,10 +266,10 @@
 
 .region-block::-webkit-scrollbar {
     height: 10px;
+    width: 10px;
     margin-right: 5em;
 }
 .region-block::-webkit-scrollbar-thumb {
     background-color: #b4b4b4;
-    width: 5px;
     border-radius: 50px;
 }

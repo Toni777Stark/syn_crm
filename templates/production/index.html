@@ -69,14 +69,12 @@
                 <h1>Регистраторы</h1>
             </div>
 
-            <div class="regiser-user-block">
-                <div class="regiser-user">
-                    {% for reg in reg_new %}
-                    <div id={{ reg.id }}>
-                        <p>Имя: {{ reg.username }}    ID: {{ reg.id }}</p>
-                    </div>
-                    {% endfor %}
+            <div class="register-user-block">
+                {% for reg in reg_new %}
+                <div class="register-user" data-id="{{ reg.id }}">
+                    <h2 class="register-name">{{ reg.username }}</h2>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>

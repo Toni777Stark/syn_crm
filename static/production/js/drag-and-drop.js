@@ -57,7 +57,36 @@ function sort_drag_exchange_item() {
 
   $(".region-block .manager-block").sortable();
   $(".region-block .manager").draggable({
-    connectToSortable: ".manager-block",
+    connectToSortable: ".manager-block, .register-user-block",
+    containment: ".region-block",
+    revert: "invalid",
+    revertDuration: 1,
+    start: function() {
+      $(this).addClass("active")
+    },
+    stop: function() {
+      $(this).removeClass("active")
+      var region_id = $(this).parent().parent().attr("data-id")
+      var manager_id = $(this).attr("data-id")
+      // region id
+      console.log(region_id)
+      // manager id
+      console.log(manager_id)
+      let data = {
+        'type_upd': 'reg_upd',
+        'region_id': region_id,
+        'manager_id': manager_id
+      }
+      let jsonData = JSON.stringify(data)
+      socket.send(jsonData)
+    }
+  });
+
+  
+
+  $(".region-block .register-user-block").sortable();
+  $(".region-block .register-user").draggable({
+    connectToSortable: ".manager-block, .register-user-block",
     containment: ".region-block",
     revert: "invalid",
     revertDuration: 1,

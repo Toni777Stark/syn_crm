@@ -1,3 +1,21 @@
+$(function() {
+  const socket = new WebSocket('ws://' + window.location.host + '/ws/some_path/');
+
+  socket.onmessage = function(event) {
+      const data = JSON.parse(event.data);
+      console.log(data)
+      console.log("type_upd: ", data.type_upd);
+      console.log("reg_id: ", data.reg_id);
+      console.log("direction_mane: ", data.direction_mane);
+      console.log("action: ", data.action);
+      
+      $(`.manager[data-id='${data.reg_id}']`).clone().addClass("clone").appendTo(`.region[data-id='${data.direction_mane}'] .manager-block`);
+      $(`.region[data-id!='${data.direction_mane}'] .manager[data-id='${data.reg_id}'][class!='clone']`).remove();
+      sort_drag_exchange_item()
+      }
+});
+
+
 function move_exchange_close() {
   $("#move-exchange").removeClass('active')
   $("body").removeClass('none-scroll')
@@ -98,22 +116,3 @@ sort_drag_exchange_item()
 
 
 
-
-
-
-$(function() {
-  const socket = new WebSocket('ws://' + window.location.host + '/ws/some_path/');
-
-  socket.onmessage = function(event) {
-      const data = JSON.parse(event.data);
-      console.log(data)
-      console.log("type_upd: ", data.type_upd);
-      console.log("reg_id: ", data.reg_id);
-      console.log("direction_mane: ", data.direction_mane);
-      console.log("action: ", data.action);
-      
-      $(`.manager[data-id='${data.reg_id}']`).clone().addClass("clone").appendTo(`.region[data-id='${data.direction_mane}'] .manager-block`);
-      $(`.region[data-id!='${data.direction_mane}'] .manager[data-id='${data.reg_id}'][class!='clone']`).remove();
-      sort_drag_exchange_item()
-      }
-});

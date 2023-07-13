@@ -11,8 +11,8 @@ $(function() {
       console.log("direction_mane: ", data.direction_mane);
       console.log("action: ", data.action);
       
-      $(`.manager[data-id='${data.reg_id}']`).clone().addClass("clone").appendTo(`.region[data-id='${data.direction_mane}'] .manager-block`);
-      $(`.region[data-id!='${data.direction_mane}'] .manager[data-id='${data.reg_id}'][class!='clone']`).remove();
+      $(`.region[data-id!='${data.direction_mane}'] .manager[data-id='${data.reg_id}']`).clone().addClass("clone").appendTo(`.region[data-id='${data.direction_mane}'] .manager-block`);
+      $(`.region[data-id!='${data.direction_mane}'] .manager[data-id='${data.reg_id}']`).remove();
       sort_drag_exchange_item()
       }
 });
@@ -86,27 +86,14 @@ function sort_drag_exchange_item() {
     });
     $(".orders-list .exchange-group-item").draggable({
       connectToSortable: ".region-block .exchange-group",
-      //'${$(this).parent().parent().attr("data-id")}'
-      connectToSortable: ".region-block .exchange-group",
       zIndex: 1,
       revert: "invalid",
       revertDuration: 1,
       stop: function( event, ui ) {
-      helper: "clone",
-      stop: function() {
         var region_id = $(this).parent().parent().parent().parent().attr("data-id")
         var manager_id = $(this).parent().parent().attr("data-id")
         var exchange_position = $(this).index()
         var exchange_id = $(this).attr("data-id")
-
-        let exchange_quantity = $(this).find(".quantity span").text()
-        let exchange_slider_value = $("#formPopup #slider").val()
-        let exchange_full = exchange_quantity - exchange_slider_value
-
-        $(this).find(".quantity span").text(exchange_full)
-        
-        console.log(exchange_quantity - exchange_slider_value)
-        console.log(`Заказ №${exchange_id} перенесен в регион ${region_id}, менеджер ${manager_id}, позиция ${exchange_position}`)
 
         if (region_id == undefined || manager_id == undefined || exchange_id == undefined) {
           console.log("Упсс, ошибочка")
@@ -133,3 +120,7 @@ function sort_drag_exchange_item() {
 
 
 sort_drag_exchange_item()
+
+
+
+

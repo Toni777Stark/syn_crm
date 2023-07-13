@@ -62,7 +62,6 @@ $(".region-block .manager").draggable({
     console.log(manager_id)
 
     var data = {
-      type_upd: 'reg_upd',
       region_id: region_id,
       manager_id: manager_id
     };

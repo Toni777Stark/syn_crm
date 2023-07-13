@@ -16,9 +16,10 @@ class TaskConsumer(AsyncWebsocketConsumer):
         json_data = json.loads(text_data)
 
         # Извлечение данных из JSON-строки
+        type_upd = json_data.get("type_upd")
         region_id = json_data.get("region_id")
         manager_id = json_data.get("manager_id")
-        print(region_id, manager_id)
+        print(type_upd, region_id, manager_id)
 
     async def reg_upd(self, event):
         print(event)
